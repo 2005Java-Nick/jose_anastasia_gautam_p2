@@ -2,7 +2,7 @@
   <div id="logo">
       <h1>AMS</h1>
     </div>
-    <div class="sidebar-option selected">
+    <!-- <div class="sidebar-option selected">
       <h3>Completed Assignments</h3>
     </div>
     <div class="sidebar-option">
@@ -10,6 +10,12 @@
     </div>
     <div class="sidebar-option">
       <h3>Create an Assignment</h3>
+    </div> -->
+
+    <div class="sidebar-option" *ngFor="let option of sidebarOptions">
+        <h3>{{option.name}}</h3>
     </div>
+
+
 </div>
 

@@ -7,6 +7,7 @@ import { TeacherDashboardComponent } from './component/teacher-dashboard/teacher
 import { SidebarComponent } from './component/sidebar/sidebar.component';
 import { ContentComponent } from './component/content/content.component';
 import { HeaderComponent } from './component/header/header.component';
+import { StudentDashboardComponent } from './component/student-dashboard/student-dashboard.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { HeaderComponent } from './component/header/header.component';
     SidebarComponent,
     ContentComponent,
     HeaderComponent,
+    StudentDashboardComponent,
   ],
   imports: [
     BrowserModule,

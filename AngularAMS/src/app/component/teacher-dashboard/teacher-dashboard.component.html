@@ -1,13 +1,13 @@
 <div id="root-div">
   <div id="sidebar-div">
-    <app-sidebar></app-sidebar>
+    <app-sidebar [sidebarOptions]="sidebarOptions"></app-sidebar>
   </div>
   <div id="main-div">
     <div id="header-div"> 
         <app-header></app-header>
     </div>
     <div id="content-div">
-      <app-content></app-content>
+        <app-content [name]="name" [listOfAssignments]="listOfAssignments"></app-content>
     </div>
   </div>
 </div>

@@ -1,9 +1,14 @@
 <div id="content">        
   <div id="content-greeting">
-    <p>Hello, Teacher Name</p>
+    <p>Hello, {{name}}!</p>
   </div>
   <ul id="list">
-    <li>
+    <li *ngFor="let assignment of listOfAssignments">
+        <p class="name">{{assignment.assignmentName}}</p>
+        <p class="student">{{assignment.studentName}}</p>
+    </li>
+
+    <!-- <li>
       <p class="name">Assignment Name 1</p>
       <p class="student">Student Name</p>
     </li>
@@ -46,6 +51,6 @@
     <li>
       <p class="name">Assignment Name 11</p>
       <p class="student">Student Name</p>
-    </li>
+    </li> -->
   </ul>
 </div>
