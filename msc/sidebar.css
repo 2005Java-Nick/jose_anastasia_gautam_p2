@@ -22,10 +22,11 @@
   border-left-color: #000033;
 }
 
-.sidebar-option:hover {
-  background-color: #00005f;
+.sidebar-option:hover, .selected {
+  background-color: #001144;
   border-left-style: solid;
   border-left-width: 3px;
   border-left-color: #eeeeff;
   cursor: pointer;
 }
+
