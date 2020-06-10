@@ -1,0 +1,31 @@
+#sidebar {
+  background-color: #000033;
+}
+
+#sidebar h1, #sidebar h3 {
+  color: white;
+}
+
+
+#logo {
+  text-align: center;
+  padding: 1rem 0.5rem;
+  margin-bottom: 2rem;
+  cursor: pointer;
+}
+
+.sidebar-option {
+  text-align: center;
+  padding: 1.5rem 2rem;
+  border-left-style: solid;
+  border-left-width: 3px;
+  border-left-color: #000033;
+}
+
+.sidebar-option:hover {
+  background-color: #00005f;
+  border-left-style: solid;
+  border-left-width: 3px;
+  border-left-color: #eeeeff;
+  cursor: pointer;
+}
