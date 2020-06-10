@@ -1,29 +1,32 @@
 #header {
-    display: flex;
-    justify-content: space-between;
-    background-color: white;
-  }
+  display: flex;
+  justify-content: space-between;
+  background-color: white;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #ccccff; 
+}
   
-  #header-account {
-    padding: 2rem 1.5rem;
-    text-align: center;
-  }
+#header-account {
+  padding: 2rem 1.5rem;
+  text-align: center;
+}
   
-  #header-account p {
-    font-size: 1rem;
-  }
-  
-  #header-account:hover {
-    cursor: pointer;
-  }
-  
-  #header-title {
-    flex: 1 1 0%;
-    padding: 1.5rem 1rem;
-    text-align: center;
-  }
-  
-  #header-title p {
-    font-size: 2rem;
-  }
-  
+#header-account p {
+  font-size: 1rem;
+}
+
+#header-account:hover {
+  cursor: pointer;
+}
+
+#header-title {
+  flex: 1 1 0%;
+  padding: 1.5rem 1rem;
+  text-align: center;
+}
+
+#header-title p {
+  font-size: 2rem;
+}
+
