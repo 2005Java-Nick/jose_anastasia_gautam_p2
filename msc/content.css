@@ -22,7 +22,8 @@
   padding: 1rem 1rem;
   border-style: solid;
   border-width: 2px;
-  border-color: #ccccff; 
+  border-color: #ccccff;
+  display: flex;
 }
 
 #list li:hover {
@@ -30,12 +31,29 @@
   border-color: #9999ff; 
 }
 
+.left-info {
+  flex: 1 1 0%;
+}
+
+.right-info {
+  text-align: center;
+}
+
 .name {
-  font-size: 1.25rem;
+  font-size: 1.5rem;
   margin-bottom: 0.5rem;
 }
 
 .student {
+  font-size: 1rem;
+}
+
+.label {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.value {
   font-size: 1rem;
 }
 
