@@ -1,0 +1,41 @@
+#content {
+}
+
+#content-greeting {
+  margin: 2rem 2rem;  
+}
+
+#content-greeting p {
+  font-size: 2rem;
+}
+
+#list {
+  list-style-type: none;
+  margin: 2rem;
+  padding: 0;
+}
+
+#list li {
+  background-color: white;
+  display: block;
+  margin: 1rem 0rem;
+  padding: 1rem 1rem;
+  border-style: solid;
+  border-width: 2px;
+  border-color: #ccccff; 
+}
+
+#list li:hover {
+  cursor: pointer;
+  border-color: #9999ff; 
+}
+
+.name {
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.student {
+  font-size: 1rem;
+}
+
