@@ -7,7 +7,6 @@ import { TeacherDashboardComponent } from './component/teacher-dashboard/teacher
 import { SidebarComponent } from './component/sidebar/sidebar.component';
 import { ContentComponent } from './component/content/content.component';
 import { HeaderComponent } from './component/header/header.component';
-import { MainComponent } from './component/main/main.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +15,6 @@ import { MainComponent } from './component/main/main.component';
     SidebarComponent,
     ContentComponent,
     HeaderComponent,
-    MainComponent
   ],
   imports: [
     BrowserModule,
