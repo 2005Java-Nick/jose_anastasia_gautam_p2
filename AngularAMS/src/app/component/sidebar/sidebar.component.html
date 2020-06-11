@@ -1,6 +1,6 @@
 <div id="sidebar">
   <div id="logo">
-      <h1>AMS</h1>
+    <img src="../../../assets/Pictures/rslogo.jpg" alt="Revature" style="width:300px;height:100px;">
     </div>
     <!-- <div class="sidebar-option selected">
       <h3>Completed Assignments</h3>
@@ -13,6 +13,7 @@
     </div> -->
 
     <div class="sidebar-option" *ngFor="let option of sidebarOptions">
+      <!-- routerLink={{option.link}} -->
         <h3>{{option.name}}</h3>
     </div>
 

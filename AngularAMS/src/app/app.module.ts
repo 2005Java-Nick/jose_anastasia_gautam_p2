@@ -8,6 +8,7 @@ import { SidebarComponent } from './component/sidebar/sidebar.component';
 import { ContentComponent } from './component/content/content.component';
 import { HeaderComponent } from './component/header/header.component';
 import { StudentDashboardComponent } from './component/student-dashboard/student-dashboard.component';
+import { LoginComponent } from './component/login/login.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { StudentDashboardComponent } from './component/student-dashboard/student
     ContentComponent,
     HeaderComponent,
     StudentDashboardComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,

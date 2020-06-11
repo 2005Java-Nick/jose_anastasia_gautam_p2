@@ -1,0 +1,29 @@
+#root-div {
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+  }
+  
+  #main-div {
+    flex: 1 1 0%;
+    display: flex;
+    flex-direction: column;
+    background-color: #f1f1ff;
+    overflow: hidden;
+    height: 100%;
+  }
+  
+  #header-div {
+  }
+  
+  #content-div {
+    overflow: auto;
+  }
+  
+  
+  #sidebar-div {
+    background-color: #000033;
+    height: 100%;
+    overflow: hidden;
+  } 
+  

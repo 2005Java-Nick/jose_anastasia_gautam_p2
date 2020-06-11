@@ -40,3 +40,22 @@
   font-size: 1rem;
 }
 
+.label {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.value {
+  font-size: 1rem;
+}
+
+.left-info {
+  flex: 1 1 0%;
+  text-align: left;
+}
+
+.right-info {
+  text-align: center;
+}
+
+

@@ -4,8 +4,15 @@
   </div>
   <ul id="list">
     <li *ngFor="let assignment of listOfAssignments">
-        <p class="name">{{assignment.assignmentName}}</p>
-        <p class="student">{{assignment.studentName}}</p>
+
+      <div class="left-info">
+        <p class="name">{{assignment.course}} {{assignment.assignmentType}}</p>
+        <p class="student" style = "text-indent : 2em;"> {{assignment.assignmentName}} ● {{assignment.studentName}}</p>
+      </div>
+      <div class="right-info">
+          <p class="label">Completion Date</p>
+          <p class="value">{{assignment.completionDate.date}} {{assignment.completionDate.time}}</p>
+        </div>
     </li>
 
     <!-- <li>
