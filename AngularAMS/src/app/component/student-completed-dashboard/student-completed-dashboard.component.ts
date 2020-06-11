@@ -3,14 +3,14 @@ import { AssignmentInstanceDisplay } from '../../interface/assignmentinstancedis
 import {SidebarOptionsService} from '../../service/sidebar-options.service';
 
 @Component({
-  selector: 'app-teacher-dashboard',
-  templateUrl: './teacher-dashboard.component.html',
-  styleUrls: ['./teacher-dashboard.component.css']
+  selector: 'app-student-completed-dashboard',
+  templateUrl: './student-completed-dashboard.component.html',
+  styleUrls: ['./student-completed-dashboard.component.css']
 })
-export class TeacherDashboardComponent implements OnInit {
+export class StudentCompletedDashboardComponent implements OnInit {
 
-  name = 'Mrs. Jane Doe';
-  viewer = 'Teacher';
+  name = 'John Doe';
+  viewer = 'Student';
 
   sidebarOptions;
 
@@ -33,9 +33,9 @@ export class TeacherDashboardComponent implements OnInit {
       grade: null
     }
   ];
-
+  
   constructor(sidebarOptionsService:SidebarOptionsService) { 
-    this.sidebarOptions = sidebarOptionsService.teacherSideOptions("/teacher-dashboard");
+    this.sidebarOptions = sidebarOptionsService.studentSideOptions("/student-completed-dashboard");
   }
 
   ngOnInit(): void {

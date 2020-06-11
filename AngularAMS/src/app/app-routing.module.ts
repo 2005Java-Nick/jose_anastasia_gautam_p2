@@ -4,6 +4,7 @@ import { TeacherDashboardComponent } from './component/teacher-dashboard/teacher
 import { TeacherGradedDashboardComponent } from './component/teacher-graded-dashboard/teacher-graded-dashboard.component';
 import { StudentDashboardComponent } from './component/student-dashboard/student-dashboard.component';
 import { StudentGradedDashboardComponent } from './component/student-graded-dashboard/student-graded-dashboard.component';
+import { StudentCompletedDashboardComponent } from './component/student-completed-dashboard/student-completed-dashboard.component';
 import { LoginComponent } from './component/login/login.component';
 
 
@@ -12,6 +13,7 @@ const routes: Routes = [
   { path: "student-dashboard", component: StudentDashboardComponent },
   { path: "teacher-graded-dashboard", component: TeacherGradedDashboardComponent },
   { path: "student-graded-dashboard", component: StudentGradedDashboardComponent },
+  { path: "student-completed-dashboard", component: StudentCompletedDashboardComponent },
   //{ path: "login", component: LoginComponent },
   // { path: "", redirectTo: "/login", pathMatch: "full" }
   { path: "", redirectTo: "/teacher-dashboard", pathMatch: "full" }

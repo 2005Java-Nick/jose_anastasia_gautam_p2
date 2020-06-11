@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AssignmentInstanceDisplay } from '../../interface/assignmentinstancedisplay.interface';
+import {SidebarOptionsService} from '../../service/sidebar-options.service';
 
 @Component({
   selector: 'app-student-graded-dashboard',
@@ -11,16 +12,7 @@ export class StudentGradedDashboardComponent implements OnInit {
   name = 'John Doe';
   viewer = 'Student';
 
-  sidebarOptions = [
-    {
-      name: "New Assignments",
-      link: "/student-dashboard"
-    },
-    {
-      name: "Graded Assignments",
-      link: "/student-graded-dashboard"
-    },
-  ];
+  sidebarOptions;
 
   listOfAssignments : AssignmentInstanceDisplay[] = [
     {
@@ -43,7 +35,9 @@ export class StudentGradedDashboardComponent implements OnInit {
   ];
 
 
-  constructor() { }
+  constructor(sidebarOptionsService:SidebarOptionsService) { 
+    this.sidebarOptions = sidebarOptionsService.studentSideOptions("/student-graded-dashboard");
+  }
 
   ngOnInit(): void {
   }
