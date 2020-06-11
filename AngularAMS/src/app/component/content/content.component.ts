@@ -11,6 +11,8 @@ export class ContentComponent implements OnInit {
   name;
   @Input()
   listOfAssignments;
+  @Input()
+  viewer;
 
   constructor() { }
 

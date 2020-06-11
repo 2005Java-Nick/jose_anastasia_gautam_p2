@@ -8,7 +8,8 @@ import { AssignmentInstanceDisplay } from '../../interface/assignmentinstancedis
 })
 export class StudentGradedDashboardComponent implements OnInit {
 
-  name = 'Student';
+  name = 'John Doe';
+  viewer = 'Student';
 
   sidebarOptions = [
     {

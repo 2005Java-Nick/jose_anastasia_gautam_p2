@@ -5,7 +5,11 @@
   <ul id="list">
     <li *ngFor="let assignment of listOfAssignments">
 
-      <div class="left-info">
+      <div class="left-info" *ngIf="viewer === 'Student'">
+        <p class="name">{{assignment.course}} {{assignment.assignmentType}}</p>
+        <p class="detail"> {{assignment.assignmentName}} ● {{assignment.teacherName}}</p>
+      </div>
+      <div class="left-info" *ngIf="viewer === 'Teacher'">
         <p class="name">{{assignment.course}} {{assignment.assignmentType}}</p>
         <p class="detail"> {{assignment.assignmentName}} ● {{assignment.studentName}}</p>
       </div>

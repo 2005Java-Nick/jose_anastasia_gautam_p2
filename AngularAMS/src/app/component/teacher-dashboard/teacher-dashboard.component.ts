@@ -10,7 +10,8 @@ export class TeacherDashboardComponent implements OnInit {
 
   constructor() { }
 
-  name = 'Teacher';
+  name = 'Mrs. Jane Doe';
+  viewer = 'Teacher';
 
   sidebarOptions = [
     {

@@ -10,7 +10,8 @@ export class StudentDashboardComponent implements OnInit {
 
   constructor() { }
 
-  name = 'Student';
+  name = 'John Doe';
+  viewer = 'Student';
 
   sidebarOptions = [
     {
