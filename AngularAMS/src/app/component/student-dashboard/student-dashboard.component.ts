@@ -37,8 +37,8 @@ export class StudentDashboardComponent implements OnInit {
         time: "5:00 PM"
       },
       completionDate: {
-        date: "06-10-2020",
-        time: "4:45 PM"
+        date: null,
+        time: null
       },
       grade: null
     }

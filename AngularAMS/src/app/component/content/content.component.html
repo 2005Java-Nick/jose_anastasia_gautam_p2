@@ -9,10 +9,18 @@
         <p class="name">{{assignment.course}} {{assignment.assignmentType}}</p>
         <p class="detail"> {{assignment.assignmentName}} ● {{assignment.studentName}}</p>
       </div>
-      <div class="right-info">
+      <div class="right-info" *ngIf="assignment.assignmentStatus === 'New'">
+          <p class="label">Due Date</p>
+          <p class="value">{{assignment.dueDate.date}} {{assignment.dueDate.time}}</p>
+      </div>
+      <div class="right-info" *ngIf="assignment.assignmentStatus === 'Completed'">
           <p class="label">Completion Date</p>
           <p class="value">{{assignment.completionDate.date}} {{assignment.completionDate.time}}</p>
-        </div>
+      </div>
+      <div class="right-info" *ngIf="assignment.assignmentStatus === 'Graded'">
+          <p class="label">Grade</p>
+          <p class="value">{{assignment.grade}}</p>
+      </div>
     </li>
 
     <!-- <li>

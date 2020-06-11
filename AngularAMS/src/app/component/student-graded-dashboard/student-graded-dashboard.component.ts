@@ -12,13 +12,13 @@ export class StudentGradedDashboardComponent implements OnInit {
 
   sidebarOptions = [
     {
-      name: "Completed Assignments"
+      name: "Completed Assignments",
     },
     {
-      name: "Graded Assignments"
+      name: "Graded Assignments",
     },
     {
-      name: "Create an Assignment"
+      name: "Create an Assignment",
     }
   ];
 
@@ -26,7 +26,7 @@ export class StudentGradedDashboardComponent implements OnInit {
     {
       course: "History",
       assignmentType: "Exam",
-      assignmentStatus: "Completed",
+      assignmentStatus: "Graded",
       assignmentName: "US History (1600s-1776)",
       teacherName: "Mrs. Jane Doe",
       studentName: "John Doe",
@@ -38,7 +38,7 @@ export class StudentGradedDashboardComponent implements OnInit {
         date: "06-10-2020",
         time: "4:45 PM"
       },
-      grade: null
+      grade: 80
     }
   ];
 
