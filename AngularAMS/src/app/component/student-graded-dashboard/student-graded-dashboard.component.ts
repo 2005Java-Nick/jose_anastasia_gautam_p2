@@ -2,25 +2,23 @@ import { Component, OnInit } from '@angular/core';
 import { AssignmentInstanceDisplay } from '../../interface/assignmentinstancedisplay.interface';
 
 @Component({
-  selector: 'app-student-dashboard',
-  templateUrl: './student-dashboard.component.html',
-  styleUrls: ['./student-dashboard.component.css']
+  selector: 'app-student-graded-dashboard',
+  templateUrl: './student-graded-dashboard.component.html',
+  styleUrls: ['./student-graded-dashboard.component.css']
 })
-export class StudentDashboardComponent implements OnInit {
+export class StudentGradedDashboardComponent implements OnInit {
 
-  constructor() { }
-
-  name = 'Student';
+  name = 'Teacher';
 
   sidebarOptions = [
     {
-      name: "New Assignments"
-    },
-    {
-      name: "Completed Assignment"
+      name: "Completed Assignments"
     },
     {
       name: "Graded Assignments"
+    },
+    {
+      name: "Create an Assignment"
     }
   ];
 
@@ -28,7 +26,7 @@ export class StudentDashboardComponent implements OnInit {
     {
       course: "History",
       assignmentType: "Exam",
-      assignmentStatus: "New",
+      assignmentStatus: "Completed",
       assignmentName: "US History (1600s-1776)",
       teacherName: "Mrs. Jane Doe",
       studentName: "John Doe",
@@ -44,6 +42,8 @@ export class StudentDashboardComponent implements OnInit {
     }
   ];
 
+
+  constructor() { }
 
   ngOnInit(): void {
   }

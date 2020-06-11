@@ -18,7 +18,7 @@
 
 #list li {
   background-color: white;
-  display: block;
+  display: flex;
   margin: 1rem 0rem;
   padding: 1rem 1rem;
   border-style: solid;
@@ -36,8 +36,9 @@
   margin-bottom: 0.5rem;
 }
 
-.student {
+.detail {
   font-size: 1rem;
+  text-indent: 1rem;
 }
 
 .label {

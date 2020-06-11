@@ -9,6 +9,8 @@ import { ContentComponent } from './component/content/content.component';
 import { HeaderComponent } from './component/header/header.component';
 import { StudentDashboardComponent } from './component/student-dashboard/student-dashboard.component';
 import { LoginComponent } from './component/login/login.component';
+import { StudentGradedDashboardComponent } from './component/student-graded-dashboard/student-graded-dashboard.component';
+import { TeacherGradedDashboardComponent } from './component/teacher-graded-dashboard/teacher-graded-dashboard.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +21,8 @@ import { LoginComponent } from './component/login/login.component';
     HeaderComponent,
     StudentDashboardComponent,
     LoginComponent,
+    StudentGradedDashboardComponent,
+    TeacherGradedDashboardComponent,
   ],
   imports: [
     BrowserModule,
