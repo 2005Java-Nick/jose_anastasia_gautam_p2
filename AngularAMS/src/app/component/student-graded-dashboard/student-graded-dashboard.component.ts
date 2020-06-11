@@ -8,18 +8,17 @@ import { AssignmentInstanceDisplay } from '../../interface/assignmentinstancedis
 })
 export class StudentGradedDashboardComponent implements OnInit {
 
-  name = 'Teacher';
+  name = 'Student';
 
   sidebarOptions = [
     {
-      name: "Completed Assignments",
+      name: "New Assignments",
+      link: "/student-dashboard"
     },
     {
       name: "Graded Assignments",
+      link: "/student-graded-dashboard"
     },
-    {
-      name: "Create an Assignment",
-    }
   ];
 
   listOfAssignments : AssignmentInstanceDisplay[] = [

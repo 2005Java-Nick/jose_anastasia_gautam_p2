@@ -12,7 +12,7 @@
       <h3>Create an Assignment</h3>
     </div> -->
 
-    <div class="sidebar-option" *ngFor="let option of sidebarOptions">
+    <div class="sidebar-option" *ngFor="let option of sidebarOptions" routerLink={{option.link}}>
       <!-- routerLink={{option.link}} -->
         <h3>{{option.name}}</h3>
     </div>

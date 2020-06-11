@@ -14,13 +14,16 @@ export class TeacherDashboardComponent implements OnInit {
 
   sidebarOptions = [
     {
-      name: "Completed Assignments"
+      name: "Completed Assignments",
+      link: "/teacher-dashboard"
     },
     {
-      name: "Graded Assignments"
+      name: "Graded Assignments",
+      link: "/teacher-graded-dashboard"
     },
     {
-      name: "Create an Assignment"
+      name: "Create an Assignment",
+      link: "/teacher-dashboard"
     }
   ];
 

@@ -14,14 +14,13 @@ export class StudentDashboardComponent implements OnInit {
 
   sidebarOptions = [
     {
-      name: "New Assignments"
+      name: "New Assignments",
+      link: "/student-dashboard"
     },
     {
-      name: "Completed Assignment"
+      name: "Graded Assignments",
+      link: "/student-graded-dashboard"
     },
-    {
-      name: "Graded Assignments"
-    }
   ];
 
   listOfAssignments : AssignmentInstanceDisplay[] = [

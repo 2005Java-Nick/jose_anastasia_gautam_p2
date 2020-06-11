@@ -12,7 +12,7 @@ const routes: Routes = [
   { path: "student-dashboard", component: StudentDashboardComponent },
   { path: "teacher-graded-dashboard", component: TeacherGradedDashboardComponent },
   { path: "student-graded-dashboard", component: StudentGradedDashboardComponent },
-  { path: "login", component: LoginComponent },
+  //{ path: "login", component: LoginComponent },
   // { path: "", redirectTo: "/login", pathMatch: "full" }
   { path: "", redirectTo: "/teacher-dashboard", pathMatch: "full" }
 ];
