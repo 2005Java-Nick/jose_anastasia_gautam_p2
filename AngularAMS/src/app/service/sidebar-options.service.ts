@@ -48,5 +48,23 @@ export class SidebarOptionsService {
     return sidebarOptions;
   }
 
+  loginRegisterSideOptions(selectedLink: string) {
+    let sidebarOptions = [
+      {
+        name: "Login",
+        link: "/login",
+        selected: selectedLink === "/login"
+      },
+      {
+        name: "Register",
+        link: "/register",
+        selected: selectedLink === "/register"
+      },
+      // ADD CREATE AN ASSIGNMENT!!!!!!!!!!!!
+    ];
+
+    return sidebarOptions;
+  }
+
   constructor() { }
 }

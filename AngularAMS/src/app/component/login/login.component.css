@@ -14,10 +14,36 @@
   }
   
   #header-div {
+    background-color: white;
+    text-align: center;
+    color: #000033;
   }
   
   #content-div {
     overflow: auto;
+   
+    display: flex;
+    justify-content: center;
+  }
+
+  #login-button-container {
+    display: flex;
+    justify-content: center;
+  }
+
+  .button {
+    padding: 0.5rem;
+    background-color: turquoise;
+    font-size: 1.25rem;
+  }
+
+  #login{
+    margin-top: 7rem;
+    background-color: white;
+    padding: 2rem;
+    border-style: solid;
+    border-radius: 0.5rem;
+    border-color:  #000033;
   }
   
   

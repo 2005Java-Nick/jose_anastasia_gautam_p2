@@ -14,9 +14,9 @@ const routes: Routes = [
   { path: "teacher-graded-dashboard", component: TeacherGradedDashboardComponent },
   { path: "student-graded-dashboard", component: StudentGradedDashboardComponent },
   { path: "student-completed-dashboard", component: StudentCompletedDashboardComponent },
-  //{ path: "login", component: LoginComponent },
-  // { path: "", redirectTo: "/login", pathMatch: "full" }
-  { path: "", redirectTo: "/teacher-dashboard", pathMatch: "full" }
+  { path: "login", component: LoginComponent },
+  { path: "", redirectTo: "/login", pathMatch: "full" }
+  // { path: "", redirectTo: "/teacher-dashboard", pathMatch: "full" }
 ];
 
 @NgModule({
