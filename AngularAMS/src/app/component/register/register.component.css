@@ -21,8 +21,7 @@
   
   #content-div {
     overflow: auto;   
-    display: flex;
-    justify-content: center;
+    padding: 4rem 10rem;
   }
 
   #login-button-container {
@@ -45,16 +44,10 @@
     opacity: 0.8;
   }
 
-  .form-item {
-    display: flex;
-    margin-top: 8px;
-    margin-bottom: 8px;
-  }
-
 
   input[type=text], input[type=password], input[type=email] {
-   /* padding: 12px 20px;*/
-    margin-left: 4px;
+    padding: 12px 20px;
+    margin: 8px 0;
     border: 1px solid #ccc;
     box-sizing: border-box;
   }
@@ -66,14 +59,27 @@
     background-image: url("https://sun6-19.userapi.com/s_MjGuh4LZgufVdmIH3wvEQGBC73izo8DF83Cw/sn_cOQKcySE.jpg");
     background-repeat: no-repeat;
     background-size: cover;
-    margin-top: 4rem;
     background-color: white;
     padding: 3rem;
     border-style: solid;
     border-radius: 0.5rem;
     border-color: black;
   }
-  
+ 
+  #register > div {
+    display: flex;
+    justify-content: center;
+    margin: 1rem 0rem;
+  }
+
+  #input-items  {
+    display: flex;
+    justify-content: center;
+  }
+
+  #input-items div {
+    margin: 0rem 3rem;
+  }
   
   #sidebar-div {
     background-color: #000033;

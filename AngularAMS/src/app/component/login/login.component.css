@@ -67,7 +67,12 @@
     border-color: black;
   }
   
-  
+ #login > div {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+ }
+
   #sidebar-div {
     background-color: #000033;
     height: 100%;
