@@ -29,7 +29,7 @@ student_firstname varchar not null,
 student_lastname varchar not null,
 student_email varchar not null,
 student_pw varchar not null,
-student_grade_level varchar not null
+student_class varchar not null
 );
 
 create table ams.teacher(
