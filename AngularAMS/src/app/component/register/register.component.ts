@@ -15,7 +15,8 @@ export class RegisterComponent implements OnInit {
     userLastName: [''],
     userEmail: [''],
     userPassword: [''],
-    userClass: ['']
+    userClass: [''],
+    userSchool: [''],
 });
 
 sidebarOptions;

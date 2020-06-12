@@ -1,17 +1,42 @@
 <div id="content-container">
-    <form id="create-content">
-        <label class="label">Type</label>
-        <div id="type-toggle">
-            <div class="type selected">
-                <p class="value">Homework</p>
-            </div>
-            <div class="type">
-                <p class="value">Exam</p>
-            </div>
-            <div class="type">
-                <p class="value">Project</p>
-            </div>
-        </div>
+    <form [formGroup]="createAssignmentForm">
+      <div>
+        <label>Choose Assignment Type</label>
+      </div>
+      <div> 
+        <select formControlName="assignmentType">
+          <option [ngValue]="null" disabled>Choose Assignment Type</option>
+          <option [ngValue]="'Homework'">Homework</option>
+          <option [ngValue]="'Exam'">Exam</option>
+          <option [ngValue]="'Project'">Project</option>
+        </select>
+      </div>
+      <div>
+        <label>Assignment Title</label>
+      </div>
+      <div>
+        <input type="text" formControl="assignmentTitle">
+      </div>
+      <div>
+        <label>Assign To</label>
+      </div>
+      <div> 
+        <select formControlName="assignTo">
+          <option [ngValue]="null" disabled>Choose Class</option>
+          <option [ngValue]="'1-201'">1-201</option>
+          <option [ngValue]="'2-201'">2-201</option>
+          <option [ngValue]="'4-201'">4-201</option>
+        </select>
+      </div>
+      <div>
+        <label>Questions</label>
+      </div>
+      <div>
+        
+      </div>
+      <div>     
+        <input type="submit" class="button" value="Login" (click)="onSubmit()">
+      </div>
     </form>
     
 </div>

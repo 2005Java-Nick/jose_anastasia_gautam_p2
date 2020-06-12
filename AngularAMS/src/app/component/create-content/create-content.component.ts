@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, FormControl } from "@angular/forms";
 
 @Component({
   selector: 'app-create-content',
@@ -7,9 +8,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CreateContentComponent implements OnInit {
 
-  constructor() { }
+  createAssignmentForm : FormGroup = this.fb.group({
+    assignmentType: [''],
+    assignmentTitle: [''],
+    assignTo: [''],
+    questions: {
+      0: [''] 
+    }
+  });
+
+  constructor(private fb : FormBuilder) { }
 
   ngOnInit(): void {
+  }
+
+  onSubmit() {
+    console.log(this.createAssignmentForm.value);
   }
 
 }
