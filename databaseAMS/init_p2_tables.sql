@@ -5,7 +5,7 @@
 --------------------------------------------------
 -- CREATE SCHEMA
 --------------------------------------------------
--- create schema ams;
+create schema ams;
 --------------------------------------------------
 
 --------------------------------------------------
@@ -23,13 +23,15 @@
 --------------------------------------------------
 -- CREATE TABLES
 --------------------------------------------------
+
 create table ams.student(
 student_id bigint primary key,
 student_firstname varchar not null,
 student_lastname varchar not null,
 student_email varchar not null,
 student_pw varchar not null,
-student_class varchar not null
+student_class varchar not null,
+student_school varchar not null
 );
 
 create table ams.teacher(
@@ -38,7 +40,8 @@ teacher_firstname varchar not null,
 teacher_lastname varchar not null,
 teacher_email varchar not null,
 teacher_pw varchar not null,
-teacher_subject varchar not null
+teacher_subject varchar not null,
+teacher_school varchar not null
 );
 
 create table ams.question(-- one-to-many with assignment_template
@@ -123,6 +126,7 @@ alter table ams.assignment_instance add constraint FK_assignment_student_id
 	foreign key (assignment_student_id) references ams.student (student_id) on delete cascade on update cascade;
 create index i_FK_assignment_student_id on ams.assignment_instance (assignment_student_id);
 ------------------------------------------------------------------------------------------------------------
+
 
 ------------------------------------------------------------------------------------------------------------
 -- CREATE FUNCTIONS
