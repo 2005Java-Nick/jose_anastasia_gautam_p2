@@ -2,12 +2,13 @@ package com.revature.ams.domain;
 
 public class Teacher {
 	
-	private int teacherId; //primary key
+	private int teacherId; //PRIMARY KEY
 	private String teacherFirstname; 
 	private String teacherLastname; 
 	private String teacherEmail; 
 	private String teacherPassword;
 	private String teacherSubject;
+	private String teacherSchool;
 	
 	public Teacher() {
 		super();
@@ -15,7 +16,7 @@ public class Teacher {
 		
 	
 	public Teacher(int teacherId, String teacherFirstname, String teacherLastname, String teacherEmail,
-		String teacherPassword, String teacherSubject) {
+		String teacherPassword, String teacherSubject, String teacherSchool) {
 		super();
 		this.teacherId = teacherId;
 		this.teacherFirstname = teacherFirstname;
@@ -23,6 +24,7 @@ public class Teacher {
 		this.teacherEmail = teacherEmail;
 		this.teacherPassword = teacherPassword;
 		this.teacherSubject = teacherSubject;
+		this.teacherSchool = teacherSchool;
 	}
 
 
@@ -63,6 +65,16 @@ public class Teacher {
 	public void setTeacherSubject(String teacherSubject) {
 		this.teacherSubject = teacherSubject;
 	}
+	public String getTeacherSchool() {
+		return teacherSchool;
+	}
+
+
+	public void setTeacherSchool(String teacherSchool) {
+		this.teacherSchool = teacherSchool;
+	}
+
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -72,9 +84,12 @@ public class Teacher {
 		result = prime * result + teacherId;
 		result = prime * result + ((teacherLastname == null) ? 0 : teacherLastname.hashCode());
 		result = prime * result + ((teacherPassword == null) ? 0 : teacherPassword.hashCode());
+		result = prime * result + ((teacherSchool == null) ? 0 : teacherSchool.hashCode());
 		result = prime * result + ((teacherSubject == null) ? 0 : teacherSubject.hashCode());
 		return result;
 	}
+
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -106,14 +121,18 @@ public class Teacher {
 				return false;
 		} else if (!teacherPassword.equals(other.teacherPassword))
 			return false;
+		if (teacherSchool == null) {
+			if (other.teacherSchool != null)
+				return false;
+		} else if (!teacherSchool.equals(other.teacherSchool))
+			return false;
 		if (teacherSubject == null) {
 			if (other.teacherSubject != null)
 				return false;
 		} else if (!teacherSubject.equals(other.teacherSubject))
 			return false;
 		return true;
-	} 
-	
+	}
 	
 
 }

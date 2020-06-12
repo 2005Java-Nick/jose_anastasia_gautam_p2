@@ -8,19 +8,20 @@ public class Student {
 	private String studentEmail; 
 	private String studentPassword;
 	private String studentClass;
-	
+	private String studentSchool;
 	
 	public Student() {
 		super();
 	}
 	
-	public Student(int studentId, String studentFirstname, String studentLastname, String studentEmail, String studentPassword, String studentClass) {
+	public Student(int studentId, String studentFirstname, String studentLastname, String studentEmail, String studentPassword, String studentClass, String studentSchool) {
 		this.studentId = studentId;
 		this.studentFirstname = studentFirstname;
 		this.studentLastname = studentLastname;
 		this.studentEmail = studentEmail;
 		this.studentPassword = studentPassword;
 		this.studentClass = studentClass;
+		this.studentSchool = studentSchool;
 	}
 	
 	public int getStudentId() {
@@ -56,22 +57,30 @@ public class Student {
 	public String getStudentClass() {
 		return studentClass;
 	}
-	public void setStudentGradeLevel(String studentClass) {
+	public void setStudentClass(String studentClass) {
 		this.studentClass = studentClass;
-	} 
-	
+	}
+	public String getStudentSchool() {
+		return studentSchool;
+	}
+	public void setStudentSchool(String studentSchool) {
+		this.studentSchool = studentSchool;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result + ((studentClass == null) ? 0 : studentClass.hashCode());
 		result = prime * result + ((studentEmail == null) ? 0 : studentEmail.hashCode());
 		result = prime * result + ((studentFirstname == null) ? 0 : studentFirstname.hashCode());
-		result = prime * result + ((studentClass == null) ? 0 : studentClass.hashCode());
 		result = prime * result + studentId;
 		result = prime * result + ((studentLastname == null) ? 0 : studentLastname.hashCode());
 		result = prime * result + ((studentPassword == null) ? 0 : studentPassword.hashCode());
+		result = prime * result + ((studentSchool == null) ? 0 : studentSchool.hashCode());
 		return result;
 	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -81,6 +90,11 @@ public class Student {
 		if (getClass() != obj.getClass())
 			return false;
 		Student other = (Student) obj;
+		if (studentClass == null) {
+			if (other.studentClass != null)
+				return false;
+		} else if (!studentClass.equals(other.studentClass))
+			return false;
 		if (studentEmail == null) {
 			if (other.studentEmail != null)
 				return false;
@@ -90,11 +104,6 @@ public class Student {
 			if (other.studentFirstname != null)
 				return false;
 		} else if (!studentFirstname.equals(other.studentFirstname))
-			return false;
-		if (studentClass == null) {
-			if (other.studentClass != null)
-				return false;
-		} else if (!studentClass.equals(other.studentClass))
 			return false;
 		if (studentId != other.studentId)
 			return false;
@@ -107,6 +116,11 @@ public class Student {
 			if (other.studentPassword != null)
 				return false;
 		} else if (!studentPassword.equals(other.studentPassword))
+			return false;
+		if (studentSchool == null) {
+			if (other.studentSchool != null)
+				return false;
+		} else if (!studentSchool.equals(other.studentSchool))
 			return false;
 		return true;
 	}
