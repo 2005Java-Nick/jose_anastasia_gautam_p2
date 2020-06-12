@@ -6,6 +6,7 @@ import { StudentDashboardComponent } from './component/student-dashboard/student
 import { StudentGradedDashboardComponent } from './component/student-graded-dashboard/student-graded-dashboard.component';
 import { StudentCompletedDashboardComponent } from './component/student-completed-dashboard/student-completed-dashboard.component';
 import { LoginComponent } from './component/login/login.component';
+import { RegisterComponent } from './component/register/register.component';
 
 
 const routes: Routes = [
@@ -15,6 +16,7 @@ const routes: Routes = [
   { path: "student-graded-dashboard", component: StudentGradedDashboardComponent },
   { path: "student-completed-dashboard", component: StudentCompletedDashboardComponent },
   { path: "login", component: LoginComponent },
+  { path: "register", component: RegisterComponent },
   { path: "", redirectTo: "/login", pathMatch: "full" }
   // { path: "", redirectTo: "/teacher-dashboard", pathMatch: "full" }
 ];

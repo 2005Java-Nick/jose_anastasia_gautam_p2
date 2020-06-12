@@ -13,6 +13,7 @@ import { StudentGradedDashboardComponent } from './component/student-graded-dash
 import { TeacherGradedDashboardComponent } from './component/teacher-graded-dashboard/teacher-graded-dashboard.component';
 import { StudentCompletedDashboardComponent } from './component/student-completed-dashboard/student-completed-dashboard.component';
 import { TeacherCreateDashboardComponent } from './component/teacher-create-dashboard/teacher-create-dashboard.component';
+import { RegisterComponent } from './component/register/register.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { TeacherCreateDashboardComponent } from './component/teacher-create-dash
     TeacherGradedDashboardComponent,
     StudentCompletedDashboardComponent,
     TeacherCreateDashboardComponent,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,

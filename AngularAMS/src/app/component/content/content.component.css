@@ -23,12 +23,12 @@
   padding: 1rem 1rem;
   border-style: solid;
   border-width: 2px;
-  border-color: #ccccff; 
+  border-color: rgb(70, 175, 124); 
 }
 
 #list li:hover {
   cursor: pointer;
-  border-color: #9999ff; 
+  border-color:rgb(37, 95, 67); 
 }
 
 .name {
