@@ -1,14 +1,52 @@
 package com.revature.ams.domain;
 
-public class AssignmentInstance {
+public class AssignmentInstance { //many to one with assignment_template, many to one with teacher, many to one with student
 	
-	assignment_instance_id;// serial primary key,
-	assignment_template_id;// bigint not null, --fk
-	assignment_teacher_id;// bigint not null, --fk
-	assignment_student_id;// bigint not null, --fk
-	assignment_completion_datetime;// timestamp with time zone,
-	assignment_graded_datetime;// timestamp with time zone,
-	assignment_finalgrade numeric(5,2) check(assignment_finalgrade <= 100.00),
-	assignment_status status not null
+	private int assignmentInstanceId; //SERIAL PRIMARY KEY
+	private int assignmentTemplateId; //FOREIGN KEY
+	private int assignmentTeacherId; //FOREIGN KEY
+	private int assignmentStudentId; //FOREIGN KEY
+	//private LocalDateTime assignmentCompletionDatetime; //TIMESTAMP WITH TIMEZONE
+	//private LocalDateTime assignmentGradedDatetime; //TIMESTAMP WITH TIMEZONE
+	private double assignmentFinalGrade; //check(assignment_finalgrade <= 100.00)
+	private String assignmentStatus; //TYPE status AS ENUM('NEW', 'COMPLETED', 'GRADED')
+	
+	
+	public int getAssignmentInstanceId() {
+		return assignmentInstanceId;
+	}
+	public void setAssignmentInstanceId(int assignmentInstanceId) {
+		this.assignmentInstanceId = assignmentInstanceId;
+	}
+	public int getAssignmentTemplateId() {
+		return assignmentTemplateId;
+	}
+	public void setAssignmentTemplateId(int assignmentTemplateId) {
+		this.assignmentTemplateId = assignmentTemplateId;
+	}
+	public int getAssignmentTeacherId() {
+		return assignmentTeacherId;
+	}
+	public void setAssignmentTeacherId(int assignmentTeacherId) {
+		this.assignmentTeacherId = assignmentTeacherId;
+	}
+	public int getAssignmentStudentId() {
+		return assignmentStudentId;
+	}
+	public void setAssignmentStudentId(int assignmentStudentId) {
+		this.assignmentStudentId = assignmentStudentId;
+	}
+	public double getAssignmentFinalGrade() {
+		return assignmentFinalGrade;
+	}
+	public void setAssignmentFinalGrade(double assignmentFinalGrade) {
+		this.assignmentFinalGrade = assignmentFinalGrade;
+	}
+	public String getAssignmentStatus() {
+		return assignmentStatus;
+	}
+	public void setAssignmentStatus(String assignmentStatus) {
+		this.assignmentStatus = assignmentStatus;
+	}
 
 }

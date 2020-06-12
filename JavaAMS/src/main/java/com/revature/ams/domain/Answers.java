@@ -1,13 +1,13 @@
 package com.revature.ams.domain;
 
-public class Answers {
+public class Answers { //many-to-one with question, many-to-one with student, many-to-one with assignment_instance
 	
-	private int answersId; //serial primary key,
-	private int answersQuestionsId; //fk
-	private int answersStudentId; //fk
-	private  int answersAssignmentInstanceId; //fk
+	private int answersId; //SERIAL PRIMARY KEY,
+	private int answersQuestionsId; //FOREIGN KEY
+	private int answersStudentId; //FOREIGN KEY
+	private  int answersAssignmentInstanceId; //FOREIGN KEY
 	private String answersString;
-	private double answersPoints; //check(answers_points<=100.00),
+	private double answersPoints; //check(answers_points<=100.00)
 	private String answersComments;
 	
 	

@@ -2,25 +2,25 @@ package com.revature.ams.domain;
 
 public class Student {
 	
-	private int studentId; //primary key
+	private int studentId; //PRIMARY KEY
 	private String studentFirstname; 
 	private String studentLastname; 
 	private String studentEmail; 
 	private String studentPassword;
-	private String studentGradeLevel;
+	private String studentClass;
 	
 	
 	public Student() {
 		super();
 	}
 	
-	public Student(int studentId, String studentFirstname, String studentLastname, String studentEmail, String studentPassword, String studentGradeLevel) {
+	public Student(int studentId, String studentFirstname, String studentLastname, String studentEmail, String studentPassword, String studentClass) {
 		this.studentId = studentId;
 		this.studentFirstname = studentFirstname;
 		this.studentLastname = studentLastname;
 		this.studentEmail = studentEmail;
 		this.studentPassword = studentPassword;
-		this.studentGradeLevel = studentGradeLevel;
+		this.studentClass = studentClass;
 	}
 	
 	public int getStudentId() {
@@ -53,11 +53,11 @@ public class Student {
 	public void setStudentPassword(String studentPassword) {
 		this.studentPassword = studentPassword;
 	}
-	public String getStudentGradeLevel() {
-		return studentGradeLevel;
+	public String getStudentClass() {
+		return studentClass;
 	}
-	public void setStudentGradeLevel(String studentGradeLevel) {
-		this.studentGradeLevel = studentGradeLevel;
+	public void setStudentGradeLevel(String studentClass) {
+		this.studentClass = studentClass;
 	} 
 	
 	@Override
@@ -66,7 +66,7 @@ public class Student {
 		int result = 1;
 		result = prime * result + ((studentEmail == null) ? 0 : studentEmail.hashCode());
 		result = prime * result + ((studentFirstname == null) ? 0 : studentFirstname.hashCode());
-		result = prime * result + ((studentGradeLevel == null) ? 0 : studentGradeLevel.hashCode());
+		result = prime * result + ((studentClass == null) ? 0 : studentClass.hashCode());
 		result = prime * result + studentId;
 		result = prime * result + ((studentLastname == null) ? 0 : studentLastname.hashCode());
 		result = prime * result + ((studentPassword == null) ? 0 : studentPassword.hashCode());
@@ -91,10 +91,10 @@ public class Student {
 				return false;
 		} else if (!studentFirstname.equals(other.studentFirstname))
 			return false;
-		if (studentGradeLevel == null) {
-			if (other.studentGradeLevel != null)
+		if (studentClass == null) {
+			if (other.studentClass != null)
 				return false;
-		} else if (!studentGradeLevel.equals(other.studentGradeLevel))
+		} else if (!studentClass.equals(other.studentClass))
 			return false;
 		if (studentId != other.studentId)
 			return false;

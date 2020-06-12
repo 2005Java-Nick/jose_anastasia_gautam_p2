@@ -2,11 +2,36 @@ package com.revature.ams.domain;
 
 public class AssignmentTemplate {
 	
-	assignment_template_id serial primary key,
-	assignment_type varchar not null,
-	assignment_title varchar not null,
-	assignment_creation_datetime timestamp with time zone not null, -- w/ or w/out timezone?
-	assignment_due_datetime timestamp with time zone not null,
-	assignment_maxpoints numeric(5,2) check (assignment_maxpoints = 100.00) not null
+	private int assignmentTemplateId; //SERIAL PRIMARY KEY
+	private String assignmentType;
+	private String assignmentTitle;
+	//private LocalDateTime assignmentCreationDatetime //TIMESTAMP WITH TIMEZONE
+	//private LocalDateTime assignmentDueDatetime //TIMESTAMP WITH TIMEZONE
+	private double assignmentMaxpoints; //check (assignment_maxpoints = 100.00)
+	
+	public int getAssignmentTemplateId() {
+		return assignmentTemplateId;
+	}
+	public void setAssignmentTemplateId(int assignmentTemplateId) {
+		this.assignmentTemplateId = assignmentTemplateId;
+	}
+	public String getAssignmentType() {
+		return assignmentType;
+	}
+	public void setAssignmentType(String assignmentType) {
+		this.assignmentType = assignmentType;
+	}
+	public String getAssignmentTitle() {
+		return assignmentTitle;
+	}
+	public void setAssignmentTitle(String assignmentTitle) {
+		this.assignmentTitle = assignmentTitle;
+	}
+	public double getAssignmentMaxpoints() {
+		return assignmentMaxpoints;
+	}
+	public void setAssignmentMaxpoints(double assignmentMaxpoints) {
+		this.assignmentMaxpoints = assignmentMaxpoints;
+	}
 
 }

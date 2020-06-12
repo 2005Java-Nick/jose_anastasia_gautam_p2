@@ -1,13 +1,15 @@
 package com.revature.ams.domain;
 
-public class Question {
+public class Question { //one-to-many with assignment_template
 	
 	private int questionId;  //SERIAL PRIMARY KEY
 	private int assignmentTemplateId; //FOREIGN KEY
 	private int question_number; 
 	private String questionString;
-	private double questionMaxpoints;
-
+	
+	//Max number of points you can get for question
+	private double questionMaxpoints; //check(question_maxpoints<=100.00)
+									  
 	public Question() {
 		super();
 		// TODO Auto-generated constructor stub
