@@ -4,18 +4,17 @@
     </div>
     <div id="main-div">
       <div id="header-div"> 
-          <br>
-          <h1>Welcome</h1>
+          <app-header [headerTitle]="headerTitle" [headerLogout]="false"></app-header>
       </div>
       <div id="content-div">
-        <div id="login">
-        <label for="userId"><b>Username</b></label><br>
-        <input type="text" placeholder="Enter Username" name="userId" required>
+        <form id="login" [formGroup]="loginForm">
+          <label for="userId"><b>Your ID</b></label><br>
+          <input type="text" placeholder="Enter ID" formControlName="userId" required>
           <br>
-        <label for="userPassword"><b>Password</b></label><br>
-        <input type="password" placeholder="Enter Password" name="userPassword" required>           
-          <input type="submit" class="button" value="Login" id="login-button-container">
-        </div>
+          <label for="userPassword"><b>Password</b></label><br>
+          <input type="password" placeholder="Enter Password" formControlName="userPassword" required>           
+          <input type="submit" class="button" value="Login" id="login-button-container" (click)="submit()">
+        </form>
       </div>
     </div>
   </div>

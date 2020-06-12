@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {SidebarOptionsService} from '../../service/sidebar-options.service';
 
 @Component({
   selector: 'app-teacher-create-dashboard',
@@ -6,8 +7,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./teacher-create-dashboard.component.css']
 })
 export class TeacherCreateDashboardComponent implements OnInit {
+  
+  sidebarOptions;
 
-  constructor() { }
+  constructor(sidebarOptionsService:SidebarOptionsService) { 
+    this.sidebarOptions = sidebarOptionsService.teacherSideOptions("/teacher-create-dashboard");
+  }
 
   ngOnInit(): void {
   }

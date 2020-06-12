@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, FormControl } from "@angular/forms";
+
 import { SidebarOptionsService } from '../../service/sidebar-options.service';
+
 
 @Component({
   selector: 'app-login',
@@ -8,10 +11,22 @@ import { SidebarOptionsService } from '../../service/sidebar-options.service';
 })
 export class LoginComponent implements OnInit {
   
+
+  loginForm : FormGroup = this.fb.group({
+      userId: [''],
+      userPassword: ['']
+  });
+
   sidebarOptions;
 
-  constructor(sidebarOptionsService : SidebarOptionsService) {
+  headerTitle : string = "Welcome";
+
+  constructor(private sidebarOptionsService : SidebarOptionsService, private fb : FormBuilder) {
     this.sidebarOptions = sidebarOptionsService.loginRegisterSideOptions("/login");
+  }
+
+  submit() {
+    console.log(this.loginForm.value);
   }
 
   ngOnInit(): void {

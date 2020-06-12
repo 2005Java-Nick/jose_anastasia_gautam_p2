@@ -42,6 +42,11 @@ export class SidebarOptionsService {
         link: "/teacher-graded-dashboard",
         selected: selectedLink === "/teacher-graded-dashboard"
       },
+      {
+        name: "Create an Assignment",
+        link: "/teacher-create-dashboard",
+        selected: selectedLink === "/teacher-create-dashboard"
+      }
       // ADD CREATE AN ASSIGNMENT!!!!!!!!!!!!
     ];
 

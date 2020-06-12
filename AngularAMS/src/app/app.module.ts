@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -14,6 +15,9 @@ import { TeacherGradedDashboardComponent } from './component/teacher-graded-dash
 import { StudentCompletedDashboardComponent } from './component/student-completed-dashboard/student-completed-dashboard.component';
 import { TeacherCreateDashboardComponent } from './component/teacher-create-dashboard/teacher-create-dashboard.component';
 import { RegisterComponent } from './component/register/register.component';
+import { TeacherGradeDashboardComponent } from './component/teacher-grade-dashboard/teacher-grade-dashboard.component';
+import { StudentTakeDashboardComponent } from './component/student-take-dashboard/student-take-dashboard.component';
+import { CreateContentComponent } from './component/create-content/create-content.component';
 
 @NgModule({
   declarations: [
@@ -29,10 +33,14 @@ import { RegisterComponent } from './component/register/register.component';
     StudentCompletedDashboardComponent,
     TeacherCreateDashboardComponent,
     RegisterComponent,
+    TeacherGradeDashboardComponent,
+    StudentTakeDashboardComponent,
+    CreateContentComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

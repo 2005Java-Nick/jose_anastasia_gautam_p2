@@ -1,8 +1,8 @@
 <div id="header">
   <div id="header-title">
-    <p>Dashboard</p>
+    <p>{{headerTitle}}</p>
   </div>
-  <div id="header-account">
+  <div id="header-account" *ngIf="headerLogout">
     <p>Logout</p>
   </div>
 </div>

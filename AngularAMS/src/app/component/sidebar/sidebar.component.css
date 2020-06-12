@@ -1,10 +1,11 @@
 #sidebar {
-  background: url("https://sun6-14.userapi.com/CoI3tD7BA9ZhZSZUzVotoGXbyhBTcVFfEBOaDw/8rdNmJKYC9A.jpg");
+  /* background: url("https://sun6-14.userapi.com/CoI3tD7BA9ZhZSZUzVotoGXbyhBTcVFfEBOaDw/8rdNmJKYC9A.jpg"); */
+  background-image: url("https://sun6-13.userapi.com/n6xAPu0bfnkYUoS7a7T3mI_XJ5Eo1QRSnnXYHg/H35B37Cx3ho.jpg");
   height: 100%;
   width: 18rem;
   background-repeat: no-repeat;
   background-size: cover;
-  
+  padding-top: 9rem;
 } 
   
 #sidebar h1, #sidebar h3 {

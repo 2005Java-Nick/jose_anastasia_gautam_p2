@@ -1,1 +1,14 @@
-<p>teacher-create-dashboard works!</p>
+<div id="root-div">
+    <div id="sidebar-div">
+      <app-sidebar [sidebarOptions]="sidebarOptions"></app-sidebar>
+    </div>
+    <div id="main-div">
+      <div id="header-div"> 
+          <app-header></app-header>
+      </div>
+      <div id="content-div">
+        <app-create-content></app-create-content>
+      </div>
+    </div>
+  </div>
+  
