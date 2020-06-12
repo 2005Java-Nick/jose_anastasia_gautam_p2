@@ -2,7 +2,7 @@ package com.revature.ams.domain;
 
 public class Teacher {
 	
-	private int teacherId;
+	private int teacherId; //primary key
 	private String teacherFirstname; 
 	private String teacherLastname; 
 	private String teacherEmail; 

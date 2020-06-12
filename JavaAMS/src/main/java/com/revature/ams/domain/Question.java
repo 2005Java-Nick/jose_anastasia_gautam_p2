@@ -6,7 +6,7 @@ public class Question {
 	private int assignmentTemplateId; //FOREIGN KEY
 	private int question_number; 
 	private String questionString;
-	private double question_maxpoints;
+	private double questionMaxpoints;
 
 	public Question() {
 		super();
@@ -20,7 +20,7 @@ public class Question {
 		this.assignmentTemplateId = assignmentTemplateId;
 		this.question_number = question_number;
 		this.questionString = questionString;
-		this.question_maxpoints = question_maxpoints;
+		this.questionMaxpoints = question_maxpoints;
 	}
 
 
@@ -48,11 +48,11 @@ public class Question {
 	public void setQuestionString(String questionString) {
 		this.questionString = questionString;
 	}
-	public double getQuestion_maxpoints() {
-		return question_maxpoints;
+	public double getQuestionMaxpoints() {
+		return questionMaxpoints;
 	}
-	public void setQuestion_maxpoints(double question_maxpoints) {
-		this.question_maxpoints = question_maxpoints;
+	public void setQuestionMaxpoints(double question_maxpoints) {
+		this.questionMaxpoints = question_maxpoints;
 	}
 	@Override
 	public int hashCode() {
@@ -62,7 +62,7 @@ public class Question {
 		result = prime * result + questionId;
 		result = prime * result + ((questionString == null) ? 0 : questionString.hashCode());
 		long temp;
-		temp = Double.doubleToLongBits(question_maxpoints);
+		temp = Double.doubleToLongBits(questionMaxpoints);
 		result = prime * result + (int) (temp ^ (temp >>> 32));
 		result = prime * result + question_number;
 		return result;
@@ -85,7 +85,7 @@ public class Question {
 				return false;
 		} else if (!questionString.equals(other.questionString))
 			return false;
-		if (Double.doubleToLongBits(question_maxpoints) != Double.doubleToLongBits(other.question_maxpoints))
+		if (Double.doubleToLongBits(questionMaxpoints) != Double.doubleToLongBits(other.questionMaxpoints))
 			return false;
 		if (question_number != other.question_number)
 			return false;
