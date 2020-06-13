@@ -1,11 +1,11 @@
 #sidebar {
   /* background: url("https://sun6-14.userapi.com/CoI3tD7BA9ZhZSZUzVotoGXbyhBTcVFfEBOaDw/8rdNmJKYC9A.jpg"); */
-  background-image: url("https://sun6-13.userapi.com/n6xAPu0bfnkYUoS7a7T3mI_XJ5Eo1QRSnnXYHg/H35B37Cx3ho.jpg");
+  background-image: url("https://sun9-53.userapi.com/NDxnkkiakGCjQqHZvuxFVCFLykBg58MblQ-grQ/upmyqPwdVmI.jpg");
   height: 100%;
   width: 18rem;
   background-repeat: no-repeat;
   background-size: cover;
-  padding-top: 9rem;
+  
 } 
   
 #sidebar h1, #sidebar h3 {
@@ -14,7 +14,7 @@
 
 #logo {
   text-align: center;
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
   cursor: pointer;
 }
 
@@ -32,7 +32,7 @@
 }
 
 .sidebar-option:hover, .selected {
-  background-color: #0F261B;
+  background-color: #202020;
   opacity: 0.7;
   border-left-style: solid;
   border-left-width: 3px;

@@ -1,14 +1,16 @@
 #header {
   display: flex;
   justify-content: space-between;
-  background-color: white;
+  background-image: url("https://sun6-13.userapi.com/q1qdlucjX5-xS7_UydF-83Z9oX2dUL6LRcAhAQ/YVdyXILv33s.jpg");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #0F261B; 
 }
   
 #header-account {
-  padding: 2rem 1.5rem;
+  /* padding: 2rem 1.5rem; */
   text-align: center;
 }
   
