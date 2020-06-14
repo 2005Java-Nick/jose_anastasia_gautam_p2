@@ -1,13 +1,28 @@
 package com.revature.ams.domain;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "ams.question")
 public class Question { //one-to-many with assignment_template
 	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "question_id")
 	private int questionId;  //SERIAL PRIMARY KEY
+	
+	//FINISH
 	private int assignmentTemplateId; //FOREIGN KEY
+	
+	@Column(name = "question_number")
 	private int question_number; 
+	
+	@Column(name = "question_string")
 	private String questionString;
 	
 	//Max number of points you can get for question
+	
+	@Column(name = "question_maxpoints")
 	private double questionMaxpoints; //check(question_maxpoints<=100.00)
 									  
 	public Question() {

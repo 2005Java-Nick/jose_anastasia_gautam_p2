@@ -1,13 +1,31 @@
 package com.revature.ams.domain;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "ams.teacher")
 public class Teacher {
 	
+	@Id
+	@Column(name = "teacher_id")
 	private int teacherId; //PRIMARY KEY
+	
+	@Column(name = "teacher_firstname")
 	private String teacherFirstname; 
+	
+	@Column(name = "teacher_lastname")
 	private String teacherLastname; 
+	
+	@Column(name = "teacher_email")
 	private String teacherEmail; 
+	
+	@Column(name = "teacher_pw")
 	private String teacherPassword;
+	
+	@Column(name = "teacher_subject")
 	private String teacherSubject;
+	
+	@Column(name = "teacher_school")
 	private String teacherSchool;
 	
 	public Teacher() {

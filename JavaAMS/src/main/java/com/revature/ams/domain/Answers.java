@@ -1,13 +1,32 @@
 package com.revature.ams.domain;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "ams.answers")
 public class Answers { //many-to-one with question, many-to-one with student, many-to-one with assignment_instance
 	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "answers_id")
 	private int answersId; //SERIAL PRIMARY KEY,
+	
+	
 	private int answersQuestionsId; //FOREIGN KEY
+	
+	
 	private int answersStudentId; //FOREIGN KEY
+	
+	
 	private  int answersAssignmentInstanceId; //FOREIGN KEY
+	
+	@Column(name = "answers_string")
 	private String answersString;
+	
+	@Column(name = "answers_points")
 	private double answersPoints; //check(answers_points<=100.00)
+	
+	@Column(name = "answers_comments")
 	private String answersComments;
 	
 	
