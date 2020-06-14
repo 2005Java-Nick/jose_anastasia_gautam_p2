@@ -16,8 +16,9 @@
             <label for="userId"><b>Your ID</b></label><br>
             <input type="text" placeholder="Enter ID" formControlName="userId" required><br>
             
-            <!-- <label for="userSchool"><b>Your School</b></label><br>
-            <input type="text" placeholder="Enter School" formControlName="userSchool" required><br> -->
+            <label for="userSchool"><b>Your School</b></label><br>
+            <input type="text" placeholder="Enter School" formControlName="userSchool" required><br>
+
             <label for="userClass"><b>Class</b></label><br>
             <input type="text" placeholder="Enter Class" formControlName="userEmail" required><br>
 
@@ -32,11 +33,10 @@
            
             
             <label for="userPassword"><b>Password</b></label><br>
-            <input type="password" placeholder="Enter Password" formControlName="userPassword" required><br>  
+            <input type="password" placeholder="Enter Password" formControlName="userPassword" required><br> <br>
+            
+            <input type="submit" class="button" value="Register" id="login-button-container" (click)="submit()">
           </div>
-        </div>
-        <div>
-          <input type="submit" class="button" value="Register" id="login-button-container" (click)="submit()">
         </div>
       </form>
     </div>

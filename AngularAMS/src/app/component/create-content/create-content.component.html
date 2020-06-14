@@ -18,10 +18,20 @@
         <input type="text" class="text-input" formControlName="assignmentTitle">
       </div>
       <div class="form-element">
-        <label>Assign To</label>
+        <label>Assign To School</label>
       </div>
       <div class="form-element"> 
-        <select class="select" formControlName="assignTo">
+        <select class="select" formControlName="assignToSchool">
+          <option [ngValue]="null" disabled>Choose School</option>
+          <option [ngValue]="'first'">First School</option>
+          <option [ngValue]="'second'">Second School</option>
+        </select>
+      </div>
+      <div class="form-element">
+        <label>Assign To Class</label>
+      </div>
+      <div class="form-element"> 
+        <select class="select" formControlName="assignToClass">
           <option [ngValue]="null" disabled>Choose Class</option>
           <option [ngValue]="'1-201'">1-201</option>
           <option [ngValue]="'2-201'">2-201</option>

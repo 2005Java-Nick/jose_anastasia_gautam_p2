@@ -13,7 +13,8 @@ export class CreateContentComponent implements OnInit {
   createAssignmentForm : FormGroup = this.fb.group({
     assignmentType: [''],
     assignmentTitle: [''],
-    assignTo: [''],
+    assignToClass: [''],
+    assignToSchool: [''],
     question0: [''],
     point0: ['']
   });
