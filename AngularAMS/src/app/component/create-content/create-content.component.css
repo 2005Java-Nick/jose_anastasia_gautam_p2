@@ -1,17 +1,14 @@
 #content-container {
   padding: 2rem;
-  display: flex;
-  justify-content: center;
 }
 
-form {
+#content-form {
   background-color: white;
   padding: 1rem;
   border-style: solid;
   border-width: 2px;
   border-color:#63351E;
   text-align: center;
-  max-height: 40rem; 
   overflow: auto;
 }
 
@@ -20,15 +17,48 @@ label {
   margin-top: 1rem;
 }
 
-form > div {
+.form-element {
   display: flex;
   justify-content: center;
   padding: 0.5rem;
 }
 
-input, select {
+.select {
+  display: block;
+  padding: 0.5rem; 
+  font-size: 1rem;
+  width: 22rem;
+}
+
+.text-input {
   display: block;
   padding: 0.5rem; 
   font-size: 1rem;
   width: 20rem;
+}
+
+.question {
+  display: block;
+  padding: 0.5rem; 
+  font-size: 1rem;
+  flex: 1 1 0%;  
+}
+
+.point {
+  display: block;
+  padding: 0.5rem; 
+  margin-left: 1rem; 
+  font-size: 1rem;
+  width: 5rem;   
+}
+
+button {
+  padding: 0.5rem;
+  font-size: 1.25rem;
+  background-color: #eeeeee;
+  border-style: solid;
+  border-color: #dddddd;
+  border-radius: 0.5rem;
+  margin-left: 1rem;
+  cursor: pointer;
 }

@@ -1,41 +1,46 @@
 <div id="content-container">
-    <form [formGroup]="createAssignmentForm">
-      <div>
+    <form id="content-form" [formGroup]="createAssignmentForm">
+      <div class="form-element">
         <label>Choose Assignment Type</label>
       </div>
-      <div> 
-        <select formControlName="assignmentType">
+      <div class="form-element"> 
+        <select class="select" formControlName="assignmentType">
           <option [ngValue]="null" disabled>Choose Assignment Type</option>
           <option [ngValue]="'Homework'">Homework</option>
           <option [ngValue]="'Exam'">Exam</option>
           <option [ngValue]="'Project'">Project</option>
         </select>
       </div>
-      <div>
+      <div class="form-element">
         <label>Assignment Title</label>
       </div>
-      <div>
-        <input type="text" formControl="assignmentTitle">
+      <div class="form-element">
+        <input type="text" class="text-input" formControlName="assignmentTitle">
       </div>
-      <div>
+      <div class="form-element">
         <label>Assign To</label>
       </div>
-      <div> 
-        <select formControlName="assignTo">
+      <div class="form-element"> 
+        <select class="select" formControlName="assignTo">
           <option [ngValue]="null" disabled>Choose Class</option>
           <option [ngValue]="'1-201'">1-201</option>
           <option [ngValue]="'2-201'">2-201</option>
           <option [ngValue]="'4-201'">4-201</option>
         </select>
       </div>
-      <div>
+      <div class="form-element">
         <label>Questions</label>
       </div>
-      <div>
-        
+      <div *ngFor="let i of questions" class="form-element">
+        <input type="text" class="question" formControlName="question{{i}}">
+        <input type="text" class="point" formControlName="point{{i}}">
+        <button (click)="removeQuestion(i)">X</button> 
       </div>
-      <div>     
-        <input type="submit" class="button" value="Login" (click)="onSubmit()">
+      <div class="form-element">
+        <button (click)="addQuestion()">Add Question</button>
+      </div>
+      <div class="form-element">     
+        <button (click)="onSubmit()">Create Assignment</button>
       </div>
     </form>
     
