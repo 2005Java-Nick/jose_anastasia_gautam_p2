@@ -18,6 +18,7 @@ import { RegisterComponent } from './component/register/register.component';
 import { TeacherGradeDashboardComponent } from './component/teacher-grade-dashboard/teacher-grade-dashboard.component';
 import { StudentTakeDashboardComponent } from './component/student-take-dashboard/student-take-dashboard.component';
 import { CreateContentComponent } from './component/create-content/create-content.component';
+import { TakeContentComponent } from './component/take-content/take-content.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { CreateContentComponent } from './component/create-content/create-conten
     TeacherGradeDashboardComponent,
     StudentTakeDashboardComponent,
     CreateContentComponent,
+    TakeContentComponent,
   ],
   imports: [
     BrowserModule,
