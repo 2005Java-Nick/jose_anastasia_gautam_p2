@@ -6,7 +6,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "ams.question")
-public class Question implements Serializable{ //one-to-many with assignment_template
+public class Question implements Serializable{ //many to one - assignment_template
 	
 	/**
 	 * 
@@ -20,8 +20,7 @@ public class Question implements Serializable{ //one-to-many with assignment_tem
 	
 	//private int assignmentTemplateId;-- FOREIGN KEY
 	@ManyToOne(fetch=FetchType.EAGER)
-    //@JoinColumn(name = "assignmentTemplateId", foreignKey = @ForeignKey(name = "FK_question_assignment_template_id"), nullable = false, insertable=false, updatable=false)
-	@JoinColumn(name = "assignment_template_id")
+    @JoinColumn(name = "assignment_template_id")
 	private AssignmentTemplate assignmentTemplate;
 	
 	@Column(name = "question_number")
@@ -36,7 +35,6 @@ public class Question implements Serializable{ //one-to-many with assignment_tem
 									  
 	public Question() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public int getQuestionId() {

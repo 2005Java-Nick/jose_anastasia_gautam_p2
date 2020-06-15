@@ -42,6 +42,11 @@ public class AssignmentTemplate implements Serializable{
             cascade = CascadeType.ALL)
     private Set<Question> questions = new HashSet<Question>();
 	
+	@OneToMany(mappedBy="assignmentTemplate",  
+            targetEntity=AssignmentInstance.class, 
+            fetch=FetchType.EAGER, 
+            cascade = CascadeType.ALL)
+	private Set<AssignmentInstance> assignmentInstances = new HashSet<AssignmentInstance>();
 	
 	public AssignmentTemplate() {
 		super();

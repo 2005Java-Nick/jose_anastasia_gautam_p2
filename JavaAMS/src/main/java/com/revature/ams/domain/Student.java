@@ -1,6 +1,8 @@
 package com.revature.ams.domain;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.*;
 
@@ -34,6 +36,13 @@ public class Student implements Serializable{
 	
 	@Column(name = "student_school")
 	private String studentSchool;
+	
+	@OneToMany(mappedBy="student",  
+            targetEntity=AssignmentInstance.class, 
+            fetch=FetchType.EAGER, 
+            cascade = CascadeType.ALL)
+	private Set<AssignmentInstance> assignmentInstances = new HashSet<AssignmentInstance>();
+	
 	
 	public Student() {
 		super();
