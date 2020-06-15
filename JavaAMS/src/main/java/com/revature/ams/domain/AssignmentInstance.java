@@ -27,10 +27,11 @@ public class AssignmentInstance implements Serializable{ //many to one with assi
 	@JoinColumn(name = "assignment_template_id")
 	private AssignmentTemplate assignmentTemplate;
 	
+	//private int assignmentTeacherId;-- FOREIGN KEY
 	@ManyToOne(fetch=FetchType.EAGER)
     @JoinColumn(name = "assignment_teacher_id")
 	private Teacher teacher;
-	
+	//private int assignmentStudentId;-- FOREIGN KEY
 	@ManyToOne(fetch=FetchType.EAGER)
     @JoinColumn(name = "assignment_student_id")
 	private Student student;

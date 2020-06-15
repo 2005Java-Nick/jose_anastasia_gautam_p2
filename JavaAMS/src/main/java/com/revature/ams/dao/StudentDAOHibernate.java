@@ -21,6 +21,7 @@ public class StudentDAOHibernate {
 		this.sessionFactory = sessionFactory;
 	}
 	
+	
 	public Student getStudent(int studentId) {
 		Session sess = sessionFactory.openSession();
 		Student s = sess.get(Student.class, studentId);

@@ -39,14 +39,13 @@ public class SessionFactoryUtil {
 
 		if (sf == null) {
 			url = System.getenv("RDS_HOSTNAME");
-			url = "jdbc:postgresql://" + url + PORT + DB_NAME + "?";
+			url = "jdbc:postgresql://" + url +":"+ PORT+"/" + DB_NAME + "?";
 			username = System.getenv("RDS_USERNAME");
 			password = System.getenv("RDS_PASSWORD");
 			Map<String, String> settings = new HashMap<String, String>();
 			settings.put("hibernate.connection.driver_class", "org.postgresql.Driver");
 			settings.put("hibernate.dialect", "org.hibernate.dialect.PostgreSQLDialect");
-			settings.put("hibernate.connection.url",
-					"jdbc:postgresql://" + System.getenv("RDS_HOSTNAME") + PORT + DB_NAME + "?");
+			settings.put("hibernate.connection.url",url);
 			settings.put("hibernate.connection.username", username);
 			settings.put("hibernate.connection.password", password);
 

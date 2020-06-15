@@ -17,5 +17,4 @@ public class AssignmentInstanceDAOHibernate {
 	public void setSessionFactory(SessionFactory sessionFactory) {
 		this.sessionFactory = sessionFactory;
 	}
-
 }
