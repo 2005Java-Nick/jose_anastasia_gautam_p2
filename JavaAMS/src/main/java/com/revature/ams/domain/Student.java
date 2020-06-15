@@ -1,11 +1,18 @@
 package com.revature.ams.domain;
 
+import java.io.Serializable;
+
 import javax.persistence.*;
 
 @Entity
 @Table(name = "ams.student")
-public class Student {
+public class Student implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -8117655951434001717L;
+
 	@Id
 	@Column(name = "student_id")
 	private int studentId; //PRIMARY KEY

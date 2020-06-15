@@ -1,13 +1,20 @@
 package com.revature.ams.domain;
 
+import java.io.Serializable;
 import java.sql.Timestamp;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name = "ams.assignment_instance")
-public class AssignmentInstance { //many to one with assignment_template, many to one with teacher, many to one with student
+public class AssignmentInstance implements Serializable{ //many to one with assignment_template, many to one with teacher, many to one with student
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 5612723644835373175L;
+
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "assignment_instance_id")

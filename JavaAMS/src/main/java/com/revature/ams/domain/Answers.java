@@ -1,11 +1,19 @@
 package com.revature.ams.domain;
 
+import java.io.Serializable;
+
 import javax.persistence.*;
 
 @Entity
 @Table(name = "ams.answers")
-public class Answers { //many-to-one with question, many-to-one with student, many-to-one with assignment_instance
+public class Answers implements Serializable{ //many-to-one with question, many-to-one with student, many-to-one with assignment_instance
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -3893397961391251209L;
+
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "answers_id")

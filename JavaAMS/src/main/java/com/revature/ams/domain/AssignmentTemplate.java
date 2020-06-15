@@ -1,13 +1,21 @@
 package com.revature.ams.domain;
 
+import java.io.Serializable;
 import java.sql.Timestamp;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name = "ams.assignment_template")
-public class AssignmentTemplate {
+public class AssignmentTemplate implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -849227214843531351L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "assignment_template_id")
@@ -27,6 +35,13 @@ public class AssignmentTemplate {
 	
 	@Column(name = "assignment_maxpoints")
 	private double assignmentMaxpoints; //check (assignment_maxpoints = 100.00)
+	
+	@OneToMany(mappedBy="assignmentTemplate",  
+            targetEntity=Question.class, 
+            fetch=FetchType.EAGER, 
+            cascade = CascadeType.ALL)
+    private Set<Question> questions = new HashSet<Question>();
+	
 	
 	public AssignmentTemplate() {
 		super();
@@ -80,54 +95,11 @@ public class AssignmentTemplate {
 		this.assignmentMaxpoints = assignmentMaxpoints;
 	}
 	
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((assignmentCreationDatetime == null) ? 0 : assignmentCreationDatetime.hashCode());
-		result = prime * result + ((assignmentDueDatetime == null) ? 0 : assignmentDueDatetime.hashCode());
-		long temp;
-		temp = Double.doubleToLongBits(assignmentMaxpoints);
-		result = prime * result + (int) (temp ^ (temp >>> 32));
-		result = prime * result + assignmentTemplateId;
-		result = prime * result + ((assignmentTitle == null) ? 0 : assignmentTitle.hashCode());
-		result = prime * result + ((assignmentType == null) ? 0 : assignmentType.hashCode());
-		return result;
+	public Set<Question> getQuestions() {
+		return questions;
 	}
-	
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		AssignmentTemplate other = (AssignmentTemplate) obj;
-		if (assignmentCreationDatetime == null) {
-			if (other.assignmentCreationDatetime != null)
-				return false;
-		} else if (!assignmentCreationDatetime.equals(other.assignmentCreationDatetime))
-			return false;
-		if (assignmentDueDatetime == null) {
-			if (other.assignmentDueDatetime != null)
-				return false;
-		} else if (!assignmentDueDatetime.equals(other.assignmentDueDatetime))
-			return false;
-		if (Double.doubleToLongBits(assignmentMaxpoints) != Double.doubleToLongBits(other.assignmentMaxpoints))
-			return false;
-		if (assignmentTemplateId != other.assignmentTemplateId)
-			return false;
-		if (assignmentTitle == null) {
-			if (other.assignmentTitle != null)
-				return false;
-		} else if (!assignmentTitle.equals(other.assignmentTitle))
-			return false;
-		if (assignmentType == null) {
-			if (other.assignmentType != null)
-				return false;
-		} else if (!assignmentType.equals(other.assignmentType))
-			return false;
-		return true;
+
+	public void setQuestions(Set<Question> questions) {
+		this.questions = questions;
 	}
 }

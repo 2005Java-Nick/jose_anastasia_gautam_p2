@@ -1,18 +1,28 @@
 package com.revature.ams.domain;
 
+import java.io.Serializable;
+
 import javax.persistence.*;
 
 @Entity
 @Table(name = "ams.question")
-public class Question { //one-to-many with assignment_template
+public class Question implements Serializable{ //one-to-many with assignment_template
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 599651000906892408L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "question_id")
 	private int questionId;  //SERIAL PRIMARY KEY
 	
-	//FINISH
-	private int assignmentTemplateId; //FOREIGN KEY
+	//private int assignmentTemplateId;-- FOREIGN KEY
+	@ManyToOne(fetch=FetchType.EAGER)
+    //@JoinColumn(name = "assignmentTemplateId", foreignKey = @ForeignKey(name = "FK_question_assignment_template_id"), nullable = false, insertable=false, updatable=false)
+	@JoinColumn(name = "assignment_template_id")
+	private AssignmentTemplate assignmentTemplate;
 	
 	@Column(name = "question_number")
 	private int question_number; 
@@ -21,7 +31,6 @@ public class Question { //one-to-many with assignment_template
 	private String questionString;
 	
 	//Max number of points you can get for question
-	
 	@Column(name = "question_maxpoints")
 	private double questionMaxpoints; //check(question_maxpoints<=100.00)
 									  
@@ -29,17 +38,6 @@ public class Question { //one-to-many with assignment_template
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	
-	public Question(int questionId, int assignmentTemplateId, int question_number, String questionString,
-			double question_maxpoints) {
-		super();
-		this.questionId = questionId;
-		this.assignmentTemplateId = assignmentTemplateId;
-		this.question_number = question_number;
-		this.questionString = questionString;
-		this.questionMaxpoints = question_maxpoints;
-	}
-
 
 	public int getQuestionId() {
 		return questionId;
@@ -47,12 +45,15 @@ public class Question { //one-to-many with assignment_template
 	public void setQuestionId(int questionId) {
 		this.questionId = questionId;
 	}
-	public int getAssignmentTemplateId() {
-		return assignmentTemplateId;
+	
+	public AssignmentTemplate getAssignmentTemplate() {
+		return assignmentTemplate;
 	}
-	public void setAssignmentTemplateId(int assignmentTemplateId) {
-		this.assignmentTemplateId = assignmentTemplateId;
+
+	public void setAssignmentTemplate(AssignmentTemplate assignmentTemplate) {
+		this.assignmentTemplate = assignmentTemplate;
 	}
+	
 	public int getQuestion_number() {
 		return question_number;
 	}
@@ -71,19 +72,21 @@ public class Question { //one-to-many with assignment_template
 	public void setQuestionMaxpoints(double question_maxpoints) {
 		this.questionMaxpoints = question_maxpoints;
 	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + assignmentTemplateId;
+		result = prime * result + ((assignmentTemplate == null) ? 0 : assignmentTemplate.hashCode());
 		result = prime * result + questionId;
-		result = prime * result + ((questionString == null) ? 0 : questionString.hashCode());
 		long temp;
 		temp = Double.doubleToLongBits(questionMaxpoints);
 		result = prime * result + (int) (temp ^ (temp >>> 32));
+		result = prime * result + ((questionString == null) ? 0 : questionString.hashCode());
 		result = prime * result + question_number;
 		return result;
 	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -93,21 +96,25 @@ public class Question { //one-to-many with assignment_template
 		if (getClass() != obj.getClass())
 			return false;
 		Question other = (Question) obj;
-		if (assignmentTemplateId != other.assignmentTemplateId)
+		if (assignmentTemplate == null) {
+			if (other.assignmentTemplate != null)
+				return false;
+		} else if (!assignmentTemplate.equals(other.assignmentTemplate))
 			return false;
 		if (questionId != other.questionId)
+			return false;
+		if (Double.doubleToLongBits(questionMaxpoints) != Double.doubleToLongBits(other.questionMaxpoints))
 			return false;
 		if (questionString == null) {
 			if (other.questionString != null)
 				return false;
 		} else if (!questionString.equals(other.questionString))
 			return false;
-		if (Double.doubleToLongBits(questionMaxpoints) != Double.doubleToLongBits(other.questionMaxpoints))
-			return false;
 		if (question_number != other.question_number)
 			return false;
 		return true;
 	}
+	
 	
 	
 
