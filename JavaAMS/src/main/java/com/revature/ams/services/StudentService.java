@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.revature.ams.dao.StudentDAOHibernate;
+import com.revature.ams.domain.Student;
 
 @Service
 public class StudentService {
@@ -19,6 +20,9 @@ public class StudentService {
 		this.studentDao = studentDao;
 	}
 	
+	public Student getStudent(int studentId) {
+		return this.studentDao.getStudent(studentId);
+	}
 	
 
 }
