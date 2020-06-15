@@ -2,6 +2,8 @@ package com.revature.ams.domain;
 
 import java.io.Serializable;
 import java.sql.Timestamp;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.*;
 
@@ -45,6 +47,12 @@ public class AssignmentInstance implements Serializable{ //many to one with assi
 	@Column(name = "assignment_status")
 	private String assignmentStatus; //TYPE status AS ENUM('NEW', 'COMPLETED', 'GRADED')
 	
+	@OneToMany(mappedBy="assignmentInstance",  
+            targetEntity=Answers.class, 
+            fetch=FetchType.EAGER, 
+            cascade = CascadeType.ALL)
+	private Set<Answers> answers = new HashSet<Answers>();
+	
 	public AssignmentInstance() {
 		super();
 	}
@@ -79,6 +87,14 @@ public class AssignmentInstance implements Serializable{ //many to one with assi
 	}
 	public void setAssignmentStatus(String assignmentStatus) {
 		this.assignmentStatus = assignmentStatus;
+	}
+
+	public Set<Answers> getAnswers() {
+		return answers;
+	}
+
+	public void setAnswers(Set<Answers> answers) {
+		this.answers = answers;
 	}
 
 }

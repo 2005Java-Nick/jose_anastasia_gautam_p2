@@ -1,6 +1,8 @@
 package com.revature.ams.domain;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.*;
 
@@ -32,6 +34,12 @@ public class Question implements Serializable{ //many to one - assignment_templa
 	//Max number of points you can get for question
 	@Column(name = "question_maxpoints")
 	private double questionMaxpoints; //check(question_maxpoints<=100.00)
+	
+	@OneToMany(mappedBy="question",  
+            targetEntity=Answers.class, 
+            fetch=FetchType.EAGER, 
+            cascade = CascadeType.ALL)
+	private Set<Answers> answers = new HashSet<Answers>();
 									  
 	public Question() {
 		super();
@@ -71,49 +79,14 @@ public class Question implements Serializable{ //many to one - assignment_templa
 		this.questionMaxpoints = question_maxpoints;
 	}
 
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((assignmentTemplate == null) ? 0 : assignmentTemplate.hashCode());
-		result = prime * result + questionId;
-		long temp;
-		temp = Double.doubleToLongBits(questionMaxpoints);
-		result = prime * result + (int) (temp ^ (temp >>> 32));
-		result = prime * result + ((questionString == null) ? 0 : questionString.hashCode());
-		result = prime * result + question_number;
-		return result;
+	public Set<Answers> getAnswers() {
+		return answers;
 	}
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Question other = (Question) obj;
-		if (assignmentTemplate == null) {
-			if (other.assignmentTemplate != null)
-				return false;
-		} else if (!assignmentTemplate.equals(other.assignmentTemplate))
-			return false;
-		if (questionId != other.questionId)
-			return false;
-		if (Double.doubleToLongBits(questionMaxpoints) != Double.doubleToLongBits(other.questionMaxpoints))
-			return false;
-		if (questionString == null) {
-			if (other.questionString != null)
-				return false;
-		} else if (!questionString.equals(other.questionString))
-			return false;
-		if (question_number != other.question_number)
-			return false;
-		return true;
+	public void setAnswers(Set<Answers> answers) {
+		this.answers = answers;
 	}
-	
-	
+
 	
 
 }

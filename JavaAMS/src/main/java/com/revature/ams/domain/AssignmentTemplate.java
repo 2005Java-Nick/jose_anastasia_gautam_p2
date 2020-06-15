@@ -107,4 +107,12 @@ public class AssignmentTemplate implements Serializable{
 	public void setQuestions(Set<Question> questions) {
 		this.questions = questions;
 	}
+
+	public Set<AssignmentInstance> getAssignmentInstances() {
+		return assignmentInstances;
+	}
+
+	public void setAssignmentInstances(Set<AssignmentInstance> assignmentInstances) {
+		this.assignmentInstances = assignmentInstances;
+	}
 }

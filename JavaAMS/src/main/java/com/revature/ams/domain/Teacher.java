@@ -108,64 +108,14 @@ public class Teacher implements Serializable{
 	}
 
 
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((teacherEmail == null) ? 0 : teacherEmail.hashCode());
-		result = prime * result + ((teacherFirstname == null) ? 0 : teacherFirstname.hashCode());
-		result = prime * result + teacherId;
-		result = prime * result + ((teacherLastname == null) ? 0 : teacherLastname.hashCode());
-		result = prime * result + ((teacherPassword == null) ? 0 : teacherPassword.hashCode());
-		result = prime * result + ((teacherSchool == null) ? 0 : teacherSchool.hashCode());
-		result = prime * result + ((teacherSubject == null) ? 0 : teacherSubject.hashCode());
-		return result;
+	public Set<AssignmentInstance> getAssignmentInstances() {
+		return assignmentInstances;
 	}
 
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Teacher other = (Teacher) obj;
-		if (teacherEmail == null) {
-			if (other.teacherEmail != null)
-				return false;
-		} else if (!teacherEmail.equals(other.teacherEmail))
-			return false;
-		if (teacherFirstname == null) {
-			if (other.teacherFirstname != null)
-				return false;
-		} else if (!teacherFirstname.equals(other.teacherFirstname))
-			return false;
-		if (teacherId != other.teacherId)
-			return false;
-		if (teacherLastname == null) {
-			if (other.teacherLastname != null)
-				return false;
-		} else if (!teacherLastname.equals(other.teacherLastname))
-			return false;
-		if (teacherPassword == null) {
-			if (other.teacherPassword != null)
-				return false;
-		} else if (!teacherPassword.equals(other.teacherPassword))
-			return false;
-		if (teacherSchool == null) {
-			if (other.teacherSchool != null)
-				return false;
-		} else if (!teacherSchool.equals(other.teacherSchool))
-			return false;
-		if (teacherSubject == null) {
-			if (other.teacherSubject != null)
-				return false;
-		} else if (!teacherSubject.equals(other.teacherSubject))
-			return false;
-		return true;
+	public void setAssignmentInstances(Set<AssignmentInstance> assignmentInstances) {
+		this.assignmentInstances = assignmentInstances;
 	}
-	
+
 
 }
