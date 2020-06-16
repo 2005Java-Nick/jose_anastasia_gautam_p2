@@ -34,14 +34,16 @@ public class SessionFactoryUtil {
 	}
 
 
-
 	public SessionFactoryUtil() {
 
 		if (sf == null) {
 			url = System.getenv("RDS_HOSTNAME");
 			url = "jdbc:postgresql://" + url +":"+ PORT+"/" + DB_NAME + "?";
+			System.out.println("url: "+url);
 			username = System.getenv("RDS_USERNAME");
+			System.out.println("username: "+username);
 			password = System.getenv("RDS_PASSWORD");
+			System.out.println("pw: "+password);
 			Map<String, String> settings = new HashMap<String, String>();
 			settings.put("hibernate.connection.driver_class", "org.postgresql.Driver");
 			settings.put("hibernate.dialect", "org.hibernate.dialect.PostgreSQLDialect");
@@ -50,9 +52,10 @@ public class SessionFactoryUtil {
 			settings.put("hibernate.connection.password", password);
 			settings.put("hibernate.show_sql", "true");
 			settings.put("hibernate.format_sql", "true");
-
+			System.out.println("Hibernate Settings Map: "+settings);
 			StandardServiceRegistry standardRegistry = new StandardServiceRegistryBuilder().applySettings(settings)
 					.build();
+			System.out.println("StandardServiceRegistry: "+standardRegistry);
 			Metadata metadata = new MetadataSources(standardRegistry)
 					.addAnnotatedClass(com.revature.ams.domain.Answers.class)
 					.addAnnotatedClass(com.revature.ams.domain.Question.class)
@@ -62,7 +65,9 @@ public class SessionFactoryUtil {
 					.addAnnotatedClass(com.revature.ams.domain.AssignmentTemplate.class)
 					.getMetadataBuilder()
 					.applyImplicitNamingStrategy(ImplicitNamingStrategyJpaCompliantImpl.INSTANCE).build();
+			System.out.println("Metadata: "+metadata);
 			sf = metadata.getSessionFactoryBuilder().build();
+			System.out.println("Session Factory: "+sf);
 		}
 
 	}
