@@ -16,7 +16,6 @@ public class AssignmentInstance implements Serializable{ //many to one with assi
 	 */
 	private static final long serialVersionUID = 5612723644835373175L;
 
-
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "assignment_instance_id")
@@ -37,16 +36,16 @@ public class AssignmentInstance implements Serializable{ //many to one with assi
 	private Student student;
 	
 	@Column(name = "assignment_completion_date")
-	private java.sql.Date assignmentCompletionDate; //TIMESTAMP
+	private java.sql.Date assignmentCompletionDate; //DATE
 	
 	@Column(name = "assignment_completion_time")
-	private java.sql.Time assignmentCompletionDatetime; //TIMESTAMP
+	private java.sql.Time assignmentCompletionTime; //TIME
 	
 	@Column(name = "assignment_graded_date")
-	private java.sql.Date assignmentGradedDate; //TIMESTAMP
+	private java.sql.Date assignmentGradedDate; //DATE
 	
 	@Column(name = "assignment_graded_time")
-	private java.sql.Time assignmentGradedTime; //TIMESTAMP
+	private java.sql.Time assignmentGradedTime; //TIME
 	
 	@Column(name = "assignment_finalgrade")
 	private double assignmentFinalGrade; //check(assignment_finalgrade <= 100.00)
@@ -66,13 +65,13 @@ public class AssignmentInstance implements Serializable{ //many to one with assi
 	
 	//Can be used to get an AssignmentInstance that already exists
 	public AssignmentInstance(int assignmentInstanceId, AssignmentTemplate assignmentTemplate,
-			Date assignmentCompletionDate, Time assignmentCompletionDatetime, Date assignmentGradedDate,
+			Date assignmentCompletionDate, Time assignmentCompletionTime, Date assignmentGradedDate,
 			Time assignmentGradedTime, double assignmentFinalGrade, String assignmentStatus) {
 		super();
 		this.assignmentInstanceId = assignmentInstanceId;
 		this.assignmentTemplate = assignmentTemplate;
 		this.assignmentCompletionDate = assignmentCompletionDate;
-		this.assignmentCompletionDatetime = assignmentCompletionDatetime;
+		this.assignmentCompletionTime = assignmentCompletionTime;
 		this.assignmentGradedDate = assignmentGradedDate;
 		this.assignmentGradedTime = assignmentGradedTime;
 		this.assignmentFinalGrade = assignmentFinalGrade;
@@ -85,7 +84,7 @@ public class AssignmentInstance implements Serializable{ //many to one with assi
 		//this.assignmentInstanceId = assignmentInstanceId;
 		this.assignmentTemplate = assignmentTemplate;
 		this.assignmentCompletionDate = null;
-		this.assignmentCompletionDatetime = null;
+		this.assignmentCompletionTime = null;
 		this.assignmentGradedDate = null;
 		this.assignmentGradedTime = null;
 		this.assignmentStatus = "NEW";
@@ -93,7 +92,7 @@ public class AssignmentInstance implements Serializable{ //many to one with assi
 	
 	//Constructor contains Set of Answers
 	public AssignmentInstance(int assignmentInstanceId, AssignmentTemplate assignmentTemplate, Teacher teacher,
-			Student student, Date assignmentCompletionDate, Time assignmentCompletionDatetime,
+			Student student, Date assignmentCompletionDate, Time assignmentCompletionTime,
 			Date assignmentGradedDate, Time assignmentGradedTime, double assignmentFinalGrade, String assignmentStatus,
 			Set<Answers> answers) {
 		super();
@@ -102,7 +101,7 @@ public class AssignmentInstance implements Serializable{ //many to one with assi
 		this.teacher = teacher;
 		this.student = student;
 		this.assignmentCompletionDate = assignmentCompletionDate;
-		this.assignmentCompletionDatetime = assignmentCompletionDatetime;
+		this.assignmentCompletionTime = assignmentCompletionTime;
 		this.assignmentGradedDate = assignmentGradedDate;
 		this.assignmentGradedTime = assignmentGradedTime;
 		this.assignmentFinalGrade = assignmentFinalGrade;
@@ -110,37 +109,58 @@ public class AssignmentInstance implements Serializable{ //many to one with assi
 		this.answers = answers;
 	}
 
-
-
 	public int getAssignmentInstanceId() {
 		return assignmentInstanceId;
 	}
+	
 	public void setAssignmentInstanceId(int assignmentInstanceId) {
 		this.assignmentInstanceId = assignmentInstanceId;
 	}
-	/*
-	public java.sql.Timestamp getAssignmentCompletionDatetime() {
-		return assignmentCompletionDatetime;
+	
+	public java.sql.Date getAssignmentCompletionDate() {
+		return assignmentCompletionDate;
 	}
-	public void setAssignmentCompletionDatetime(java.sql.Timestamp assignmentCompletionDatetime) {
-		this.assignmentCompletionDatetime = assignmentCompletionDatetime;
+	
+	public void setAssignmentCompletionDate(java.sql.Date assignmentCompletionDate) {
+		this.assignmentCompletionDate = assignmentCompletionDate;
 	}
-	public java.sql.Timestamp getAssignmentGradedDatetime() {
-		return assignmentGradedDatetime;
+	
+	public java.sql.Time getAssignmentCompletionTime() {
+		return assignmentCompletionTime;
 	}
-	public void setAssignmentGradedDatetime(java.sql.Timestamp assignmentGradedDatetime) {
-		this.assignmentGradedDatetime = assignmentGradedDatetime;
+	
+	public void setAssignmentCompletionTime(java.sql.Time assignmentCompletionTime) {
+		this.assignmentCompletionTime = assignmentCompletionTime;
 	}
-	*/
+	
+	public java.sql.Date getAssignmentGradedDate() {
+		return assignmentGradedDate;
+	}
+	
+	public void setAssignmentGradedDate(java.sql.Date assignmentGradedDate) {
+		this.assignmentGradedDate = assignmentGradedDate;
+	}
+	
+	public java.sql.Time getAssignmentGradedTime() {
+		return assignmentGradedTime;
+	}
+	
+	public void setAssignmentGradedTime(java.sql.Time assignmentGradedTime) {
+		this.assignmentGradedTime = assignmentGradedTime;
+	}
+	
 	public double getAssignmentFinalGrade() {
 		return assignmentFinalGrade;
 	}
+	
 	public void setAssignmentFinalGrade(double assignmentFinalGrade) {
 		this.assignmentFinalGrade = assignmentFinalGrade;
 	}
+	
 	public String getAssignmentStatus() {
 		return assignmentStatus;
 	}
+	
 	public void setAssignmentStatus(String assignmentStatus) {
 		this.assignmentStatus = assignmentStatus;
 	}

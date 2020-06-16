@@ -107,48 +107,63 @@ public class AssignmentTemplate implements Serializable{
 	public int getAssignmentTemplateId() {
 		return assignmentTemplateId;
 	}
+	
 	public void setAssignmentTemplateId(int assignmentTemplateId) {
 		this.assignmentTemplateId = assignmentTemplateId;
 	}
+	
 	public String getAssignmentType() {
 		return assignmentType;
 	}
+	
 	public void setAssignmentType(String assignmentType) {
 		this.assignmentType = assignmentType;
 	}
+	
 	public String getAssignmentTitle() {
 		return assignmentTitle;
 	}
+	
 	public void setAssignmentTitle(String assignmentTitle) {
 		this.assignmentTitle = assignmentTitle;
 	}
+	
 	public java.sql.Date getAssignmentCreationDate() {
 		return assignmentCreationDate;
 	}
+	
 	public void setAssignmentCreationDate(java.sql.Date assignmentCreationDate) {
 		this.assignmentCreationDate = assignmentCreationDate;
 	}
+	
 	public java.sql.Time getAssignmentCreationTime() {
 		return assignmentCreationTime;
 	}
+	
 	public void setAssignmentCreationTime(java.sql.Time assignmentCreationTime) {
 		this.assignmentCreationTime = assignmentCreationTime;
 	}
+	
 	public java.sql.Date getAssignmentDueDate() {
 		return assignmentDueDate;
 	}
+	
 	public void setAssignmentDueDate(java.sql.Date assignmentDueDate) {
 		this.assignmentDueDate = assignmentDueDate;
 	}
+	
 	public java.sql.Time getAssignmentDueTime() {
 		return assignmentDueTime;
 	}
+	
 	public void setAssignmentDueDatetime(java.sql.Time assignmentDueTime) {
 		this.assignmentDueTime = assignmentDueTime;
 	}
+	
 	public double getAssignmentMaxpoints() {
 		return assignmentMaxpoints;
 	}
+	
 	public void setAssignmentMaxpoints(double assignmentMaxpoints) {
 		this.assignmentMaxpoints = assignmentMaxpoints;
 	}
