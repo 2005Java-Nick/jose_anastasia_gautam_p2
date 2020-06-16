@@ -13,5 +13,9 @@ export interface AssignmentInstanceDisplay {
     date: string;
     time: string;
   }
+  gradedDate: {
+    date: string;
+    time: string;
+  }
   grade: number;
 }

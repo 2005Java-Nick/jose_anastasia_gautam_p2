@@ -10,7 +10,9 @@ import { StudentTakeDashboardComponent } from './component/student-take-dashboar
 import { TeacherCreateDashboardComponent } from './component/teacher-create-dashboard/teacher-create-dashboard.component';
 import { LoginComponent } from './component/login/login.component';
 import { RegisterComponent } from './component/register/register.component';
-
+import {StudentViewCompletedComponent} from './component/student-view-completed/student-view-completed.component';
+import {ViewGradedComponent } from './component/view-graded/view-graded.component';
+import {TeacherGradeCompletedComponent} from './component/teacher-grade-completed/teacher-grade-completed.component';
 
 const routes: Routes = [
   { path: "teacher-dashboard", component: TeacherDashboardComponent },
@@ -21,6 +23,9 @@ const routes: Routes = [
   { path: "student-take-dashboard", component: StudentTakeDashboardComponent },
   { path: "teacher-grade-dashboard", component: TeacherGradeDashboardComponent },
   { path: "teacher-create-dashboard", component: TeacherCreateDashboardComponent },
+  { path: "student-view-completed", component: StudentViewCompletedComponent },
+  { path: "teacher-grade-completed", component: TeacherGradeCompletedComponent },
+  { path: "view-graded", component: ViewGradedComponent },
   { path: "login", component: LoginComponent },
   { path: "register", component: RegisterComponent },
   { path: "", redirectTo: "/login", pathMatch: "full" }

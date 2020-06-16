@@ -30,6 +30,10 @@ export class StudentDashboardComponent implements OnInit {
         date: null,
         time: null
       },
+      gradedDate: {
+        date: "06-11-2020",
+        time: "7:45 PM"
+      },
       grade: null
     }
   ];

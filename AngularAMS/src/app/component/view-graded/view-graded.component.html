@@ -1,0 +1,78 @@
+
+<div id="root-div">
+    <div id="sidebar-div">
+      <app-sidebar [sidebarOptions]="sidebarOptions"></app-sidebar>
+    </div>
+    <div id="main-div">
+      <div id="header-div"> 
+        <app-header></app-header>
+      </div>
+      <div id="content-div">
+<div id="content-container">
+    <div id="take-form">
+      <div class="header-item">
+        <p class="heading">{{ assignment.assignmentName }}</p>
+      </div>
+      <div class="header-item">
+        <p class="subheading">{{ assignment.course }} {{ assignment.assignmentType }} by {{ assignment.teacherName }}</p>
+      </div>
+      <div class="header-item">
+        <p class="subheading">Student: {{ assignment.studentName }}</p>
+      </div>
+      <div class="header-item">
+        <p class="subheading">Graded on {{ assignment.gradedDate.date }} {{ assignment.gradedDate.time }}</p>
+      </div>
+      <div>
+          <div class="form-item questions-div">
+            <div class="question"> 
+              <p>List and explain the four pillars of Object Oriented Programming.</p>
+            </div>
+            <div>
+
+              <p><span id="grade">70</span> / 100 points</p>
+            </div>
+          </div>
+          <div class="form-item">
+            <textarea readonly rows="5" columns="100" placeholder="Some answer..." ></textarea>
+            <textarea readonly rows="5" columns="100" placeholder="Some comment..." id="comment"></textarea>
+          </div>
+      </div>
+      <div>
+          <div class="form-item questions-div">
+            <div class="question"> 
+              <p>List and explain the four pillars of Object Oriented Programming.</p>
+            </div>
+            <div>
+              <p><span id="grade">70</span> / 100 points</p>
+            </div>
+          </div>
+          <div class="form-item">
+            <textarea readonly rows="5" columns="100" placeholder="Enter Answer Here."></textarea>
+            <textarea readonly rows="5" columns="100" placeholder="Some comment..." id="comment"></textarea>
+          </div>
+      </div>
+      <div>
+          <div class="form-item questions-div">
+            <div class="question"> 
+              <p>List and explain the four pillars of Object Oriented Programming.</p>
+            </div>
+            <div>
+              <p><span id="grade">75</span> / 100 points</p>
+            </div>
+          </div>
+          <div class="form-item">
+            <textarea readonly rows="5" columns="100" placeholder="Enter Answer Here."></textarea>
+            <textarea readonly rows="5" columns="100" placeholder="Some comment..." id="comment"></textarea>
+          </div>
+      </div>
+      <div class="header-item">
+        <p class="subheading">Grade {{ assignment.grade }}</p>
+      </div>
+      <div class="header-item">
+        <button>Go back</button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</div>

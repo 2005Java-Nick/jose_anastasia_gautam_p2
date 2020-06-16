@@ -11,7 +11,7 @@ export class TakeContentComponent implements OnInit {
   assignment : AssignmentInstanceDisplay = {
      course: "History",
      assignmentType: "Exam",
-     assignmentStatus: "Graded",
+     assignmentStatus: "NEW",
      assignmentName: "US History (1600s-1776)",
      teacherName: "Mrs. Jane Doe",
      studentName: "John Doe",
@@ -23,6 +23,10 @@ export class TakeContentComponent implements OnInit {
        date: "06-10-2020",
        time: "4:45 PM"
      },
+     gradedDate: {
+      date: "06-11-2020",
+      time: "7:45 PM"
+    },
      grade: 80
   };
   

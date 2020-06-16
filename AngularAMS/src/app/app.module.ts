@@ -19,6 +19,9 @@ import { TeacherGradeDashboardComponent } from './component/teacher-grade-dashbo
 import { StudentTakeDashboardComponent } from './component/student-take-dashboard/student-take-dashboard.component';
 import { CreateContentComponent } from './component/create-content/create-content.component';
 import { TakeContentComponent } from './component/take-content/take-content.component';
+import { StudentViewCompletedComponent } from './component/student-view-completed/student-view-completed.component';
+import { ViewGradedComponent } from './component/view-graded/view-graded.component';
+import { TeacherGradeCompletedComponent } from './component/teacher-grade-completed/teacher-grade-completed.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +41,9 @@ import { TakeContentComponent } from './component/take-content/take-content.comp
     StudentTakeDashboardComponent,
     CreateContentComponent,
     TakeContentComponent,
+    StudentViewCompletedComponent,
+    ViewGradedComponent,
+    TeacherGradeCompletedComponent,
   ],
   imports: [
     BrowserModule,

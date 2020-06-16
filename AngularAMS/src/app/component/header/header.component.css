@@ -1,7 +1,7 @@
 #header {
   display: flex;
   justify-content: space-between;
-  background-image: url("https://sun6-13.userapi.com/q1qdlucjX5-xS7_UydF-83Z9oX2dUL6LRcAhAQ/YVdyXILv33s.jpg");
+  background-image: url("https://i.ya-webdesign.com/images/pink-transparent-png-6.png");
   background-repeat: no-repeat;
   background-size: 100% 100%;
   border-bottom-style: solid;
@@ -32,3 +32,7 @@
   font-size: 2rem;
 }
 
+#logout {
+  margin-top: 1rem;
+  margin-right: 1rem;
+}
