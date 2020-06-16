@@ -1,5 +1,4 @@
 package com.revature.ams.dao;
-
 import java.util.List;
 
 import javax.persistence.TypedQuery;
@@ -7,16 +6,14 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
-//import org.hibernate.Transaction;
 import org.hibernate.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.revature.ams.domain.Student;
+import com.revature.ams.domain.*;
 
 @Component
-public class StudentDAOHibernate implements StudentDAO{
-	
+public class QuestionDAOHibernate implements QuestionDAO{
 	private SessionFactory sessionFactory;
 
 	public SessionFactory getSessionFactory() {
@@ -29,53 +26,52 @@ public class StudentDAOHibernate implements StudentDAO{
 	}
 	
 	@Override
-	public void createStudent(Student student) {
+	public void createQuestion(Question question) {
 		Session sess = sessionFactory.openSession();
 		Transaction tx = sess.beginTransaction();
-		sess.save(student);
+		sess.save(question);
 		tx.commit();
 		sess.close();
 	}
 	
 	@Override
-	public void deleteStudent(Student student) {
+	public void deleteQuestion(Question question) {
 		Session sess = sessionFactory.openSession();
 		Transaction tx = sess.beginTransaction();
-		sess.delete(student);
+		sess.delete(question);
 		tx.commit();
 		sess.close();
 	}
 	
 	@Override
-	public void updateStudent(Student student) {
+	public void updateQuestion(Question question) {
 		Session sess = sessionFactory.openSession();
 		Transaction tx = sess.beginTransaction();
-		sess.update(student);
+		sess.update(question);
 		tx.commit();
 		sess.close();
 	}
 	
 	@Override
-	public Student getStudent(int studentId) {
+	public Question getQuestion(int questionId) {
 		Session sess = sessionFactory.openSession();
-		Student s = sess.get(Student.class, studentId);
+		Question q = sess.get(Question.class, questionId);
 		sess.close();
-		return s;		
+		return q;		
 	}
 	
 	@Override
-	public Student getStudent(String value, String column) {
+	public Question getQuestion(String value, String column) {
 		Session sess = sessionFactory.openSession();
 		Transaction tx = sess.beginTransaction();
 		CriteriaBuilder cb = sess.getCriteriaBuilder();
-		CriteriaQuery<Student> cq = cb.createQuery(Student.class);
-		Root<Student> rootEntry = cq.from(Student.class);
-		CriteriaQuery<Student> all = cq.select(rootEntry).where(cb.equal(rootEntry.get(column), value));
-		TypedQuery<Student> allQuery = sess.createQuery(all);
-		List<Student> list = allQuery.getResultList();
+		CriteriaQuery<Question> cq = cb.createQuery(Question.class);
+		Root<Question> rootEntry = cq.from(Question.class);
+		CriteriaQuery<Question> all = cq.select(rootEntry).where(cb.equal(rootEntry.get(column), value));
+		TypedQuery<Question> allQuery = sess.createQuery(all);
+		List<Question> list = allQuery.getResultList();
 		tx.commit();
 		sess.close();
 		return list.get(0);	
 	}
-
 }

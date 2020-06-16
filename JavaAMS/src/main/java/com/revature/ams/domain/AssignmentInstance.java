@@ -1,7 +1,7 @@
 package com.revature.ams.domain;
 
 import java.io.Serializable;
-import java.sql.Timestamp;
+import java.sql.*;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -36,11 +36,17 @@ public class AssignmentInstance implements Serializable{ //many to one with assi
     @JoinColumn(name = "assignment_student_id")
 	private Student student;
 	
-	@Column(name = "assignment_completion_datetime")
-	private java.sql.Timestamp assignmentCompletionDatetime; //TIMESTAMP
+	@Column(name = "assignment_completion_date")
+	private java.sql.Date assignmentCompletionDate; //TIMESTAMP
 	
-	@Column(name = "assignment_graded_datetime")
-	private java.sql.Timestamp assignmentGradedDatetime; //TIMESTAMP
+	@Column(name = "assignment_completion_time")
+	private java.sql.Time assignmentCompletionDatetime; //TIMESTAMP
+	
+	@Column(name = "assignment_graded_date")
+	private java.sql.Date assignmentGradedDate; //TIMESTAMP
+	
+	@Column(name = "assignment_graded_time")
+	private java.sql.Time assignmentGradedTime; //TIMESTAMP
 	
 	@Column(name = "assignment_finalgrade")
 	private double assignmentFinalGrade; //check(assignment_finalgrade <= 100.00)
@@ -58,13 +64,61 @@ public class AssignmentInstance implements Serializable{ //many to one with assi
 		super();
 	}
 	
+	//Can be used to get an AssignmentInstance that already exists
+	public AssignmentInstance(int assignmentInstanceId, AssignmentTemplate assignmentTemplate,
+			Date assignmentCompletionDate, Time assignmentCompletionDatetime, Date assignmentGradedDate,
+			Time assignmentGradedTime, double assignmentFinalGrade, String assignmentStatus) {
+		super();
+		this.assignmentInstanceId = assignmentInstanceId;
+		this.assignmentTemplate = assignmentTemplate;
+		this.assignmentCompletionDate = assignmentCompletionDate;
+		this.assignmentCompletionDatetime = assignmentCompletionDatetime;
+		this.assignmentGradedDate = assignmentGradedDate;
+		this.assignmentGradedTime = assignmentGradedTime;
+		this.assignmentFinalGrade = assignmentFinalGrade;
+		this.assignmentStatus = assignmentStatus;
+	}
+	
+	//Can be used to create a new AssignmentInstance 
+	public AssignmentInstance(AssignmentTemplate assignmentTemplate,String assignmentStatus) {
+		super();
+		//this.assignmentInstanceId = assignmentInstanceId;
+		this.assignmentTemplate = assignmentTemplate;
+		this.assignmentCompletionDate = null;
+		this.assignmentCompletionDatetime = null;
+		this.assignmentGradedDate = null;
+		this.assignmentGradedTime = null;
+		this.assignmentStatus = "NEW";
+	}
+	
+	//Constructor contains Set of Answers
+	public AssignmentInstance(int assignmentInstanceId, AssignmentTemplate assignmentTemplate, Teacher teacher,
+			Student student, Date assignmentCompletionDate, Time assignmentCompletionDatetime,
+			Date assignmentGradedDate, Time assignmentGradedTime, double assignmentFinalGrade, String assignmentStatus,
+			Set<Answers> answers) {
+		super();
+		this.assignmentInstanceId = assignmentInstanceId;
+		this.assignmentTemplate = assignmentTemplate;
+		this.teacher = teacher;
+		this.student = student;
+		this.assignmentCompletionDate = assignmentCompletionDate;
+		this.assignmentCompletionDatetime = assignmentCompletionDatetime;
+		this.assignmentGradedDate = assignmentGradedDate;
+		this.assignmentGradedTime = assignmentGradedTime;
+		this.assignmentFinalGrade = assignmentFinalGrade;
+		this.assignmentStatus = assignmentStatus;
+		this.answers = answers;
+	}
+
+
+
 	public int getAssignmentInstanceId() {
 		return assignmentInstanceId;
 	}
 	public void setAssignmentInstanceId(int assignmentInstanceId) {
 		this.assignmentInstanceId = assignmentInstanceId;
 	}
-
+	/*
 	public java.sql.Timestamp getAssignmentCompletionDatetime() {
 		return assignmentCompletionDatetime;
 	}
@@ -77,6 +131,7 @@ public class AssignmentInstance implements Serializable{ //many to one with assi
 	public void setAssignmentGradedDatetime(java.sql.Timestamp assignmentGradedDatetime) {
 		this.assignmentGradedDatetime = assignmentGradedDatetime;
 	}
+	*/
 	public double getAssignmentFinalGrade() {
 		return assignmentFinalGrade;
 	}

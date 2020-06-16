@@ -7,16 +7,16 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
-//import org.hibernate.Transaction;
-import org.hibernate.*;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.revature.ams.domain.Student;
+import com.revature.ams.domain.AssignmentTemplate;
 
 @Component
-public class StudentDAOHibernate implements StudentDAO{
-	
+public class AssignmentTemplateDAOHibernate implements AssignmentTemplateDAO{
 	private SessionFactory sessionFactory;
 
 	public SessionFactory getSessionFactory() {
@@ -29,53 +29,56 @@ public class StudentDAOHibernate implements StudentDAO{
 	}
 	
 	@Override
-	public void createStudent(Student student) {
+	public void createAssignmentTemplate(AssignmentTemplate assignmentTemplate) {
 		Session sess = sessionFactory.openSession();
 		Transaction tx = sess.beginTransaction();
-		sess.save(student);
+		sess.save(assignmentTemplate);
 		tx.commit();
 		sess.close();
+		
 	}
-	
+
 	@Override
-	public void deleteStudent(Student student) {
+	public void deleteAssignmentTemplate(AssignmentTemplate assignmentTemplate) {
 		Session sess = sessionFactory.openSession();
 		Transaction tx = sess.beginTransaction();
-		sess.delete(student);
+		sess.delete(assignmentTemplate);
 		tx.commit();
 		sess.close();
+		
 	}
-	
+
 	@Override
-	public void updateStudent(Student student) {
+	public void updateAssignmentTemplate(AssignmentTemplate assignmentTemplate) {
 		Session sess = sessionFactory.openSession();
 		Transaction tx = sess.beginTransaction();
-		sess.update(student);
+		sess.update(assignmentTemplate);
 		tx.commit();
 		sess.close();
+		
 	}
-	
+
 	@Override
-	public Student getStudent(int studentId) {
+	public AssignmentTemplate getAssignmentTemplate(int assignmentTemplateId) {
 		Session sess = sessionFactory.openSession();
-		Student s = sess.get(Student.class, studentId);
+		AssignmentTemplate at = sess.get(AssignmentTemplate.class, assignmentTemplateId);
 		sess.close();
-		return s;		
+		return at;
 	}
-	
+
 	@Override
-	public Student getStudent(String value, String column) {
+	public AssignmentTemplate getAssignmentTemplate(String value, String column) {
 		Session sess = sessionFactory.openSession();
 		Transaction tx = sess.beginTransaction();
 		CriteriaBuilder cb = sess.getCriteriaBuilder();
-		CriteriaQuery<Student> cq = cb.createQuery(Student.class);
-		Root<Student> rootEntry = cq.from(Student.class);
-		CriteriaQuery<Student> all = cq.select(rootEntry).where(cb.equal(rootEntry.get(column), value));
-		TypedQuery<Student> allQuery = sess.createQuery(all);
-		List<Student> list = allQuery.getResultList();
+		CriteriaQuery<AssignmentTemplate> cq = cb.createQuery(AssignmentTemplate.class);
+		Root<AssignmentTemplate> rootEntry = cq.from(AssignmentTemplate.class);
+		CriteriaQuery<AssignmentTemplate> all = cq.select(rootEntry).where(cb.equal(rootEntry.get(column), value));
+		TypedQuery<AssignmentTemplate> allQuery = sess.createQuery(all);
+		List<AssignmentTemplate> list = allQuery.getResultList();
 		tx.commit();
 		sess.close();
-		return list.get(0);	
+		return list.get(0);
 	}
-
+	
 }

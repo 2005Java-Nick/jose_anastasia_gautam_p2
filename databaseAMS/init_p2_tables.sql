@@ -19,6 +19,19 @@ create schema ams;
 -- drop table ams.assignment_template cascade;
 --------------------------------------------------
 
+--------------------------------------------------
+-- DROP FUNCTIONS
+--------------------------------------------------
+-- drop function all_new_assignments();
+-- drop function all_completed_assignments();
+-- drop function all_graded_assignments();
+-- drop function all_new_assignments_student(bigint);
+-- drop function all_completed_assignments_student(bigint);
+-- drop function all_graded_assignments_student(bigint);
+-- drop function all_completed_assignments_teacher(bigint);
+-- drop function all_graded_assignments_teacher(bigint);
+--------------------------------------------------
+
 
 --------------------------------------------------
 -- CREATE TABLES
@@ -44,7 +57,7 @@ teacher_subject varchar not null,
 teacher_school varchar not null
 );
 
-create table ams.question(-- one-to-many with assignment_template
+create table ams.question(-- many-to-one with assignment_template
 question_id serial primary key,
 assignment_template_id bigint not null, --fk
 question_number int not null,
@@ -68,13 +81,15 @@ answers_comments text
 create type status as enum('NEW', 'COMPLETED', 'GRADED');
 --------------------------------------------------------
 
-create table ams.assignment_instance(-- many to one with assignment_template, many to one with teacher, many to one with student
+create table ams.assignment_instance(-- many-to-one with assignment_template, many-to-one with teacher, many-to-one with student
 assignment_instance_id serial primary key,
 assignment_template_id bigint not null, --fk
 assignment_teacher_id bigint not null, --fk
 assignment_student_id bigint not null, --fk
-assignment_completion_datetime timestamp,
-assignment_graded_datetime timestamp,
+assignment_completion_date date,
+assignment_completion_time time,
+assignment_graded_date date,
+assignment_graded_time time,
 assignment_finalgrade numeric(5,2) check(assignment_finalgrade <= 100.00),
 assignment_status status not null
 );
@@ -83,8 +98,10 @@ create table ams.assignment_template(
 assignment_template_id serial primary key,
 assignment_type varchar not null,
 assignment_title varchar not null,
-assignment_creation_datetime timestamp not null,
-assignment_due_datetime timestamp not null,
+assignment_creation_date date not null,
+assignment_creation_time time not null,
+assignment_due_date date not null,
+assignment_due_time time not null,
 assignment_maxpoints numeric(5,2) check (assignment_maxpoints = 100.00) not null
 );
 
@@ -137,8 +154,8 @@ create index i_FK_assignment_student_id on ams.assignment_instance (assignment_s
 ------------------------------------------------------------------------------------------------------------
 create or replace function all_new_assignments() returns 
 table(assignment_instance_id bigint, assignment_template_id bigint, 
-assignment_teacher_id bigint, assignment_student_id bigint, 
-assignment_completion_datetime timestamp, assignment_graded_datetime timestamp,
+assignment_teacher_id bigint, assignment_student_id bigint, assignment_completion_date date,
+assignment_completion_time time, assignment_graded_date date, assignment_graded_time time,
 assignment_finalgrade numeric(5,2), assignment_status status) as 
 $new_assignments$
 begin
@@ -153,8 +170,8 @@ $new_assignments$ language plpgsql;
 ------------------------------------------------------------------------------------------------------------
 create or replace function all_completed_assignments() returns 
 table(assignment_instance_id bigint, assignment_template_id bigint, 
-assignment_teacher_id bigint, assignment_student_id bigint, 
-assignment_completion_datetime timestamp, assignment_graded_datetime timestamp,
+assignment_teacher_id bigint, assignment_student_id bigint, assignment_completion_date date,
+assignment_completion_time time, assignment_graded_date date, assignment_graded_time time,
 assignment_finalgrade numeric(5,2), assignment_status status) as 
 $completed_assignments$
 begin
@@ -169,8 +186,8 @@ $completed_assignments$ language plpgsql;
 ------------------------------------------------------------------------------------------------------------
 create or replace function all_graded_assignments() returns 
 table(assignment_instance_id bigint, assignment_template_id bigint, 
-assignment_teacher_id bigint, assignment_student_id bigint, 
-assignment_completion_datetime timestamp, assignment_graded_datetime timestamp,
+assignment_teacher_id bigint, assignment_student_id bigint, assignment_completion_date date,
+assignment_completion_time time, assignment_graded_date date, assignment_graded_time time,
 assignment_finalgrade numeric(5,2), assignment_status status) as 
 $graded_assignments$
 begin
@@ -185,8 +202,8 @@ $graded_assignments$ language plpgsql;
 ------------------------------------------------------------------------------------------------------------
 create or replace function all_new_assignments_student(student_id in bigint) returns 
 table(assignment_instance_id bigint, assignment_template_id bigint, 
-assignment_teacher_id bigint, assignment_student_id bigint, 
-assignment_completion_datetime timestamp, assignment_graded_datetime timestamp,
+assignment_teacher_id bigint, assignment_student_id bigint, assignment_completion_date date,
+assignment_completion_time time, assignment_graded_date date, assignment_graded_time time,
 assignment_finalgrade numeric(5,2), assignment_status status) as 
 $new_student_assignments$
 begin
@@ -200,8 +217,8 @@ $new_student_assignments$ language plpgsql;
 ------------------------------------------------------------------------------------------------------------
 create or replace function all_completed_assignments_student(student_id in bigint) returns 
 table(assignment_instance_id bigint, assignment_template_id bigint, 
-assignment_teacher_id bigint, assignment_student_id bigint, 
-assignment_completion_datetime timestamp, assignment_graded_datetime timestamp,
+assignment_teacher_id bigint, assignment_student_id bigint, assignment_completion_date date,
+assignment_completion_time time, assignment_graded_date date, assignment_graded_time time,
 assignment_finalgrade numeric(5,2), assignment_status status) as 
 $completed_student_assignments$
 begin
@@ -215,8 +232,8 @@ $completed_student_assignments$ language plpgsql;
 ------------------------------------------------------------------------------------------------------------
 create or replace function all_graded_assignments_student(student_id in bigint) returns 
 table(assignment_instance_id bigint, assignment_template_id bigint, 
-assignment_teacher_id bigint, assignment_student_id bigint, 
-assignment_completion_datetime timestamp, assignment_graded_datetime timestamp,
+assignment_teacher_id bigint, assignment_student_id bigint, assignment_completion_date date,
+assignment_completion_time time, assignment_graded_date date, assignment_graded_time time,
 assignment_finalgrade numeric(5,2), assignment_status status) as 
 $graded_student_assignments$
 begin
@@ -230,12 +247,12 @@ $graded_student_assignments$ language plpgsql;
 ------------------------------------------------------------------------------------------------------------
 create or replace function all_completed_assignments_teacher(teacher_id in bigint) returns 
 table(assignment_instance_id bigint, assignment_template_id bigint, 
-assignment_teacher_id bigint, assignment_student_id bigint, 
-assignment_completion_datetime timestamp, assignment_graded_datetime timestamp,
+assignment_teacher_id bigint, assignment_student_id bigint, assignment_completion_date date,
+assignment_completion_time time, assignment_graded_date date, assignment_graded_time time,
 assignment_finalgrade numeric(5,2), assignment_status status) as 
 $completed_teacher_assignments$
 begin
-	return query (select * from assignment_instance ai where ai.assignment_status = 'COMPLETED' and ai.assignment_teacher_id= teacher_id);
+	return query (select * from assignment_instance ai where ai.assignment_status = 'COMPLETED' and ai.assignment_teacher_id = teacher_id);
 end;
 $completed_teacher_assignments$ language plpgsql;
 -- select * from all_completed_assignments_teacher(teacher_id);
@@ -245,12 +262,12 @@ $completed_teacher_assignments$ language plpgsql;
 ------------------------------------------------------------------------------------------------------------
 create or replace function all_graded_assignments_teacher(teacher_id in bigint) returns 
 table(assignment_instance_id bigint, assignment_template_id bigint, 
-assignment_teacher_id bigint, assignment_student_id bigint, 
-assignment_completion_datetime timestamp, assignment_graded_datetime timestamp,
+assignment_teacher_id bigint, assignment_student_id bigint, assignment_completion_date date,
+assignment_completion_time time, assignment_graded_date date, assignment_graded_time time,
 assignment_finalgrade numeric(5,2), assignment_status status) as 
 $graded_teacher_assignments$
 begin
-	return query (select * from assignment_instance ai where ai.assignment_status = 'GRADED' and ai.assignment_teacher_id= teacher_id);
+	return query (select * from assignment_instance ai where ai.assignment_status = 'GRADED' and ai.assignment_teacher_id = teacher_id);
 end;
 $graded_teacher_assignments$ language plpgsql;
 -- select * from all_graded_assignments_teacher(teacher_id);

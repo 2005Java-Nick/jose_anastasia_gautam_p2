@@ -1,7 +1,7 @@
 package com.revature.ams.domain;
 
 import java.io.Serializable;
-import java.sql.Timestamp;
+import java.sql.*;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -27,11 +27,17 @@ public class AssignmentTemplate implements Serializable{
 	@Column(name = "assignment_title")
 	private String assignmentTitle;
 	
-	@Column(name = "assignment_creation_datetime")
-	private java.sql.Timestamp assignmentCreationDatetime; //TIMESTAMP
+	@Column(name = "assignment_creation_date")
+	private java.sql.Date assignmentCreationDate; //DATE
 	
-	@Column(name = "assignment_due_datetime")
-	private java.sql.Timestamp assignmentDueDatetime; //TIMESTAMP
+	@Column(name = "assignment_creation_time")
+	private java.sql.Time assignmentCreationTime; //TIME
+	
+	@Column(name = "assignment_due_date")
+	private java.sql.Date assignmentDueDate; //DATE
+	
+	@Column(name = "assignment_due_time")
+	private java.sql.Time assignmentDueTime; //TIME
 	
 	@Column(name = "assignment_maxpoints")
 	private double assignmentMaxpoints; //check (assignment_maxpoints = 100.00)
@@ -52,17 +58,52 @@ public class AssignmentTemplate implements Serializable{
 		super();
 	}
 	
+	//Can be used to get an AssignmentTemplate that already exists
 	public AssignmentTemplate(int assignmentTemplateId, String assignmentType, String assignmentTitle,
-			Timestamp assignmentCreationDatetime, Timestamp assignmentDueDatetime, double assignmentMaxpoints) {
+			Date assignmentCreationDate, Time assignmentCreationTime, Date assignmentDueDate, Time assignmentDueTime,
+			double assignmentMaxpoints) {
 		super();
 		this.assignmentTemplateId = assignmentTemplateId;
 		this.assignmentType = assignmentType;
 		this.assignmentTitle = assignmentTitle;
-		this.assignmentCreationDatetime = assignmentCreationDatetime;
-		this.assignmentDueDatetime = assignmentDueDatetime;
+		this.assignmentCreationDate = assignmentCreationDate;
+		this.assignmentCreationTime = assignmentCreationTime;
+		this.assignmentDueDate = assignmentDueDate;
+		this.assignmentDueTime = assignmentDueTime;
 		this.assignmentMaxpoints = assignmentMaxpoints;
 	}
 	
+	//Can be used to create a new AssignmentTemplate (the creation dates and creation times refer to the CURRENT dates and CURRENT times)
+			public AssignmentTemplate(String assignmentType, String assignmentTitle, Date assignmentDueDate, Time assignmentDueTime,
+					double assignmentMaxpoints) {
+				super();
+				//this.assignmentTemplateId = assignmentTemplateId;
+				this.assignmentType = assignmentType;
+				this.assignmentTitle = assignmentTitle;
+				this.assignmentCreationDate = java.sql.Date.valueOf(java.time.LocalDate.now());
+				this.assignmentCreationTime = java.sql.Time.valueOf(java.time.LocalTime.now());
+				this.assignmentDueDate = assignmentDueDate;
+				this.assignmentDueTime = assignmentDueTime;
+				this.assignmentMaxpoints = assignmentMaxpoints;
+			}
+	
+	//Constructor contains Set of Questions and Assignment Instances
+	public AssignmentTemplate(int assignmentTemplateId, String assignmentType, String assignmentTitle,
+			Date assignmentCreationDate, Time assignmentCreationTime, Date assignmentDueDate, Time assignmentDueTime,
+			double assignmentMaxpoints, Set<Question> questions, Set<AssignmentInstance> assignmentInstances) {
+		super();
+		this.assignmentTemplateId = assignmentTemplateId;
+		this.assignmentType = assignmentType;
+		this.assignmentTitle = assignmentTitle;
+		this.assignmentCreationDate = assignmentCreationDate;
+		this.assignmentCreationTime = assignmentCreationTime;
+		this.assignmentDueDate = assignmentDueDate;
+		this.assignmentDueTime = assignmentDueTime;
+		this.assignmentMaxpoints = assignmentMaxpoints;
+		this.questions = questions;
+		this.assignmentInstances = assignmentInstances;
+	}
+
 	public int getAssignmentTemplateId() {
 		return assignmentTemplateId;
 	}
@@ -81,17 +122,29 @@ public class AssignmentTemplate implements Serializable{
 	public void setAssignmentTitle(String assignmentTitle) {
 		this.assignmentTitle = assignmentTitle;
 	}
-	public java.sql.Timestamp getAssignmentCreationDatetime() {
-		return assignmentCreationDatetime;
+	public java.sql.Date getAssignmentCreationDate() {
+		return assignmentCreationDate;
 	}
-	public void setAssignmentCreationDatetime(java.sql.Timestamp assignmentCreationDatetime) {
-		this.assignmentCreationDatetime = assignmentCreationDatetime;
+	public void setAssignmentCreationDate(java.sql.Date assignmentCreationDate) {
+		this.assignmentCreationDate = assignmentCreationDate;
 	}
-	public java.sql.Timestamp getAssignmentDueDatetime() {
-		return assignmentDueDatetime;
+	public java.sql.Time getAssignmentCreationTime() {
+		return assignmentCreationTime;
 	}
-	public void setAssignmentDueDatetime(java.sql.Timestamp assignmentDueDatetime) {
-		this.assignmentDueDatetime = assignmentDueDatetime;
+	public void setAssignmentCreationTime(java.sql.Time assignmentCreationTime) {
+		this.assignmentCreationTime = assignmentCreationTime;
+	}
+	public java.sql.Date getAssignmentDueDate() {
+		return assignmentDueDate;
+	}
+	public void setAssignmentDueDate(java.sql.Date assignmentDueDate) {
+		this.assignmentDueDate = assignmentDueDate;
+	}
+	public java.sql.Time getAssignmentDueTime() {
+		return assignmentDueTime;
+	}
+	public void setAssignmentDueDatetime(java.sql.Time assignmentDueTime) {
+		this.assignmentDueTime = assignmentDueTime;
 	}
 	public double getAssignmentMaxpoints() {
 		return assignmentMaxpoints;
