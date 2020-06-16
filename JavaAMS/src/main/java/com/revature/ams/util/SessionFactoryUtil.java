@@ -48,6 +48,8 @@ public class SessionFactoryUtil {
 			settings.put("hibernate.connection.url",url);
 			settings.put("hibernate.connection.username", username);
 			settings.put("hibernate.connection.password", password);
+			settings.put("hibernate.show_sql", "true");
+			settings.put("hibernate.format_sql", "true");
 
 			StandardServiceRegistry standardRegistry = new StandardServiceRegistryBuilder().applySettings(settings)
 					.build();
