@@ -8,6 +8,15 @@
     </div>
     <div id="content-div">
       <div id="register">
+      <!-- TOGGLE -->
+        <div class="onoffswitch">
+          <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" tabindex="0" checked>
+          <label class="onoffswitch-label" for="myonoffswitch">
+              <span class="onoffswitch-inner" (click)="setUser(false)"></span>
+              <span class="onoffswitch-switch" ></span>
+          </label>
+      </div>
+      <!-- TOGGLE -->
         <div>
           <button (click)="setUser(false)">Teacher</button>
           <button (click)="setUser(true)">Student</button>
