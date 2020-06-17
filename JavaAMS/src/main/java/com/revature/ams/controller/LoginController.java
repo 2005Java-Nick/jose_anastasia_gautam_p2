@@ -28,7 +28,7 @@ public class LoginController {
   @RequestMapping(path = "/", method = RequestMethod.GET)
   public String index() 
   {
-    return "index.jsp"; 
+    return "index.html"; 
   }
 
 
