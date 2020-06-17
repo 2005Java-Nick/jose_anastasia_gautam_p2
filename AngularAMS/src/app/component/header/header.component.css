@@ -1,13 +1,13 @@
 #header {
   display: flex;
   justify-content: space-between;
-  background-image: url("https://i.ya-webdesign.com/images/pink-transparent-png-6.png");
-  background-color: white;
+  /* background-image: url("https://i.ya-webdesign.com/images/pink-transparent-png-6.png"); */
+  background-color: #d2cce0;
   background-repeat: no-repeat;
   background-size: 100% 100%;
   border-bottom-style: solid;
   border-bottom-width: 2px;
-  border-bottom-color: rgb(124, 124, 124); 
+  border-bottom-color: rgb(115, 30, 141); 
 }
 
   

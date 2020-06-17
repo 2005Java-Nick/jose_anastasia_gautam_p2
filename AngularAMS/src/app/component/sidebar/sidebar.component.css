@@ -1,10 +1,14 @@
 #sidebar {
-  /* background: url("https://sun6-14.userapi.com/CoI3tD7BA9ZhZSZUzVotoGXbyhBTcVFfEBOaDw/8rdNmJKYC9A.jpg"); */
-  background-image: url("https://i.pinimg.com/originals/23/77/1c/23771c5cfa8764772a1cd560c87a8faf.jpg");
+  /* background: url("https://i.pinimg.com/originals/c3/39/bf/c339bf84fed6549be537e9a00683805d.jpg"); */
+  /* background-image: url("https://i.pinimg.com/originals/23/77/1c/23771c5cfa8764772a1cd560c87a8faf.jpg"); */
+  background: #312450;
   height: 100%;
   width: 18rem;
   background-repeat: no-repeat;
   background-size: 100% 100%;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-right-color: violet;
   
 } 
   
@@ -29,7 +33,9 @@
   border-left-style: solid;
   border-left-width: 3px;
   /* border-left-color: #000033; */
+  
 }
+
 
 .sidebar-option:hover, .selected {
   background-color: #202020;
