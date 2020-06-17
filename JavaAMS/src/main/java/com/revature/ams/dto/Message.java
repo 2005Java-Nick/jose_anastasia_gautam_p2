@@ -3,15 +3,17 @@ package com.revature.ams.dto;
 public class Message {
 	private boolean successStatus;
 	private String info;
+	private String token;
 	
 	public Message() {
 		super();
 	};
 	
-	public Message(boolean successStatus, String info) {
+	public Message(boolean successStatus, String info, String token) {
 		super();
 		this.successStatus = successStatus;
 		this.info = info;
+		this.token = token;
 	}
 	
 	public boolean isSuccessStatus() {
@@ -26,33 +28,11 @@ public class Message {
 	public void setInfo(String info) {
 		this.info = info;
 	}
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((info == null) ? 0 : info.hashCode());
-		result = prime * result + (successStatus ? 1231 : 1237);
-		return result;
+	public String getToken() {
+		return token;
 	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Message other = (Message) obj;
-		if (info == null) {
-			if (other.info != null)
-				return false;
-		} else if (!info.equals(other.info))
-			return false;
-		if (successStatus != other.successStatus)
-			return false;
-		return true;
+	public void setToken(String token) {
+		this.token = token;
 	}
 	
 }

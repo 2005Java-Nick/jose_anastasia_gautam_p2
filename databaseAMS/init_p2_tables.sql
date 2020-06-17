@@ -272,3 +272,5 @@ end;
 $graded_teacher_assignments$ language plpgsql;
 -- select * from all_graded_assignments_teacher(teacher_id);
 
+alter table ams.teacher add column session_token text;
+alter table ams.student add column session_token text;

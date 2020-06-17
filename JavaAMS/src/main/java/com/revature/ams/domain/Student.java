@@ -37,6 +37,10 @@ public class Student implements Serializable{
 	@Column(name = "student_school")
 	private String studentSchool;
 	
+	@Column(name = "session_token")
+	private String token;
+	
+	
 	@OneToMany(mappedBy="student",  
             targetEntity=AssignmentInstance.class, 
             fetch=FetchType.EAGER, 
@@ -54,7 +58,7 @@ public class Student implements Serializable{
 		super();
 	}
 	
-	public Student(int studentId, String studentFirstname, String studentLastname, String studentEmail, String studentPassword, String studentClass, String studentSchool) {
+	public Student(int studentId, String studentFirstname, String studentLastname, String studentEmail, String studentPassword, String studentClass, String studentSchool, String token) {
 		this.studentId = studentId;
 		this.studentFirstname = studentFirstname;
 		this.studentLastname = studentLastname;
@@ -62,6 +66,7 @@ public class Student implements Serializable{
 		this.studentPassword = studentPassword;
 		this.studentClass = studentClass;
 		this.studentSchool = studentSchool;
+		this.token = token;
 	}
 	
 	public int getStudentId() {
@@ -105,6 +110,13 @@ public class Student implements Serializable{
 	}
 	public void setStudentSchool(String studentSchool) {
 		this.studentSchool = studentSchool;
+	}
+	
+	public String getToken() {
+		return token;
+	}
+	public void setToken(String token) {
+		this.token = token;
 	}
 
 	public Set<AssignmentInstance> getAssignmentInstances() {

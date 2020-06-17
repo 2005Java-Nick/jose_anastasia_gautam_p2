@@ -37,6 +37,9 @@ public class Teacher implements Serializable{
 	@Column(name = "teacher_school")
 	private String teacherSchool;
 	
+	@Column(name = "session_token")
+	private String token;
+	
 	@OneToMany(mappedBy="teacher",  
             targetEntity=AssignmentInstance.class, 
             fetch=FetchType.EAGER, 
@@ -49,7 +52,7 @@ public class Teacher implements Serializable{
 		
 	
 	public Teacher(int teacherId, String teacherFirstname, String teacherLastname, String teacherEmail,
-		String teacherPassword, String teacherSubject, String teacherSchool) {
+		String teacherPassword, String teacherSubject, String teacherSchool, String token) {
 		super();
 		this.teacherId = teacherId;
 		this.teacherFirstname = teacherFirstname;
@@ -58,6 +61,7 @@ public class Teacher implements Serializable{
 		this.teacherPassword = teacherPassword;
 		this.teacherSubject = teacherSubject;
 		this.teacherSchool = teacherSchool;
+		this.token = token;
 	}
 
 
@@ -102,9 +106,15 @@ public class Teacher implements Serializable{
 		return teacherSchool;
 	}
 
-
 	public void setTeacherSchool(String teacherSchool) {
 		this.teacherSchool = teacherSchool;
+	}
+	
+	public String getToken() {
+		return token;
+	}
+	public void setToken(String token) {
+		this.token = token;
 	}
 
 
