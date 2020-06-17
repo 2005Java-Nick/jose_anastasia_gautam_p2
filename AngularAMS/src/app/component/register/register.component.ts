@@ -9,14 +9,27 @@ import { SidebarOptionsService } from '../../service/sidebar-options.service';
 })
 export class RegisterComponent implements OnInit {
 
-  registerForm: FormGroup = this.fb.group({
-    userId: [''],
-    userFirstName: [''],
-    userLastName: [''],
-    userEmail: [''],
-    userPassword: [''],
-    userClass: [''],
-    userSchool: [''],
+  isStudent = true;
+
+  registerTeacherForm: FormGroup = this.fb.group({
+    teacherId: [''],
+    teacherFirstName: [''],
+    teacherLastName: [''],
+    teacherEmail: [''],
+    teacherPassword: [''],
+    teacherSubject: [''],
+    teacherSchool: [''],
+});
+
+
+registerStudentForm: FormGroup = this.fb.group({
+  studentId: [''],
+  studentFirstName: [''],
+  studentLastName: [''],
+  studentEmail: [''],
+  studentPassword: [''],
+  studentClass: [''],
+  studentSchool: [''],
 });
 
 sidebarOptions;
@@ -28,7 +41,15 @@ constructor(private sidebarOptionsService : SidebarOptionsService, private fb: F
 }
 
 submit() {
-  console.log(this.registerForm.value);
+  if (this.isStudent) {
+    console.log(this.registerStudentForm.value);
+  } else {
+    console.log(this.registerTeacherForm.value);
+  }
+}
+
+setUser(userType : boolean) {
+  this.isStudent = userType;
 }
 
   ngOnInit(): void {

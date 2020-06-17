@@ -26,7 +26,7 @@
     padding: 1rem 10rem;
   }
 
-  #login-button-container {
+  #login-button-container, button {
     display: flex;
     justify-content: center;
     font-size: 1.25rem;

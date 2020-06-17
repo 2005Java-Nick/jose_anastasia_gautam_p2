@@ -7,38 +7,72 @@
         <app-header [headerTitle]="headerTitle" [headerLogout]="false"></app-header>
     </div>
     <div id="content-div">
-      <form id="register" [formGroup]="registerForm">
-        <div id="input-items">
-          <div id="left-items">
-            <label for="userFirstName"><b>First name</b></label><br>
-            <input type="text" placeholder="Enter First Name" formControlName="userFirstName" required><br>
-            
-            <label for="userId"><b>Your ID</b></label><br>
-            <input type="text" placeholder="Enter ID" formControlName="userId" required><br>
-            
-            <label for="userSchool"><b>Your School</b></label><br>
-            <input type="text" placeholder="Enter School" formControlName="userSchool" required><br>
-
-            <label for="userClass"><b>Class</b></label><br>
-            <input type="text" placeholder="Enter Class" formControlName="userEmail" required><br>
-
-          </div>
-          <div id="right-items">
-            <label for="userLastName"><b>Last name</b></label><br>
-            <input type="text" placeholder="Enter Last Name" formControlName="userLastName" required><br>
-            
-            <label for="userEmail"><b>Email</b></label><br>
-            <input type="email" placeholder="Enter Email" formControlName="userEmail" required><br>
-              
-           
-            
-            <label for="userPassword"><b>Password</b></label><br>
-            <input type="password" placeholder="Enter Password" formControlName="userPassword" required><br> <br>
-            
-            <input type="submit" class="button" value="Register" id="login-button-container" (click)="submit()">
-          </div>
+      <div id="register">
+        <div>
+          <button (click)="setUser(false)">Teacher</button>
+          <button (click)="setUser(true)">Student</button>
         </div>
-      </form>
+        <form [formGroup]="registerStudentForm" *ngIf="isStudent">
+          <div id="input-items">
+            <div id="left-items">
+              <label for="studentFirstName"><b>First name</b></label><br>
+              <input type="text" placeholder="Enter First Name" formControlName="studentFirstName" required><br>
+              
+              <label for="studentId"><b>ID</b></label><br>
+              <input type="text" placeholder="Enter ID" formControlName="studentId" required><br>
+              
+              <label for="studentSchool"><b>School</b></label><br>
+              <input type="text" placeholder="Enter School" formControlName="studentSchool" required><br>
+
+              <label for="studentClass"><b>Class</b></label><br>
+              <input type="text" placeholder="Enter Class" formControlName="studentEmail" required><br>
+
+            </div>
+            <div id="right-items">
+              <label for="studentLastName"><b>Last name</b></label><br>
+              <input type="text" placeholder="Enter Last Name" formControlName="studentLastName" required><br>
+              
+              <label for="studentEmail"><b>Email</b></label><br>
+              <input type="email" placeholder="Enter Email" formControlName="studentEmail" required><br>
+                      
+              <label for="studentPassword"><b>Password</b></label><br>
+              <input type="password" placeholder="Enter Password" formControlName="studentPassword" required><br> <br>
+              
+              <input type="submit" class="button" value="Register" id="login-button-container" (click)="submit()">
+            </div>
+          </div>
+        </form>
+        <form [formGroup]="registerTeacherForm" *ngIf="!isStudent">
+          <div id="input-items">
+            <div id="left-items">
+              <label for="teacherFirstName"><b>First name</b></label><br>
+              <input type="text" placeholder="Enter First Name" formControlName="teacherFirstName" required><br>
+              
+              <label for="teacherId"><b>ID</b></label><br>
+              <input type="text" placeholder="Enter ID" formControlName="teacherId" required><br>
+              
+              <label for="teacherSchool"><b>School</b></label><br>
+              <input type="text" placeholder="Enter School" formControlName="teacherSchool" required><br>
+
+              <label for="teacherSubject"><b>Subject</b></label><br>
+              <input type="text" placeholder="Enter Subject" formControlName="teacherSubject" required><br>
+
+            </div>
+            <div id="right-items">
+              <label for="teacherLastName"><b>Last name</b></label><br>
+              <input type="text" placeholder="Enter Last Name" formControlName="teacherLastName" required><br>
+              
+              <label for="teacherEmail"><b>Email</b></label><br>
+              <input type="email" placeholder="Enter Email" formControlName="teacherEmail" required><br>
+                      
+              <label for="teacherPassword"><b>Password</b></label><br>
+              <input type="password" placeholder="Enter Password" formControlName="teacherPassword" required><br> <br>
+              
+              <input type="submit" class="button" value="Register" id="login-button-container" (click)="submit()">
+            </div>
+          </div>
+        </form>
+      </div>
     </div>
   </div>
 </div>
