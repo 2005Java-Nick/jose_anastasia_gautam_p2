@@ -78,4 +78,19 @@ public class StudentDAOHibernate implements StudentDAO{
 		return list.get(0);	
 	}
 
+	@Override
+	public List<Student> getAllStudentsByColumn(String value, String column) {
+		Session sess = sessionFactory.openSession();
+		Transaction tx = sess.beginTransaction();
+		CriteriaBuilder cb = sess.getCriteriaBuilder();
+		CriteriaQuery<Student> cq = cb.createQuery(Student.class);
+		Root<Student> rootEntry = cq.from(Student.class);
+		CriteriaQuery<Student> all = cq.select(rootEntry).where(cb.equal(rootEntry.get(column), value));
+		TypedQuery<Student> allQuery = sess.createQuery(all);
+		List<Student> list = allQuery.getResultList();
+		tx.commit();
+		sess.close();
+		return list;	
+	}
+
 }

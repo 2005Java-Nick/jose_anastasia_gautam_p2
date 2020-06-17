@@ -173,4 +173,28 @@ public class AssignmentInstance implements Serializable{ //many to one with assi
 		this.answers = answers;
 	}
 
+	public AssignmentTemplate getAssignmentTemplate() {
+		return assignmentTemplate;
+	}
+
+	public void setAssignmentTemplate(AssignmentTemplate assignmentTemplate) {
+		this.assignmentTemplate = assignmentTemplate;
+	}
+
+	public Teacher getTeacher() {
+		return teacher;
+	}
+
+	public void setTeacher(Teacher teacher) {
+		this.teacher = teacher;
+	}
+
+	public Student getStudent() {
+		return student;
+	}
+
+	public void setStudent(Student student) {
+		this.student = student;
+	}
+
 }

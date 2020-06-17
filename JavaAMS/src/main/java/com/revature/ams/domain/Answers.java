@@ -79,6 +79,48 @@ public class Answers implements Serializable{ //many-to-one with question, many-
 	public void setAnswersComments(String answersComments) {
 		this.answersComments = answersComments;
 	}
+
+
+
+
+	public Question getQuestion() {
+		return question;
+	}
+
+
+
+
+	public void setQuestion(Question question) {
+		this.question = question;
+	}
+
+
+
+
+	public Student getStudent() {
+		return student;
+	}
+
+
+
+
+	public void setStudent(Student student) {
+		this.student = student;
+	}
+
+
+
+
+	public AssignmentInstance getAssignmentInstance() {
+		return assignmentInstance;
+	}
+
+
+
+
+	public void setAssignmentInstance(AssignmentInstance assignmentInstance) {
+		this.assignmentInstance = assignmentInstance;
+	}
 	
 
 }
