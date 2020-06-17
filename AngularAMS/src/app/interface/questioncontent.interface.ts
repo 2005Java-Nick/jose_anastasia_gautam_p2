@@ -1,11 +1,7 @@
 export interface QuestionContent {
-    question: {
         questionString: string;
         maxPoints: number;
-    },
-    answer: string;
-    grade: {
+        answer: string;
         questionPoints: number;
         comment: string;
-    }
   }
