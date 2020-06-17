@@ -8,18 +8,12 @@ export interface AssignmentDTO {
     assignmentName: string;
     teacherName: string;
     studentName: string;
-    dueDate: {
-      date: string;
-      time: string;
-    }
-    completionDate: {
-      date: string;
-      time: string;
-    }
-    gradedDate: {
-      date: string;
-      time: string;
-    }
+    dueDate: string;
+    dueTime: string 
+    completionDate: string;
+    completionTime: string;
+    gradedDate: string;
+    gradedTime: string;
     grade: number;
     questions: QuestionContent[];
   }
