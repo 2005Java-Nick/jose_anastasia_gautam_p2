@@ -24,7 +24,14 @@ public class LoginController {
 	public void setLoginService(LoginService loginService) {
 		this.loginService = loginService;
 	}
-	
+
+  @RequestMapping(path = "/", method = RequestMethod.GET)
+  public String index() 
+  {
+    return "index.jsp"; 
+  }
+
+
 	@RequestMapping(path = "/login", method = RequestMethod.POST)
 	@ResponseBody
 	public Message login(@RequestParam(name="userId", required=true) int userId,
