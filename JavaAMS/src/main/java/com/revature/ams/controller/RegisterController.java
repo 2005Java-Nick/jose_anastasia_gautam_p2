@@ -2,6 +2,7 @@ package com.revature.ams.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -26,6 +27,7 @@ public class RegisterController {
 	
 	@RequestMapping(path = "/register-student", method = RequestMethod.POST)
 	@ResponseBody
+	@CrossOrigin
 	public Message registerStudent(@RequestParam(name="studentId", required=true) Integer studentId,
 			@RequestParam(name="studentFirstName", required=true) String firstname,
 			@RequestParam(name="studentLastName", required=true) String lastname,
@@ -39,6 +41,7 @@ public class RegisterController {
 	
 	@RequestMapping(path = "/register-teacher", method = RequestMethod.POST)
 	@ResponseBody
+	@CrossOrigin
 	public Message registerTeacher(@RequestParam(name="teacherId", required=true) Integer teacherId,
 			@RequestParam(name="teacherFirstName", required=true) String firstname,
 			@RequestParam(name="teacherLastName", required=true) String lastname,

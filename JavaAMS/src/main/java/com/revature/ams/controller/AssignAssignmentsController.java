@@ -6,6 +6,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -76,6 +77,7 @@ public class AssignAssignmentsController {
 	
 	@RequestMapping(path = "/teacher-create-assignment", method = RequestMethod.POST)
 	@ResponseBody
+	@CrossOrigin
 	public Message assignAssignmentsToClass(
 			@RequestParam(name = "teacherId",required =true) String teacherId,
 			@RequestParam(name = "assignmentType",required=true) String assignmentType,

@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -38,6 +39,7 @@ public class GetGradedAssignmentsController {
 	
 	@RequestMapping(path = "/student-graded-assignments", method = RequestMethod.GET)
 	@ResponseBody
+	@CrossOrigin
 	public List<AssignmentInstanceDTO> getStudentGradedAssignments(@RequestParam(name = "studentId",required =true) Integer studentId, @RequestParam(name = "token",required =true) String token){
 		if(aService.authorizeStudent(studentId, token)){
 			return aiService.getGradedAssignmentInstancesByStudent(studentId);
@@ -48,6 +50,7 @@ public class GetGradedAssignmentsController {
 	
 	@RequestMapping(path = "/teacher-graded-assignments", method = RequestMethod.GET)
 	@ResponseBody
+	@CrossOrigin
 	public List<AssignmentInstanceDTO> getTeacherGradedAssignments(@RequestParam(name = "teacherId",required =true) Integer teacherId,@RequestParam(name = "token",required =true) String token){
 		if(aService.authorizeTeacher(teacherId, token)) {
 			return aiService.getGradedAssignmentInstancesByTeacher(teacherId);
