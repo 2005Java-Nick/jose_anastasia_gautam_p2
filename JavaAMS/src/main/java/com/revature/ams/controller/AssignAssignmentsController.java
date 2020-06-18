@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RequestParam;
+import com.fasterxml.jackson.databind.JsonNode;
 
 import java.sql.*;
 
@@ -118,7 +119,7 @@ public class AssignAssignmentsController {
 		}
 	}
 	*/
-	@RequestMapping(value = "/teacher/create-assignment", method = RequestMethod.POST)
+	@RequestMapping(value = "/teacher/create-assignment", method = RequestMethod.POST, headers = "Accept=application/json")
 	@ResponseBody
 	public Message assignAssignmentsToClass(@RequestBody AssignedAssignmentDTO aaDTO) {
 		Message mSuccess = new Message(true, "Teacher successfully assigned new assignment", aaDTO.getToken());
