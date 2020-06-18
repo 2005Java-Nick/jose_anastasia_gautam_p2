@@ -153,7 +153,7 @@ create index i_FK_assignment_student_id on ams.assignment_instance (assignment_s
 -- Retrieve all new assignments 
 ------------------------------------------------------------------------------------------------------------
 create or replace function all_new_assignments() returns 
-table(assignment_instance_id bigint, assignment_template_id bigint, 
+table(assignment_instance_id int4, assignment_template_id bigint, 
 assignment_teacher_id bigint, assignment_student_id bigint, assignment_completion_date date,
 assignment_completion_time time, assignment_graded_date date, assignment_graded_time time,
 assignment_finalgrade numeric(5,2), assignment_status varchar) as 
@@ -169,7 +169,7 @@ $new_assignments$ language plpgsql;
 -- Retrieve all completed assignments
 ------------------------------------------------------------------------------------------------------------
 create or replace function all_completed_assignments() returns 
-table(assignment_instance_id bigint, assignment_template_id bigint, 
+table(assignment_instance_id int4, assignment_template_id bigint, 
 assignment_teacher_id bigint, assignment_student_id bigint, assignment_completion_date date,
 assignment_completion_time time, assignment_graded_date date, assignment_graded_time time,
 assignment_finalgrade numeric(5,2), assignment_status varchar) as 
@@ -185,7 +185,7 @@ $completed_assignments$ language plpgsql;
 -- Retrieve all graded assignments
 ------------------------------------------------------------------------------------------------------------
 create or replace function all_graded_assignments() returns 
-table(assignment_instance_id bigint, assignment_template_id bigint, 
+table(assignment_instance_id int4, assignment_template_id bigint, 
 assignment_teacher_id bigint, assignment_student_id bigint, assignment_completion_date date,
 assignment_completion_time time, assignment_graded_date date, assignment_graded_time time,
 assignment_finalgrade numeric(5,2), assignment_status varchar) as 
@@ -201,7 +201,7 @@ $graded_assignments$ language plpgsql;
 -- Retrieve all new assignments for a particular student (by id)
 ------------------------------------------------------------------------------------------------------------
 create or replace function all_new_assignments_student(student_id in bigint) returns 
-table(assignment_instance_id bigint, assignment_template_id bigint, 
+table(assignment_instance_id int4, assignment_template_id bigint, 
 assignment_teacher_id bigint, assignment_student_id bigint, assignment_completion_date date,
 assignment_completion_time time, assignment_graded_date date, assignment_graded_time time,
 assignment_finalgrade numeric(5,2), assignment_status varchar) as 
@@ -216,7 +216,7 @@ $new_student_assignments$ language plpgsql;
 -- Retrieve all completed assignments for a particular student (by id)
 ------------------------------------------------------------------------------------------------------------
 create or replace function all_completed_assignments_student(student_id in bigint) returns 
-table(assignment_instance_id bigint, assignment_template_id bigint, 
+table(assignment_instance_id int4, assignment_template_id bigint, 
 assignment_teacher_id bigint, assignment_student_id bigint, assignment_completion_date date,
 assignment_completion_time time, assignment_graded_date date, assignment_graded_time time,
 assignment_finalgrade numeric(5,2), assignment_status varchar) as 
@@ -231,7 +231,7 @@ $completed_student_assignments$ language plpgsql;
 -- Retrieve all graded assignments for a particular student (by id)
 ------------------------------------------------------------------------------------------------------------
 create or replace function all_graded_assignments_student(student_id in bigint) returns 
-table(assignment_instance_id bigint, assignment_template_id bigint, 
+table(assignment_instance_id int4, assignment_template_id bigint, 
 assignment_teacher_id bigint, assignment_student_id bigint, assignment_completion_date date,
 assignment_completion_time time, assignment_graded_date date, assignment_graded_time time,
 assignment_finalgrade numeric(5,2), assignment_status varchar) as 
@@ -246,7 +246,7 @@ $graded_student_assignments$ language plpgsql;
 -- Retrieve all completed assignments that were assigned by a particular teacher (by id) 
 ------------------------------------------------------------------------------------------------------------
 create or replace function all_completed_assignments_teacher(teacher_id in bigint) returns 
-table(assignment_instance_id bigint, assignment_template_id bigint, 
+table(assignment_instance_id int4, assignment_template_id bigint, 
 assignment_teacher_id bigint, assignment_student_id bigint, assignment_completion_date date,
 assignment_completion_time time, assignment_graded_date date, assignment_graded_time time,
 assignment_finalgrade numeric(5,2), assignment_status varchar) as 
@@ -261,7 +261,7 @@ $completed_teacher_assignments$ language plpgsql;
 -- Retrieve all graded assignments that were assigned by a particular teacher (by id) 
 ------------------------------------------------------------------------------------------------------------
 create or replace function all_graded_assignments_teacher(teacher_id in bigint) returns 
-table(assignment_instance_id bigint, assignment_template_id bigint, 
+table(assignment_instance_id int4, assignment_template_id bigint, 
 assignment_teacher_id bigint, assignment_student_id bigint, assignment_completion_date date,
 assignment_completion_time time, assignment_graded_date date, assignment_graded_time time,
 assignment_finalgrade numeric(5,2), assignment_status varchar) as 

@@ -1,7 +1,10 @@
 package com.revature.ams.services;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.Set;
+import java.util.stream.Collectors;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -147,6 +150,90 @@ public class AssignmentInstanceServiceImpl implements AssignmentInstanceService{
 			return mFail;
 		}
 	}
+	//Generic method to convert list to set 
+	public static <T> Set<T> convertListToSet(List<T> list) 
+    { 
+        // create a set from the List 
+        return list.stream().collect(Collectors.toSet()); 
+    }
+
+	@Override
+	public Message gradingCompletedAssignment(String aiId,String comments,String maxpoints) {
+		
+		AssignmentInstance ai = assignmentInstanceDao.getAssignmentInstance(Integer.valueOf(aiId));
+		
+		Message mSuccess = new Message(true, "Teacher ("+ai.getTeacher().getTeacherId()+")" + "graded an assignment: " +ai.toString()+".",ai.getTeacher().getToken());
+		Message mFail = new Message(false, "Teacher ("+ai.getTeacher().getTeacherId()+")" + "graded an assignment: " +ai.toString()+".",null);
+		
+		if(ai.getAssignmentStatus().equals("COMPLETED")) {
+			comments = comments.replaceAll("^\\[|]$","");
+			List<String> cList = new ArrayList<String>(Arrays.asList(comments.split(",")));
+			
+			maxpoints = maxpoints.replaceAll("^\\[|]$","");
+			List<String> maxPointsListStrings = new ArrayList<String>(Arrays.asList(maxpoints.split(",")));
+			List<Double> maxPointsList = new ArrayList<Double>();
+			for(String point:maxPointsListStrings){
+				maxPointsList.add(Double.valueOf(point));
+			}
+			
+			Set<Answers> answers = ai.getAnswers();
+			List<Answers> aList = new ArrayList<Answers>(answers.stream().collect(Collectors.toList()));
+			for(int i =0; i<answers.size();i++) {
+				aList.get(i).setAnswersPoints(maxPointsList.get(i));
+				aList.get(i).setAnswersComments(cList.get(i));
+				aList.get(i).setAnswersPoints(maxPointsList.get(i));
+			}
+			answers = convertListToSet(aList);
+			
+			Double finalGrade = 0.0;
+			for(Double point:maxPointsList) {
+				finalGrade += point;
+			}
+			
+			ai.setAnswers(answers);
+			ai.setAssignmentFinalGrade(finalGrade);
+			ai.setAssignmentStatus("GRADED");
+			assignmentInstanceDao.updateAssignmentInstance(ai);
+			
+			return mSuccess;
+		}else {
+			return mFail;
+		}
+		
+	}
+
+	@Override
+	public Message takeNewAssignment(String aiId, String answers, String token) {
+		AssignmentInstance ai = assignmentInstanceDao.getAssignmentInstance(Integer.valueOf(aiId));
+		token = ai.getStudent().getToken();
+		
+		Message mSuccess = new Message(true, "Student ("+ai.getStudent().getStudentId()+")" + "completed a new assignment: " +ai.toString()+".",token);
+		Message mFail = new Message(false, "Student ("+ai.getStudent().getStudentId()+")" + "FAILED to complete a new assignment: " +ai.toString()+".",null);
+		
+		if(ai.getAssignmentStatus().equals("NEW")) {
+			answers = answers.replaceAll("^\\[|]$","");
+			List<String> aList = new ArrayList<String>(Arrays.asList(answers.split(",")));
+			
+			Set<Answers> answerSet = ai.getAnswers();
+			List<Answers> answerList = new ArrayList<Answers>(answerSet.stream().collect(Collectors.toList()));
+			
+			for(int i =0; i<answerSet.size();i++) {
+				answerList.get(i).setAnswersString(aList.get(i));
+			}
+			answerSet = convertListToSet(answerList);
+			ai.setAnswers(answerSet);
+			
+			ai.setAssignmentStatus("COMPLETED");
+			assignmentInstanceDao.updateAssignmentInstance(ai);
+			
+			return mSuccess;
+		}else {
+			return mFail;
+		}
+	
+	}
+	
+	
 	
 	
 	

@@ -18,5 +18,6 @@ public interface AssignmentInstanceService {
 	public List<AssignmentInstanceDTO> getGradedAssignmentInstancesByTeacher(int teacherId);
 	
 	public Message assigningAssignment(String studentClass,AssignmentTemplate at,Teacher t);
-
+	public Message gradingCompletedAssignment(String aiId,String comments,String maxpoints);
+	public Message takeNewAssignment(String aiId,String answers, String token);
 }

@@ -89,7 +89,7 @@ public class AssignAssignmentsController {
 	{
 		Message mSuccess = new Message(true, "Teacher successfully assigned new assignment", token);
 		//Message mFail = new Message(true, "Teacher FAILED to assign new assignment", null);
-		Message mNotAuthorized = new Message(true, "User NOT Authorized!", null);
+		Message mNotAuthorized = new Message(false, "User NOT Authorized!", null);
 		Message message;
 		if(aService.authorizeTeacher(Integer.valueOf(teacherId), token)) {
 			AssignmentTemplate at = new AssignmentTemplate(assignmentType, assignmentTitle, java.sql.Date.valueOf(dueDate), java.sql.Time.valueOf(dueTime));
