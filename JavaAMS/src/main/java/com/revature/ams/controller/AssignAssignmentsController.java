@@ -3,6 +3,7 @@ package com.revature.ams.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -66,7 +67,7 @@ public class AssignAssignmentsController {
 	public void setAService(AuthorizationService aService) {
 		this.aService = aService;
 	}
-	
+	/*
 	@RequestMapping(path = "/teacher/create-assignment", method = RequestMethod.POST)
 	@ResponseBody
 	public Message assignAssignmentsToClass(
@@ -106,6 +107,46 @@ public class AssignAssignmentsController {
 			
 			Teacher t = tService.getTeacher(teacherId);
 			message = aiService.assigningAssignment(assignmentClass, at, t);
+			if(!message.isSuccessStatus()) {
+				return message;
+			}
+			
+			return mSuccess;
+			
+		}else {
+			return mNotAuthorized;
+		}
+	}
+	*/
+	@RequestMapping(path = "/teacher/create-assignment", method = RequestMethod.POST)
+	@ResponseBody
+	public Message assignAssignmentsToClass(@RequestBody AssignedAssignmentDTO aaDTO) {
+		Message mSuccess = new Message(true, "Teacher successfully assigned new assignment", aaDTO.getToken());
+		//Message mFail = new Message(true, "Teacher FAILED to assign new assignment", null);
+		Message mNotAuthorized = new Message(true, "User NOT Authorized!", null);
+		Message message;
+		if(aService.authorizeTeacher(aaDTO.getTeacherId(), aaDTO.getToken())) {
+			AssignmentTemplate at = new AssignmentTemplate(aaDTO.getAssignmentType(),aaDTO.getAssignmentTitle(), java.sql.Date.valueOf(aaDTO.getDueDate()),java.sql.Time.valueOf(aaDTO.getDueTime()));
+
+			message = atService.createAssignmentTemplate(at);
+			if(!message.isSuccessStatus()) {
+				return message;
+			}
+			
+			for (int i = 0; i < aaDTO.getQuestions().size(); i++) {
+				Question q = new Question();
+				q.setAssignmentTemplate(at);
+				q.setQuestion_number(i+1);
+				q.setQuestionMaxpoints(aaDTO.getMaxpoints().get(i));
+				q.setQuestionString(aaDTO.getQuestions().get(i));
+				message = qService.createQuestion(q);
+				if(!message.isSuccessStatus()) {
+					return message;
+				}
+			}
+			
+			Teacher t = tService.getTeacher(aaDTO.getTeacherId());
+			message = aiService.assigningAssignment(aaDTO.getAssignmentClass(), at, t);
 			if(!message.isSuccessStatus()) {
 				return message;
 			}
