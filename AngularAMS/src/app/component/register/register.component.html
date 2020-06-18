@@ -10,17 +10,13 @@
       <div id="register">
       <!-- TOGGLE -->
         <div class="onoffswitch">
-          <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" tabindex="0" checked>
+          <input type="checkbox" [(ngModel)]="isStudent" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" tabindex="0" checked>
           <label class="onoffswitch-label" for="myonoffswitch">
-              <span class="onoffswitch-inner" (click)="setUser(false)"></span>
-              <span class="onoffswitch-switch" ></span>
+              <span class="onoffswitch-inner" (ngValue)="true"></span>
+              <span class="onoffswitch-switch" (ngValue)="false" ></span>
           </label>
       </div>
       <!-- TOGGLE -->
-        <div>
-          <button (click)="setUser(false)">Teacher</button>
-          <button (click)="setUser(true)">Student</button>
-        </div>
         <form [formGroup]="registerStudentForm" *ngIf="isStudent">
           <div id="input-items">
             <div id="left-items">

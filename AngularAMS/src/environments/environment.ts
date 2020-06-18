@@ -3,7 +3,10 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  hostName: 'http://ec2-3-15-213-173.us-east-2.compute.amazonaws.com:8080/JavaAMS-0.0.1-SNAPSHOT',
+  login: '/login',
+  
 };
 
 /*
