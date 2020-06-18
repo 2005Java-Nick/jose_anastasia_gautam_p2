@@ -1,6 +1,6 @@
 package com.revature.ams.controller;
 
-import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -8,7 +8,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.revature.ams.dto.Message;
+import java.sql.*;
+
+import com.revature.ams.domain.*;
+import com.revature.ams.dto.*;
 import com.revature.ams.services.*;
 
 public class AssignAssignmentsController {
@@ -64,20 +67,51 @@ public class AssignAssignmentsController {
 		this.aService = aService;
 	}
 	
-	@RequestMapping(path = "/teacher/assign-assignment", method = RequestMethod.POST)
+	@RequestMapping(path = "/teacher/create-assignment", method = RequestMethod.POST)
 	@ResponseBody
-	public Message assignAssignmentsToClass(@RequestParam(name = "teacherId",required =true) int teacherId,@RequestParam(name = "token",required =true) String token) {
+	public Message assignAssignmentsToClass(
+			@RequestParam(name = "teacherId",required =true) int teacherId,
+			@RequestParam(name = "assignmentType",required=true) String assignmentType,
+			@RequestParam(name = "assignmentTitle",required=true) String assignmentTitle,
+			@RequestParam(name = "assignmentClass",required=true) String assignmentClass,
+			@RequestParam(name = "dueDate",required=true) Date dueDate,
+			@RequestParam(name = "dueTime",required=true) Time dueTime,
+			@RequestParam(name = "questions", required=true) List<String> questions,
+			@RequestParam(name = "maxpoints", required=true) List<Double> maxpoints,
+			@RequestParam(name = "token",required =true) String token) 
+	{
 		Message mSuccess = new Message(true, "Teacher successfully assigned new assignment", token);
 		Message mFail = new Message(true, "Teacher FAILED to assign new assignment", null);
 		Message mNotAuthorized = new Message(true, "User NOT Authorized!", null);
+		Message message;
 		if(aService.authorizeTeacher(teacherId, token)) {
-			//TODO: fix conditional "TRUE" placeholder
-			if(true) {
-				//TODO: ADD LOGIC!
-				return mSuccess;
-			}else {
-				return mFail;
+			AssignmentTemplate at = new AssignmentTemplate(assignmentType, assignmentTitle, dueDate, dueTime);
+			
+			message = atService.createAssignmentTemplate(at);
+			if(!message.isSuccessStatus()) {
+				return message;
 			}
+			
+			for (int i = 0; i < questions.size(); i++) {
+				Question q = new Question();
+				q.setAssignmentTemplate(at);
+				q.setQuestion_number(i+1);
+				q.setQuestionMaxpoints(maxpoints.get(i));
+				q.setQuestionString(questions.get(i));
+				message = qService.createQuestion(q);
+				if(!message.isSuccessStatus()) {
+					return message;
+				}
+			}
+			
+			Teacher t = tService.getTeacher(teacherId);
+			message = aiService.assigningAssignment(assignmentClass, at, t);
+			if(!message.isSuccessStatus()) {
+				return message;
+			}
+			
+			return mSuccess;
+			
 		}else {
 			return mNotAuthorized;
 		}

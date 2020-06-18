@@ -74,8 +74,7 @@ public class AssignmentTemplate implements Serializable{
 	}
 	
 	//Can be used to create a new AssignmentTemplate (the creation dates and creation times refer to the CURRENT dates and CURRENT times)
-			public AssignmentTemplate(String assignmentType, String assignmentTitle, Date assignmentDueDate, Time assignmentDueTime,
-					double assignmentMaxpoints) {
+			public AssignmentTemplate(String assignmentType, String assignmentTitle, Date assignmentDueDate, Time assignmentDueTime) {
 				super();
 				//this.assignmentTemplateId = assignmentTemplateId;
 				this.assignmentType = assignmentType;
@@ -84,7 +83,7 @@ public class AssignmentTemplate implements Serializable{
 				this.assignmentCreationTime = java.sql.Time.valueOf(java.time.LocalTime.now());
 				this.assignmentDueDate = assignmentDueDate;
 				this.assignmentDueTime = assignmentDueTime;
-				this.assignmentMaxpoints = assignmentMaxpoints;
+				this.assignmentMaxpoints = 100;
 			}
 	
 	//Constructor contains Set of Questions and Assignment Instances
