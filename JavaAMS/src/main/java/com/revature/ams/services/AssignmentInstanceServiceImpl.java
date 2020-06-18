@@ -82,13 +82,50 @@ public class AssignmentInstanceServiceImpl implements AssignmentInstanceService{
 		aiDTO.setAssignmentName(ai.getAssignmentTemplate().getAssignmentTitle());
 		aiDTO.setAssignmentStatus(ai.getAssignmentStatus());
 		aiDTO.setAssignmentType(ai.getAssignmentTemplate().getAssignmentType());
-		aiDTO.setCompletionDate(ai.getAssignmentCompletionDate().toString());
-		aiDTO.setCompletionTime(ai.getAssignmentCompletionTime().toString());
-		aiDTO.setDueDate(ai.getAssignmentTemplate().getAssignmentDueDate().toString());
-		aiDTO.setDueTime(ai.getAssignmentTemplate().getAssignmentDueTime().toString());
+		
+		if(ai.getAssignmentCompletionDate() == null) {
+			aiDTO.setCompletionDate(null);
+		}else {
+			aiDTO.setCompletionDate(ai.getAssignmentCompletionDate().toString());
+		}
+		
+		if(ai.getAssignmentCompletionTime() == null) {
+			aiDTO.setCompletionTime(null);
+		}else {
+			aiDTO.setCompletionTime(ai.getAssignmentCompletionTime().toString());
+		}
+		
+		if(ai.getAssignmentTemplate().getAssignmentDueDate() == null) {
+			aiDTO.setDueDate(null);
+		}else {
+			aiDTO.setDueDate(ai.getAssignmentTemplate().getAssignmentDueDate().toString());
+		}
+		
+		if(ai.getAssignmentTemplate().getAssignmentDueDate() == null) {
+			aiDTO.setDueDate(null);
+		}else {
+			aiDTO.setDueDate(ai.getAssignmentTemplate().getAssignmentDueDate().toString());
+		}
+		
+		if(ai.getAssignmentTemplate().getAssignmentDueTime() == null) {
+			aiDTO.setDueTime(null);
+		}else {
+			aiDTO.setDueTime(ai.getAssignmentTemplate().getAssignmentDueTime().toString());
+		}
+		
+		if(ai.getAssignmentGradedDate() == null) {
+			aiDTO.setGradedDate(null);
+		}else {
+			aiDTO.setGradedDate(ai.getAssignmentGradedDate().toString());
+		}
+		
+		if(ai.getAssignmentGradedTime() == null) {
+			aiDTO.setGradedTime(null);
+		}else {
+			aiDTO.setGradedTime(ai.getAssignmentGradedTime().toString());
+		}
+		
 		aiDTO.setGrade(ai.getAssignmentFinalGrade());
-		aiDTO.setGradedDate(ai.getAssignmentGradedDate().toString());
-		aiDTO.setGradedTime(ai.getAssignmentGradedTime().toString());
 		aiDTO.setInstanceId(ai.getAssignmentInstanceId());
 		aiDTO.setStudentName(ai.getStudent().getStudentFirstname() +" "+ ai.getStudent().getStudentLastname());
 		aiDTO.setTeacherName(ai.getTeacher().getTeacherFirstname() +" "+ ai.getTeacher().getTeacherLastname());
