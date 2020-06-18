@@ -18,7 +18,7 @@ import com.revature.ams.domain.*;
 import com.revature.ams.dto.*;
 import com.revature.ams.services.*;
 
-@Controller
+@RestController
 public class AssignAssignmentsController {
 	private AssignmentInstanceService aiService;
 	private AssignmentTemplateService atService;
@@ -122,7 +122,7 @@ public class AssignAssignmentsController {
 		}
 	}
 	*/
-	@RequestMapping(path = "/teacher/create-assignment", method = RequestMethod.POST)
+	@RequestMapping(path = "/teacher/create-assignment", method = RequestMethod.POST, headers = "Accepted=application/json")
 	@ResponseBody
 	public Message assignAssignmentsToClass(@RequestBody AssignedAssignmentDTO aaDTO) {
 		Message mSuccess = new Message(true, "Teacher successfully assigned new assignment", aaDTO.getToken());
