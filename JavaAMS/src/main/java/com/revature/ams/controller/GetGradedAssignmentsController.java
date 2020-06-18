@@ -3,6 +3,7 @@ package com.revature.ams.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -12,9 +13,10 @@ import com.revature.ams.dto.AssignmentInstanceDTO;
 import com.revature.ams.services.AssignmentInstanceService;
 import com.revature.ams.services.AuthorizationService;
 
+@Controller
 public class GetGradedAssignmentsController {
-private AssignmentInstanceService aiService;
-private AuthorizationService aService;
+	private AssignmentInstanceService aiService;
+	private AuthorizationService aService;
 
 	public AssignmentInstanceService getAiService() {
 		return aiService;

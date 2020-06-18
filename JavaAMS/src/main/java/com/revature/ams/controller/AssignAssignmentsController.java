@@ -18,7 +18,7 @@ import com.revature.ams.domain.*;
 import com.revature.ams.dto.*;
 import com.revature.ams.services.*;
 
-@RestController
+@Controller
 public class AssignAssignmentsController {
 	private AssignmentInstanceService aiService;
 	private AssignmentTemplateService atService;
@@ -71,8 +71,8 @@ public class AssignAssignmentsController {
 	public void setAService(AuthorizationService aService) {
 		this.aService = aService;
 	}
-	/*
-	@RequestMapping(path = "/teacher/create-assignment", method = RequestMethod.POST)
+	
+	@RequestMapping(path = "/teacher-create-assignment", method = RequestMethod.POST)
 	@ResponseBody
 	public Message assignAssignmentsToClass(
 			@RequestParam(name = "teacherId",required =true) int teacherId,
@@ -121,7 +121,8 @@ public class AssignAssignmentsController {
 			return mNotAuthorized;
 		}
 	}
-	*/
+	
+	/*
 	@RequestMapping(path = "/teacher-create-assignment", method = RequestMethod.POST, headers = "Accepted=application/json")
 	@ResponseBody
 	public Message assignAssignmentsToClass(@RequestBody AssignedAssignmentDTO aaDTO) {
@@ -161,5 +162,6 @@ public class AssignAssignmentsController {
 			return mNotAuthorized;
 		}
 	}
+	*/
 	
 }
