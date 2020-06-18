@@ -118,7 +118,7 @@ public class AssignAssignmentsController {
 		}
 	}
 	*/
-	@RequestMapping(path = "/teacher/create-assignment", method = RequestMethod.POST)
+	@RequestMapping(value = "/teacher/create-assignment", method = RequestMethod.POST)
 	@ResponseBody
 	public Message assignAssignmentsToClass(@RequestBody AssignedAssignmentDTO aaDTO) {
 		Message mSuccess = new Message(true, "Teacher successfully assigned new assignment", aaDTO.getToken());
