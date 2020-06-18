@@ -34,7 +34,8 @@ export class ViewGradedComponent implements OnInit {
  sidebarOptions;
 
  constructor(sidebarOptionsService:SidebarOptionsService) { 
-   this.sidebarOptions = sidebarOptionsService.studentSideOptions("");
+   this.sidebarOptions = sidebarOptionsService.studentSideOptions("/student-graded-dashboard");
+   this.sidebarOptions = sidebarOptionsService.teacherSideOptions("/teacher-graded-dashboard");
  }
 
   ngOnInit(): void {

@@ -14,7 +14,7 @@ export class StudentTakeDashboardComponent implements OnInit {
   sidebarOptions;
 
   constructor(sidebarOptionsService:SidebarOptionsService) { 
-    this.sidebarOptions = sidebarOptionsService.studentSideOptions("");
+    this.sidebarOptions = sidebarOptionsService.studentSideOptions('/student-dashboard');
   }
 
   ngOnInit(): void {

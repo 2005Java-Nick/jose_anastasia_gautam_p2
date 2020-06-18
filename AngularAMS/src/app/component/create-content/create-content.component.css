@@ -15,7 +15,13 @@
 label {
   font-size: 1.25rem;
   margin-top: 1rem;
+  font-weight: bold;
 }
+
+#time{
+  padding-left: 2em;
+}
+
 
 .form-element {
   display: flex;
@@ -62,3 +68,20 @@ button {
   margin-left: 1rem;
   cursor: pointer;
 }
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: rgb(109, 109, 109);
+  opacity: 1; /* Firefox */
+}
+
+select:required:invalid {
+  color: #666;
+}
+option[value=""][disabled] {
+  display: none;
+  color: gray;
+}
+
+
+::-webkit-datetime-edit { padding: 1em 5em 1em 5em}; 
+::-webkit-inner-spin-button { display: none; }

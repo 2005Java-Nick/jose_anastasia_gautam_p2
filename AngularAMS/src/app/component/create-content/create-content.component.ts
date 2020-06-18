@@ -15,6 +15,8 @@ export class CreateContentComponent implements OnInit {
     assignmentTitle: [''],
     assignToClass: [''],
     assignToSchool: [''],
+    dueDate:[''],
+    dueTime:[''],
     question0: [''],
     point0: ['']
   });

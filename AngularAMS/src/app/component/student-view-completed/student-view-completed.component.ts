@@ -34,7 +34,7 @@ export class StudentViewCompletedComponent implements OnInit {
  sidebarOptions;
 
  constructor(sidebarOptionsService:SidebarOptionsService) { 
-   this.sidebarOptions = sidebarOptionsService.studentSideOptions("");
+   this.sidebarOptions = sidebarOptionsService.studentSideOptions("/student-completed-dashboard");
  }
 
   ngOnInit(): void {

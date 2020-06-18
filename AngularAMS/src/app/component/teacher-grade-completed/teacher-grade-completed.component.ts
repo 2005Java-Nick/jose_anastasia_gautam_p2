@@ -34,7 +34,7 @@ export class TeacherGradeCompletedComponent implements OnInit {
  sidebarOptions;
 
  constructor(sidebarOptionsService:SidebarOptionsService) { 
-   this.sidebarOptions = sidebarOptionsService.studentSideOptions("");
+   this.sidebarOptions = sidebarOptionsService.studentSideOptions('/teacher-dashboard');
  }
 
   ngOnInit(): void {
