@@ -3,6 +3,7 @@ package com.revature.ams.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -17,7 +18,7 @@ import com.revature.ams.domain.*;
 import com.revature.ams.dto.*;
 import com.revature.ams.services.*;
 
-@RestController
+@Controller
 public class AssignAssignmentsController {
 	private AssignmentInstanceService aiService;
 	private AssignmentTemplateService atService;
@@ -121,7 +122,7 @@ public class AssignAssignmentsController {
 		}
 	}
 	*/
-	@RequestMapping(value = "/teacher/create-assignment", method = RequestMethod.POST, headers = "Accept=application/json")
+	@RequestMapping(path = "/teacher/create-assignment", method = RequestMethod.POST)
 	@ResponseBody
 	public Message assignAssignmentsToClass(@RequestBody AssignedAssignmentDTO aaDTO) {
 		Message mSuccess = new Message(true, "Teacher successfully assigned new assignment", aaDTO.getToken());
