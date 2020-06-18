@@ -1,11 +1,13 @@
 package com.revature.ams.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.revature.ams.dao.AnswersDAOHibernate;
 import com.revature.ams.domain.Answers;
 import com.revature.ams.dto.Message;
 
+@Service
 public class AnswersServiceImpl implements AnswersService {
 private AnswersDAOHibernate answerDao;
 	

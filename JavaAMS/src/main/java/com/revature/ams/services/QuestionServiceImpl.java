@@ -1,13 +1,14 @@
 package com.revature.ams.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.revature.ams.dao.AssignmentTemplateDAOHibernate;
 import com.revature.ams.dao.QuestionDAOHibernate;
 import com.revature.ams.domain.AssignmentTemplate;
 import com.revature.ams.domain.Question;
 import com.revature.ams.dto.Message;
-
+@Service
 public class QuestionServiceImpl implements QuestionService {
 	private QuestionDAOHibernate questionDao;
 	
