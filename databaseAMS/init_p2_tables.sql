@@ -159,7 +159,7 @@ assignment_completion_time time, assignment_graded_date date, assignment_graded_
 assignment_finalgrade numeric(5,2), assignment_status varchar) as 
 $new_assignments$
 begin
-	return query (select * from assignment_instance ai where ai.assignment_status = 'NEW');
+	return query (select * from ams.assignment_instance ai where ai.assignment_status = 'NEW');
 end;
 $new_assignments$ language plpgsql;
 
@@ -175,7 +175,7 @@ assignment_completion_time time, assignment_graded_date date, assignment_graded_
 assignment_finalgrade numeric(5,2), assignment_status varchar) as 
 $completed_assignments$
 begin
-	return query (select * from assignment_instance ai where ai.assignment_status = 'COMPLETED');
+	return query (select * from ams.assignment_instance ai where ai.assignment_status = 'COMPLETED');
 end;
 $completed_assignments$ language plpgsql;
 
@@ -191,7 +191,7 @@ assignment_completion_time time, assignment_graded_date date, assignment_graded_
 assignment_finalgrade numeric(5,2), assignment_status varchar) as 
 $graded_assignments$
 begin
-	return query (select * from assignment_instance ai where ai.assignment_status = 'GRADED');
+	return query (select * from ams.assignment_instance ai where ai.assignment_status = 'GRADED');
 end;
 $graded_assignments$ language plpgsql;
 
@@ -207,10 +207,10 @@ assignment_completion_time time, assignment_graded_date date, assignment_graded_
 assignment_finalgrade numeric(5,2), assignment_status varchar) as 
 $new_student_assignments$
 begin
-	return query (select * from assignment_instance ai where ai.assignment_status = 'NEW' and ai.assignment_student_id = student_id);
+	return query (select * from ams.assignment_instance ai where ai.assignment_status = 'NEW' and ai.assignment_student_id = student_id);
 end;
 $new_student_assignments$ language plpgsql;
--- select * from all_new_assignments_student(student_id);
+select * from all_new_assignments_student(123456789::bigint);
 
 ------------------------------------------------------------------------------------------------------------
 -- Retrieve all completed assignments for a particular student (by id)
@@ -222,7 +222,7 @@ assignment_completion_time time, assignment_graded_date date, assignment_graded_
 assignment_finalgrade numeric(5,2), assignment_status varchar) as 
 $completed_student_assignments$
 begin
-	return query (select * from assignment_instance ai where ai.assignment_status = 'COMPLETED' and ai.assignment_student_id = student_id);
+	return query (select * from ams.assignment_instance ai where ai.assignment_status = 'COMPLETED' and ai.assignment_student_id = student_id);
 end;
 $completed_student_assignments$ language plpgsql;
 -- select * from all_completed_assignments_student(student_id);
@@ -237,7 +237,7 @@ assignment_completion_time time, assignment_graded_date date, assignment_graded_
 assignment_finalgrade numeric(5,2), assignment_status varchar) as 
 $graded_student_assignments$
 begin
-	return query (select * from assignment_instance ai where ai.assignment_status = 'GRADED' and ai.assignment_student_id = student_id);
+	return query (select * from ams.assignment_instance ai where ai.assignment_status = 'GRADED' and ai.assignment_student_id = student_id);
 end;
 $graded_student_assignments$ language plpgsql;
 -- select * from all_graded_assignments_student(student_id);
@@ -252,7 +252,7 @@ assignment_completion_time time, assignment_graded_date date, assignment_graded_
 assignment_finalgrade numeric(5,2), assignment_status varchar) as 
 $completed_teacher_assignments$
 begin
-	return query (select * from assignment_instance ai where ai.assignment_status = 'COMPLETED' and ai.assignment_teacher_id = teacher_id);
+	return query (select * from ams.assignment_instance ai where ai.assignment_status = 'COMPLETED' and ai.assignment_teacher_id = teacher_id);
 end;
 $completed_teacher_assignments$ language plpgsql;
 -- select * from all_completed_assignments_teacher(teacher_id);
@@ -267,7 +267,7 @@ assignment_completion_time time, assignment_graded_date date, assignment_graded_
 assignment_finalgrade numeric(5,2), assignment_status varchar) as 
 $graded_teacher_assignments$
 begin
-	return query (select * from assignment_instance ai where ai.assignment_status = 'GRADED' and ai.assignment_teacher_id = teacher_id);
+	return query (select * from ams.assignment_instance ai where ai.assignment_status = 'GRADED' and ai.assignment_teacher_id = teacher_id);
 end;
 $graded_teacher_assignments$ language plpgsql;
 -- select * from all_graded_assignments_teacher(teacher_id);
