@@ -38,7 +38,7 @@ public class GetCompletedAssignmentsController {
 	
 	@RequestMapping(path = "/student-completed-assignments", method = RequestMethod.GET)
 	@ResponseBody
-	public List<AssignmentInstanceDTO> getStudentCompletedAssignments(@RequestParam(name = "studentId",required = true) int studentId, @RequestParam(name = "token",required = true) String token){
+	public List<AssignmentInstanceDTO> getStudentCompletedAssignments(@RequestParam(name = "studentId",required = true) Integer studentId, @RequestParam(name = "token",required = true) String token){
 		if(aService.authorizeStudent(studentId, token)) {
 			return aiService.getCompletedAssignmentInstancesByStudent(studentId);
 		}else {
@@ -48,7 +48,7 @@ public class GetCompletedAssignmentsController {
 	
 	@RequestMapping(path = "/teacher-completed-assignments", method = RequestMethod.GET)
 	@ResponseBody
-	public List<AssignmentInstanceDTO> getTeacherCompletedAssignments(@RequestParam(name = "teacherId",required =true) int teacherId, @RequestParam(name = "token",required = true) String token){
+	public List<AssignmentInstanceDTO> getTeacherCompletedAssignments(@RequestParam(name = "teacherId",required =true) Integer teacherId, @RequestParam(name = "token",required = true) String token){
 		if(aService.authorizeTeacher(teacherId, token)) {
 			return aiService.getCompletedAssignmentInstancesByTeacher(teacherId);
 		}

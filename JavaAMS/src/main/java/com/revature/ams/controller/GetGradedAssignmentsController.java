@@ -38,7 +38,7 @@ public class GetGradedAssignmentsController {
 	
 	@RequestMapping(path = "/student-graded-assignments", method = RequestMethod.GET)
 	@ResponseBody
-	public List<AssignmentInstanceDTO> getStudentGradedAssignments(@RequestParam(name = "studentId",required =true) int studentId, @RequestParam(name = "token",required =true) String token){
+	public List<AssignmentInstanceDTO> getStudentGradedAssignments(@RequestParam(name = "studentId",required =true) Integer studentId, @RequestParam(name = "token",required =true) String token){
 		if(aService.authorizeStudent(studentId, token)){
 			return aiService.getGradedAssignmentInstancesByStudent(studentId);
 		}else {
@@ -48,7 +48,7 @@ public class GetGradedAssignmentsController {
 	
 	@RequestMapping(path = "/teacher-graded-assignments", method = RequestMethod.GET)
 	@ResponseBody
-	public List<AssignmentInstanceDTO> getTeacherGradedAssignments(@RequestParam(name = "teacherId",required =true) int teacherId,@RequestParam(name = "token",required =true) String token){
+	public List<AssignmentInstanceDTO> getTeacherGradedAssignments(@RequestParam(name = "teacherId",required =true) Integer teacherId,@RequestParam(name = "token",required =true) String token){
 		if(aService.authorizeTeacher(teacherId, token)) {
 			return aiService.getGradedAssignmentInstancesByTeacher(teacherId);
 		}

@@ -26,7 +26,7 @@ public class RegisterController {
 	
 	@RequestMapping(path = "/register-student", method = RequestMethod.POST)
 	@ResponseBody
-	public Message registerStudent(@RequestParam(name="studentId", required=true) int studentId,
+	public Message registerStudent(@RequestParam(name="studentId", required=true) Integer studentId,
 			@RequestParam(name="studentFirstName", required=true) String firstname,
 			@RequestParam(name="studentLastName", required=true) String lastname,
 			@RequestParam(name="studentEmail", required=true) String email,
@@ -39,7 +39,7 @@ public class RegisterController {
 	
 	@RequestMapping(path = "/register-teacher", method = RequestMethod.POST)
 	@ResponseBody
-	public Message registerTeacher(@RequestParam(name="teacherId", required=true) int teacherId,
+	public Message registerTeacher(@RequestParam(name="teacherId", required=true) Integer teacherId,
 			@RequestParam(name="teacherFirstName", required=true) String firstname,
 			@RequestParam(name="teacherLastName", required=true) String lastname,
 			@RequestParam(name="teacherEmail", required=true) String email,

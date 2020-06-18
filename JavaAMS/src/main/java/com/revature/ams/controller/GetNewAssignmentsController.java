@@ -38,7 +38,7 @@ public class GetNewAssignmentsController {
 
 	@RequestMapping(path = "/student-new-assignments", method = RequestMethod.GET)
 	@ResponseBody
-	public List<AssignmentInstanceDTO> getNewAssignments(@RequestParam(name = "studentId",required = true) int studentId, @RequestParam(name = "token",required = true) String token){
+	public List<AssignmentInstanceDTO> getNewAssignments(@RequestParam(name = "studentId",required = true) Integer studentId, @RequestParam(name = "token",required = true) String token){
 		if(aService.authorizeStudent(studentId, token)) {
 			return aiService.getNewAssignmentInstancesByStudent(studentId);
 		}else {
