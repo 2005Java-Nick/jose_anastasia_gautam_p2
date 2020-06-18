@@ -29,7 +29,7 @@ public class LoginController {
 	@RequestMapping(path = "/login", method = RequestMethod.POST)
 	@ResponseBody
   @CrossOrigin
-	public Message login(@RequestParam(name="userId", required=true) int userId,
+	public Message login(@RequestParam(name="userId", required=true) Integer userId,
 			@RequestParam(name="userPassword", required=true) String password) {
 		return loginService.login(userId, password);
 		
