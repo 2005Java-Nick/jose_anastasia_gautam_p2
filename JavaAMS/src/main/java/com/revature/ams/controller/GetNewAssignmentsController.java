@@ -42,6 +42,7 @@ public class GetNewAssignmentsController {
 	@CrossOrigin
 	public List<AssignmentInstanceDTO> getNewAssignments(@RequestParam(name = "studentId",required = true) Integer studentId, @RequestParam(name = "token",required = true) String token){
 		if(aService.authorizeStudent(studentId, token)) {
+			System.out.println(aiService.getNewAssignmentInstancesByStudent(123456789));
 			return aiService.getNewAssignmentInstancesByStudent(studentId);
 		}else {
 			return null;
