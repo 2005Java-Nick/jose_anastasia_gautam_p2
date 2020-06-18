@@ -14,7 +14,7 @@ import org.springframework.web.servlet.view.JstlView;
 @Configuration
 @ComponentScan(basePackages = "com.revature.ams")
 @EnableWebMvc
-public class WebMvcConfiguration extends WebMvcConfigurer {
+public class WebMvcConfiguration implements WebMvcConfigurer {
 
   @Override
   public void addResourceHandlers(ResourceHandlerRegistry registry) {
