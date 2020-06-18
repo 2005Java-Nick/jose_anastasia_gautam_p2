@@ -23,6 +23,7 @@ import org.springframework.stereotype.Component;
 import com.revature.ams.domain.Answers;
 import com.revature.ams.domain.AssignmentInstance;
 import com.revature.ams.domain.Student;
+import com.revature.ams.domain.Teacher;
 
 @Component
 public class AssignmentInstanceDAOHibernate implements AssignmentInstanceDAO{
@@ -124,66 +125,58 @@ public class AssignmentInstanceDAOHibernate implements AssignmentInstanceDAO{
 	
 	@Override
 	public List<AssignmentInstance> getCompletedAssignmentInstancesByStudent(int studentId) {
-		Session sess = sessionFactory.openSession();
-		ProcedureCall procedureCall = sess.createStoredProcedureCall("all_completed_assignments_student");
-		procedureCall.registerParameter("student_id", Integer.class, ParameterMode.IN);
-		procedureCall.getParameterRegistration("student_id").bindValue(studentId);                
-		ProcedureOutputs procedureOutputs = procedureCall.getOutputs();
-		ResultSetOutput resultSetOutput = (ResultSetOutput) procedureOutputs.getCurrent();
-		List<AssignmentInstance> results = (List<AssignmentInstance>) resultSetOutput.getResultList();
-		List<AssignmentInstance> assignmentInstances = new ArrayList<AssignmentInstance>();
-		for(int i=0;i<results.size();i++) {
-			assignmentInstances.add(results.get(i));
+		Student s = studentDAO.getStudent(studentId);
+		Set<AssignmentInstance> aiSet= s.getAssignmentInstances();
+		List<AssignmentInstance> ai = new ArrayList<AssignmentInstance>();
+		for(AssignmentInstance aIns: aiSet) {
+			if(aIns.getAssignmentStatus().equals("COMPLETED")) {
+				ai.add(aIns);
+			}
+			
 		}
-		return assignmentInstances;
+		return ai;
 	}
 	
 	@Override
 	public List<AssignmentInstance> getGradedAssignmentInstancesByStudent(int studentId) {
-		Session sess = sessionFactory.openSession();
-		ProcedureCall procedureCall = sess.createStoredProcedureCall("all_graded_assignments_student");
-		procedureCall.registerParameter("student_id", Integer.class, ParameterMode.IN);
-		procedureCall.getParameterRegistration("student_id").bindValue(studentId);                
-		ProcedureOutputs procedureOutputs = procedureCall.getOutputs();
-		ResultSetOutput resultSetOutput = (ResultSetOutput) procedureOutputs.getCurrent();
-		List<AssignmentInstance> results = (List<AssignmentInstance>) resultSetOutput.getResultList();
-		List<AssignmentInstance> assignmentInstances = new ArrayList<AssignmentInstance>();
-		for(int i=0;i<results.size();i++) {
-			assignmentInstances.add(results.get(i));
+		Student s = studentDAO.getStudent(studentId);
+		Set<AssignmentInstance> aiSet= s.getAssignmentInstances();
+		List<AssignmentInstance> ai = new ArrayList<AssignmentInstance>();
+		for(AssignmentInstance aIns: aiSet) {
+			if(aIns.getAssignmentStatus().equals("GRADED")) {
+				ai.add(aIns);
+			}
+			
 		}
-		return assignmentInstances;
+		return ai;
 	}
 	
 	@Override
 	public List<AssignmentInstance> getCompletedAssignmentInstancesByTeacher(int teacherId) {
-		Session sess = sessionFactory.openSession();
-		ProcedureCall procedureCall = sess.createStoredProcedureCall("all_completed_assignments_teacher");
-		procedureCall.registerParameter("teacher_id", Integer.class, ParameterMode.IN);
-		procedureCall.getParameterRegistration("teacher_id").bindValue(teacherId);                
-		ProcedureOutputs procedureOutputs = procedureCall.getOutputs();
-		ResultSetOutput resultSetOutput = (ResultSetOutput) procedureOutputs.getCurrent();
-		List<AssignmentInstance> results = (List<AssignmentInstance>) resultSetOutput.getResultList();
-		List<AssignmentInstance> assignmentInstances = new ArrayList<AssignmentInstance>();
-		for(int i=0;i<results.size();i++) {
-			assignmentInstances.add(results.get(i));
+		Teacher t = teacherDAO.getTeacher(teacherId);
+		Set<AssignmentInstance> aiSet= t.getAssignmentInstances();
+		List<AssignmentInstance> ai = new ArrayList<AssignmentInstance>();
+		for(AssignmentInstance aIns: aiSet) {
+			if(aIns.getAssignmentStatus().equals("COMPLETED")) {
+				ai.add(aIns);
+			}
+			
 		}
-		return assignmentInstances;
+		return ai;
 	}
 	
 	@Override
 	public List<AssignmentInstance> getGradedAssignmentInstancesByTeacher(int teacherId) {
-		Session sess = sessionFactory.openSession();
-		ProcedureCall procedureCall = sess.createStoredProcedureCall("all_graded_assignments_teacher");
-		procedureCall.registerParameter("teacher_id", Integer.class, ParameterMode.IN);
-		procedureCall.getParameterRegistration("teacher_id").bindValue(teacherId);                
-		ProcedureOutputs procedureOutputs = procedureCall.getOutputs();
-		ResultSetOutput resultSetOutput = (ResultSetOutput) procedureOutputs.getCurrent();
-		List<AssignmentInstance> results = (List<AssignmentInstance>) resultSetOutput.getResultList();
-		List<AssignmentInstance> assignmentInstances = new ArrayList<AssignmentInstance>();
-		for(int i=0;i<results.size();i++) {
-			assignmentInstances.add(results.get(i));
+		Teacher t = teacherDAO.getTeacher(teacherId);
+		Set<AssignmentInstance> aiSet= t.getAssignmentInstances();
+		List<AssignmentInstance> ai = new ArrayList<AssignmentInstance>();
+		for(AssignmentInstance aIns: aiSet) {
+			if(aIns.getAssignmentStatus().equals("GRADED")) {
+				ai.add(aIns);
+			}
+			
 		}
-		return assignmentInstances;
+		return ai;
 	}
 	
 	

@@ -41,11 +41,11 @@ public class GetNewAssignmentsController {
 	@RequestMapping(path = "/student-new-assignments", method = RequestMethod.GET)
 	@ResponseBody
 	@CrossOrigin
-	public List<AssignmentInstanceDTO> getNewAssignments(@RequestParam(name = "studentId",required = true)Integer studentId, @RequestBody String token){//(name = "token",required = true) String token){
+	public List<AssignmentInstanceDTO> getNewAssignments(@RequestParam(name = "studentId",required = true)Integer studentId, @RequestBody String token){//@RequestParam(name = "token",required = true) String token){
 		System.out.println("GAUTAM HERE IS THE LIST!!!!!!!: "+aiService.getNewAssignmentInstancesByStudent(studentId));
 		
 		if(aService.authorizeStudent(Integer.valueOf(studentId), token)) {
-			System.out.println("GAUTAM HERE IS THE LIST!!!!!!!: "+aiService.getNewAssignmentInstancesByStudent(123456789));
+			System.out.println("GAUTAM HERE IS THE LIST!!!!!!!: "+aiService.getNewAssignmentInstancesByStudent(studentId));
 			
 			return aiService.getNewAssignmentInstancesByStudent(studentId);
 		}else {

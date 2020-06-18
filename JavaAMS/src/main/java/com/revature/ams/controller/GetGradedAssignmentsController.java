@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -40,8 +41,10 @@ public class GetGradedAssignmentsController {
 	@RequestMapping(path = "/student-graded-assignments", method = RequestMethod.GET)
 	@ResponseBody
 	@CrossOrigin
-	public List<AssignmentInstanceDTO> getStudentGradedAssignments(@RequestParam(name = "studentId",required =true) Integer studentId, @RequestParam(name = "token",required =true) String token){
+	public List<AssignmentInstanceDTO> getStudentGradedAssignments(@RequestParam(name = "studentId",required =true) Integer studentId,@RequestBody String token){
+		System.out.println("GAUTAM HERE IS THE STUDENT GRADED LIST!!!!!!!: "+aiService.getGradedAssignmentInstancesByStudent(studentId));
 		if(aService.authorizeStudent(studentId, token)){
+			System.out.println("GAUTAM HERE IS THE STUDENT GRADED LIST!!!!!!!: "+aiService.getGradedAssignmentInstancesByStudent(studentId));
 			return aiService.getGradedAssignmentInstancesByStudent(studentId);
 		}else {
 			return null;
@@ -51,8 +54,10 @@ public class GetGradedAssignmentsController {
 	@RequestMapping(path = "/teacher-graded-assignments", method = RequestMethod.GET)
 	@ResponseBody
 	@CrossOrigin
-	public List<AssignmentInstanceDTO> getTeacherGradedAssignments(@RequestParam(name = "teacherId",required =true) Integer teacherId,@RequestParam(name = "token",required =true) String token){
+	public List<AssignmentInstanceDTO> getTeacherGradedAssignments(@RequestParam(name = "teacherId",required =true) Integer teacherId,@RequestBody String token){
+		System.out.println("GAUTAM HERE IS THE TEACHER GRADED LIST!!!!!!!: "+aiService.getGradedAssignmentInstancesByTeacher(teacherId));
 		if(aService.authorizeTeacher(teacherId, token)) {
+			System.out.println("GAUTAM HERE IS THE TEACHER GRADED LIST!!!!!!!: "+aiService.getGradedAssignmentInstancesByTeacher(teacherId));
 			return aiService.getGradedAssignmentInstancesByTeacher(teacherId);
 		}
 		return null;
