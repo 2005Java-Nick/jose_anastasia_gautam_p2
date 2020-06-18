@@ -36,7 +36,7 @@ public class GetCompletedAssignmentsController {
 		this.aService = aService;
 	}
 	
-	@RequestMapping(path = "/student/completed-assignments", method = RequestMethod.GET)
+	@RequestMapping(path = "/student-completed-assignments", method = RequestMethod.GET)
 	@ResponseBody
 	public List<AssignmentInstanceDTO> getStudentCompletedAssignments(@RequestParam(name = "studentId",required = true) int studentId, @RequestParam(name = "token",required = true) String token){
 		if(aService.authorizeStudent(studentId, token)) {
@@ -46,7 +46,7 @@ public class GetCompletedAssignmentsController {
 		}
 	}
 	
-	@RequestMapping(path = "/teacher/completed-assignments", method = RequestMethod.GET)
+	@RequestMapping(path = "/teacher-completed-assignments", method = RequestMethod.GET)
 	@ResponseBody
 	public List<AssignmentInstanceDTO> getTeacherCompletedAssignments(@RequestParam(name = "teacherId",required =true) int teacherId, @RequestParam(name = "token",required = true) String token){
 		if(aService.authorizeTeacher(teacherId, token)) {

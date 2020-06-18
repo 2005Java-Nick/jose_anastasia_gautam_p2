@@ -34,7 +34,7 @@ private AuthorizationService aService;
 		this.aService = aService;
 	}
 	
-	@RequestMapping(path = "/student/graded-assignments", method = RequestMethod.GET)
+	@RequestMapping(path = "/student-graded-assignments", method = RequestMethod.GET)
 	@ResponseBody
 	public List<AssignmentInstanceDTO> getStudentGradedAssignments(@RequestParam(name = "studentId",required =true) int studentId, @RequestParam(name = "token",required =true) String token){
 		if(aService.authorizeStudent(studentId, token)){
@@ -44,7 +44,7 @@ private AuthorizationService aService;
 		}
 	}
 	
-	@RequestMapping(path = "/teacher/graded-assignments", method = RequestMethod.GET)
+	@RequestMapping(path = "/teacher-graded-assignments", method = RequestMethod.GET)
 	@ResponseBody
 	public List<AssignmentInstanceDTO> getTeacherGradedAssignments(@RequestParam(name = "teacherId",required =true) int teacherId,@RequestParam(name = "token",required =true) String token){
 		if(aService.authorizeTeacher(teacherId, token)) {

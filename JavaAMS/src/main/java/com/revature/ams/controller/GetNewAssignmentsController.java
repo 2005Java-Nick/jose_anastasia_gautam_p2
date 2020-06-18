@@ -36,7 +36,7 @@ public class GetNewAssignmentsController {
 		this.aService = aService;
 	}
 
-	@RequestMapping(path = "/student/new-assignments", method = RequestMethod.GET)
+	@RequestMapping(path = "/student-new-assignments", method = RequestMethod.GET)
 	@ResponseBody
 	public List<AssignmentInstanceDTO> getNewAssignments(@RequestParam(name = "studentId",required = true) int studentId, @RequestParam(name = "token",required = true) String token){
 		if(aService.authorizeStudent(studentId, token)) {
