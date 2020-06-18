@@ -2,6 +2,8 @@ package com.revature.ams.dao;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 import javax.persistence.ParameterMode;
 import javax.persistence.TypedQuery;
@@ -18,13 +20,17 @@ import org.hibernate.result.ResultSetOutput;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.revature.ams.domain.Answers;
 import com.revature.ams.domain.AssignmentInstance;
+import com.revature.ams.domain.Student;
 
 @Component
 public class AssignmentInstanceDAOHibernate implements AssignmentInstanceDAO{
 	
 	private SessionFactory sessionFactory;
-
+	private StudentDAO studentDAO;
+	private TeacherDAO teacherDAO;
+	
 	public SessionFactory getSessionFactory() {
 		return sessionFactory;
 	}
@@ -32,6 +38,22 @@ public class AssignmentInstanceDAOHibernate implements AssignmentInstanceDAO{
 	@Autowired
 	public void setSessionFactory(SessionFactory sessionFactory) {
 		this.sessionFactory = sessionFactory;
+	}
+
+	public StudentDAO getStudentDAO() {
+		return studentDAO;
+	}
+	@Autowired
+	public void setStudentDAO(StudentDAO studentDAO) {
+		this.studentDAO = studentDAO;
+	}
+	
+	public TeacherDAO getTeacherDAO() {
+		return teacherDAO;
+	}
+	@Autowired
+	public void setTeacherDAO(TeacherDAO teacherDAO) {
+		this.teacherDAO = teacherDAO;
 	}
 
 	@Override
@@ -88,18 +110,16 @@ public class AssignmentInstanceDAOHibernate implements AssignmentInstanceDAO{
 	
 	@Override
 	public List<AssignmentInstance> getNewAssignmentInstancesByStudent(int studentId) {
-		Session sess = sessionFactory.openSession();
-		ProcedureCall procedureCall = sess.createStoredProcedureCall("all_new_assignments_student");
-		procedureCall.registerParameter("student_id", Integer.class, ParameterMode.IN);
-		procedureCall.getParameterRegistration("student_id").bindValue(studentId);                
-		ProcedureOutputs procedureOutputs = procedureCall.getOutputs();
-		ResultSetOutput resultSetOutput = (ResultSetOutput) procedureOutputs.getCurrent();
-		List<AssignmentInstance> results = (List<AssignmentInstance>) resultSetOutput.getResultList();
-		List<AssignmentInstance> assignmentInstances = new ArrayList<AssignmentInstance>();
-		for(int i=0;i<results.size();i++) {
-			assignmentInstances.add(results.get(i));
+		Student s = studentDAO.getStudent(studentId);
+		Set<AssignmentInstance> aiSet= s.getAssignmentInstances();
+		List<AssignmentInstance> ai = new ArrayList<AssignmentInstance>();
+		for(AssignmentInstance aIns: aiSet) {
+			if(aIns.getAssignmentStatus().equals("NEW")) {
+				ai.add(aIns);
+			}
+			
 		}
-		return assignmentInstances;
+		return ai;
 	}
 	
 	@Override

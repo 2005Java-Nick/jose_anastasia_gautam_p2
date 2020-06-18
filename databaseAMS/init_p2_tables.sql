@@ -210,7 +210,7 @@ begin
 	return query (select * from ams.assignment_instance ai where ai.assignment_status = 'NEW' and ai.assignment_student_id = student_id);
 end;
 $new_student_assignments$ language plpgsql;
-select * from all_new_assignments_student(123456789::bigint);
+--select * all_new_assignments_student(123456789::bigint);
 
 ------------------------------------------------------------------------------------------------------------
 -- Retrieve all completed assignments for a particular student (by id)
@@ -240,7 +240,7 @@ begin
 	return query (select * from ams.assignment_instance ai where ai.assignment_status = 'GRADED' and ai.assignment_student_id = student_id);
 end;
 $graded_student_assignments$ language plpgsql;
--- select * from all_graded_assignments_student(student_id);
+--select * from all_graded_assignments_student(student_id);
 
 ------------------------------------------------------------------------------------------------------------
 -- Retrieve all completed assignments that were assigned by a particular teacher (by id) 
