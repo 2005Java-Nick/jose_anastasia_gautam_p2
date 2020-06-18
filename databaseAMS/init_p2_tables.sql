@@ -78,7 +78,7 @@ answers_comments text
 --------------------------------------------------------
 -- CREATE ENUM TYPE status
 --------------------------------------------------------
-create type status as enum('NEW', 'COMPLETED', 'GRADED');
+-- create type status as enum('NEW', 'COMPLETED', 'GRADED');
 --------------------------------------------------------
 
 create table ams.assignment_instance(-- many-to-one with assignment_template, many-to-one with teacher, many-to-one with student
@@ -91,7 +91,7 @@ assignment_completion_time time,
 assignment_graded_date date,
 assignment_graded_time time,
 assignment_finalgrade numeric(5,2) check(assignment_finalgrade <= 100.00),
-assignment_status status not null
+assignment_status varchar not null
 );
 
 create table ams.assignment_template(
@@ -156,7 +156,7 @@ create or replace function all_new_assignments() returns
 table(assignment_instance_id bigint, assignment_template_id bigint, 
 assignment_teacher_id bigint, assignment_student_id bigint, assignment_completion_date date,
 assignment_completion_time time, assignment_graded_date date, assignment_graded_time time,
-assignment_finalgrade numeric(5,2), assignment_status status) as 
+assignment_finalgrade numeric(5,2), assignment_status varchar) as 
 $new_assignments$
 begin
 	return query (select * from assignment_instance ai where ai.assignment_status = 'NEW');
@@ -172,7 +172,7 @@ create or replace function all_completed_assignments() returns
 table(assignment_instance_id bigint, assignment_template_id bigint, 
 assignment_teacher_id bigint, assignment_student_id bigint, assignment_completion_date date,
 assignment_completion_time time, assignment_graded_date date, assignment_graded_time time,
-assignment_finalgrade numeric(5,2), assignment_status status) as 
+assignment_finalgrade numeric(5,2), assignment_status varchar) as 
 $completed_assignments$
 begin
 	return query (select * from assignment_instance ai where ai.assignment_status = 'COMPLETED');
@@ -188,7 +188,7 @@ create or replace function all_graded_assignments() returns
 table(assignment_instance_id bigint, assignment_template_id bigint, 
 assignment_teacher_id bigint, assignment_student_id bigint, assignment_completion_date date,
 assignment_completion_time time, assignment_graded_date date, assignment_graded_time time,
-assignment_finalgrade numeric(5,2), assignment_status status) as 
+assignment_finalgrade numeric(5,2), assignment_status varchar) as 
 $graded_assignments$
 begin
 	return query (select * from assignment_instance ai where ai.assignment_status = 'GRADED');
@@ -204,7 +204,7 @@ create or replace function all_new_assignments_student(student_id in bigint) ret
 table(assignment_instance_id bigint, assignment_template_id bigint, 
 assignment_teacher_id bigint, assignment_student_id bigint, assignment_completion_date date,
 assignment_completion_time time, assignment_graded_date date, assignment_graded_time time,
-assignment_finalgrade numeric(5,2), assignment_status status) as 
+assignment_finalgrade numeric(5,2), assignment_status varchar) as 
 $new_student_assignments$
 begin
 	return query (select * from assignment_instance ai where ai.assignment_status = 'NEW' and ai.assignment_student_id = student_id);
@@ -219,7 +219,7 @@ create or replace function all_completed_assignments_student(student_id in bigin
 table(assignment_instance_id bigint, assignment_template_id bigint, 
 assignment_teacher_id bigint, assignment_student_id bigint, assignment_completion_date date,
 assignment_completion_time time, assignment_graded_date date, assignment_graded_time time,
-assignment_finalgrade numeric(5,2), assignment_status status) as 
+assignment_finalgrade numeric(5,2), assignment_status varchar) as 
 $completed_student_assignments$
 begin
 	return query (select * from assignment_instance ai where ai.assignment_status = 'COMPLETED' and ai.assignment_student_id = student_id);
@@ -234,7 +234,7 @@ create or replace function all_graded_assignments_student(student_id in bigint) 
 table(assignment_instance_id bigint, assignment_template_id bigint, 
 assignment_teacher_id bigint, assignment_student_id bigint, assignment_completion_date date,
 assignment_completion_time time, assignment_graded_date date, assignment_graded_time time,
-assignment_finalgrade numeric(5,2), assignment_status status) as 
+assignment_finalgrade numeric(5,2), assignment_status varchar) as 
 $graded_student_assignments$
 begin
 	return query (select * from assignment_instance ai where ai.assignment_status = 'GRADED' and ai.assignment_student_id = student_id);
@@ -249,7 +249,7 @@ create or replace function all_completed_assignments_teacher(teacher_id in bigin
 table(assignment_instance_id bigint, assignment_template_id bigint, 
 assignment_teacher_id bigint, assignment_student_id bigint, assignment_completion_date date,
 assignment_completion_time time, assignment_graded_date date, assignment_graded_time time,
-assignment_finalgrade numeric(5,2), assignment_status status) as 
+assignment_finalgrade numeric(5,2), assignment_status varchar) as 
 $completed_teacher_assignments$
 begin
 	return query (select * from assignment_instance ai where ai.assignment_status = 'COMPLETED' and ai.assignment_teacher_id = teacher_id);
@@ -264,7 +264,7 @@ create or replace function all_graded_assignments_teacher(teacher_id in bigint) 
 table(assignment_instance_id bigint, assignment_template_id bigint, 
 assignment_teacher_id bigint, assignment_student_id bigint, assignment_completion_date date,
 assignment_completion_time time, assignment_graded_date date, assignment_graded_time time,
-assignment_finalgrade numeric(5,2), assignment_status status) as 
+assignment_finalgrade numeric(5,2), assignment_status varchar) as 
 $graded_teacher_assignments$
 begin
 	return query (select * from assignment_instance ai where ai.assignment_status = 'GRADED' and ai.assignment_teacher_id = teacher_id);
@@ -274,3 +274,4 @@ $graded_teacher_assignments$ language plpgsql;
 
 alter table ams.teacher add column session_token text;
 alter table ams.student add column session_token text;
+--alter table ams.assignment_instance alter column assignment_status type varchar;

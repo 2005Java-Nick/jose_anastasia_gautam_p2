@@ -1,5 +1,7 @@
 package com.revature.ams.controller;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -75,41 +77,51 @@ public class AssignAssignmentsController {
 	@RequestMapping(path = "/teacher-create-assignment", method = RequestMethod.POST)
 	@ResponseBody
 	public Message assignAssignmentsToClass(
-			@RequestParam(name = "teacherId",required =true) int teacherId,
+			@RequestParam(name = "teacherId",required =true) String teacherId,
 			@RequestParam(name = "assignmentType",required=true) String assignmentType,
 			@RequestParam(name = "assignmentTitle",required=true) String assignmentTitle,
 			@RequestParam(name = "assignmentClass",required=true) String assignmentClass,
-			@RequestParam(name = "dueDate",required=true) Date dueDate,
-			@RequestParam(name = "dueTime",required=true) Time dueTime,
-			@RequestParam(name = "questions", required=true) List<String> questions,
-			@RequestParam(name = "maxpoints", required=true) List<Double> maxpoints,
+			@RequestParam(name = "dueDate",required=true) String dueDate,
+			@RequestParam(name = "dueTime",required=true) String dueTime,
+			@RequestParam(name = "questions", required=true) String questions,
+			@RequestParam(name = "maxpoints", required=true) String maxpoints,
 			@RequestParam(name = "token",required =true) String token) 
 	{
 		Message mSuccess = new Message(true, "Teacher successfully assigned new assignment", token);
-		Message mFail = new Message(true, "Teacher FAILED to assign new assignment", null);
+		//Message mFail = new Message(true, "Teacher FAILED to assign new assignment", null);
 		Message mNotAuthorized = new Message(true, "User NOT Authorized!", null);
 		Message message;
-		if(aService.authorizeTeacher(teacherId, token)) {
-			AssignmentTemplate at = new AssignmentTemplate(assignmentType, assignmentTitle, dueDate, dueTime);
+		if(aService.authorizeTeacher(Integer.valueOf(teacherId), token)) {
+			AssignmentTemplate at = new AssignmentTemplate(assignmentType, assignmentTitle, java.sql.Date.valueOf(dueDate), java.sql.Time.valueOf(dueTime));
 			
 			message = atService.createAssignmentTemplate(at);
 			if(!message.isSuccessStatus()) {
 				return message;
 			}
 			
-			for (int i = 0; i < questions.size(); i++) {
+			questions = questions.replaceAll("^\\[|]$","");
+			List<String> qList = new ArrayList<String>(Arrays.asList(questions.split(",")));
+			
+			maxpoints = maxpoints.replaceAll("^\\[|]$","");
+			List<String> maxPointsListStrings = new ArrayList<String>(Arrays.asList(maxpoints.split(",")));
+			List<Double> maxPointsList = new ArrayList<Double>();
+			for(String point:maxPointsListStrings){
+				maxPointsList.add(Double.valueOf(point));
+			}
+			
+			for (int i = 0; i < qList.size(); i++) {
 				Question q = new Question();
 				q.setAssignmentTemplate(at);
 				q.setQuestion_number(i+1);
-				q.setQuestionMaxpoints(maxpoints.get(i));
-				q.setQuestionString(questions.get(i));
+				q.setQuestionMaxpoints(maxPointsList.get(i));
+				q.setQuestionString(qList.get(i));
 				message = qService.createQuestion(q);
 				if(!message.isSuccessStatus()) {
 					return message;
 				}
 			}
 			
-			Teacher t = tService.getTeacher(teacherId);
+			Teacher t = tService.getTeacher(Integer.valueOf(teacherId));
 			message = aiService.assigningAssignment(assignmentClass, at, t);
 			if(!message.isSuccessStatus()) {
 				return message;

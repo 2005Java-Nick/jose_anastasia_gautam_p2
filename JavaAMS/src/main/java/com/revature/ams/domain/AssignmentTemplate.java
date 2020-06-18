@@ -83,7 +83,7 @@ public class AssignmentTemplate implements Serializable{
 				this.assignmentCreationTime = java.sql.Time.valueOf(java.time.LocalTime.now());
 				this.assignmentDueDate = assignmentDueDate;
 				this.assignmentDueTime = assignmentDueTime;
-				this.assignmentMaxpoints = 100;
+				this.assignmentMaxpoints = 100.0;
 			}
 	
 	//Constructor contains Set of Questions and Assignment Instances
