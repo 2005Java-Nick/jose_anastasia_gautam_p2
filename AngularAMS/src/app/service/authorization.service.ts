@@ -13,6 +13,7 @@ export class AuthorizationService {
     this.userId = null;
     this.password = null;
     this.token = null;
+    console.log('Reset id, password and token to null');
   }
 
   getUserId() {
@@ -31,6 +32,7 @@ export class AuthorizationService {
     this.userId = userId;
     this.password = password;
     this.token = token;
+    console.log('Set user id, password and token');
   }
 
   constructor() { }

@@ -18,14 +18,20 @@ export class LoginService {
     let messageOb = this.http.post<Message>(fullUrl, '');
     messageOb.subscribe((message)=>{
       if(message.successStatus) {
-          if(message.info==='Student Login Successful!'){
-            this.auth.set(form.userId, form.password, message.token);
-            this.router.navigate(['/student-dashboard']);
+        console.log(message);
+        if(message.info==='Student Login Successful!'){
+          this.auth.set(form.userId, form.password, message.token);
+          this.router.navigate(['/student-dashboard']);
+          console.log('Student logs in');
           }
-          else{
-            this.auth.set(form.userId, form.password, message.token);
-            this.router.navigate(['/teacher-dashboard']);
+        else{
+          this.auth.set(form.userId, form.password, message.token);
+          this.router.navigate(['/teacher-dashboard']);
+          console.log('Teacher logs in');
           }
+      }
+      else{
+        console.log(message);
       }
     });
   }
