@@ -66,7 +66,7 @@ public class AssignmentInstanceServiceImpl implements AssignmentInstanceService{
 		for(Question q: ai.getAssignmentTemplate().getQuestions()) {
 			QuestionContent qc = new QuestionContent();
 			Answers a = getAnswer(q,ai.getAnswers());
-			if(a.equals(null)) {
+			if(a==null) {
 				qc.setAnswer(null);
 				qc.setComment(null);
 				qc.setQuestionPoints(0.0);
