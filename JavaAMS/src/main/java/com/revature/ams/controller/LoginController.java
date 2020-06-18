@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import com.revature.ams.dto.Message;
 import com.revature.ams.services.LoginService;
@@ -27,6 +28,7 @@ public class LoginController {
 
 	@RequestMapping(path = "/login", method = RequestMethod.POST)
 	@ResponseBody
+  @CrossOrigin
 	public Message login(@RequestParam(name="userId", required=true) int userId,
 			@RequestParam(name="userPassword", required=true) String password) {
 		return loginService.login(userId, password);

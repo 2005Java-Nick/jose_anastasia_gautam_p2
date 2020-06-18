@@ -15,7 +15,7 @@ import org.springframework.web.servlet.view.JstlView;
 @Configuration
 @ComponentScan(basePackages = "com.revature.ams")
 @EnableWebMvc
-@CrossOrigin
+//@CrossOrigin
 public class WebMvcConfiguration implements WebMvcConfigurer {
 
   @Override
