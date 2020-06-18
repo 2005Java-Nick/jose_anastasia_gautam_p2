@@ -41,8 +41,11 @@ public class GetNewAssignmentsController {
 	@ResponseBody
 	@CrossOrigin
 	public List<AssignmentInstanceDTO> getNewAssignments(@RequestParam(name = "studentId",required = true) Integer studentId, @RequestParam(name = "token",required = true) String token){
-		System.out.println(aiService.getNewAssignmentInstancesByStudent(123456789));
+		System.out.println("GAUTAM HERE IS THE LIST!!!!!!!: "+aiService.getNewAssignmentInstancesByStudent(123456789));
+		
 		if(aService.authorizeStudent(studentId, token)) {
+			System.out.println("GAUTAM HERE IS THE LIST!!!!!!!: "+aiService.getNewAssignmentInstancesByStudent(123456789));
+			
 			return aiService.getNewAssignmentInstancesByStudent(studentId);
 		}else {
 			return null;
