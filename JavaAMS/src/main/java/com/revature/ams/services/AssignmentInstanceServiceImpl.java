@@ -10,6 +10,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.revature.ams.dao.AnswersDAOHibernate;
 import com.revature.ams.dao.AssignmentInstanceDAOHibernate;
 import com.revature.ams.dao.StudentDAOHibernate;
 import com.revature.ams.domain.*;
@@ -22,6 +23,7 @@ public class AssignmentInstanceServiceImpl implements AssignmentInstanceService{
 	
 	private AssignmentInstanceDAOHibernate assignmentInstanceDao;
 	private StudentDAOHibernate studentDao;
+	private AnswersDAOHibernate answersDao;
 
 	public AssignmentInstanceDAOHibernate getAssignmentInstanceDao() {
 		return assignmentInstanceDao;
@@ -39,6 +41,14 @@ public class AssignmentInstanceServiceImpl implements AssignmentInstanceService{
 	@Autowired
 	public void setStudentDao(StudentDAOHibernate studentDao) {
 		this.studentDao = studentDao;
+	}
+
+	public AnswersDAOHibernate getAnswersDao() {
+		return answersDao;
+	}
+	@Autowired
+	public void setAnswersDao(AnswersDAOHibernate answersDao) {
+		this.answersDao = answersDao;
 	}
 
 	@Override
@@ -225,6 +235,7 @@ public class AssignmentInstanceServiceImpl implements AssignmentInstanceService{
 				aList.get(i).setAnswersPoints(maxPointsList.get(i));
 				aList.get(i).setAnswersComments(cList.get(i));
 				aList.get(i).setAnswersPoints(maxPointsList.get(i));
+				answersDao.createAnswer(aList.get(i));
 			}
 			answers = convertListToSet(aList);
 			
@@ -262,6 +273,7 @@ public class AssignmentInstanceServiceImpl implements AssignmentInstanceService{
 			
 			for(int i =0; i<answerSet.size();i++) {
 				answerList.get(i).setAnswersString(aList.get(i));
+				answersDao.createAnswer(answerList.get(i));
 			}
 			answerSet = convertListToSet(answerList);
 			ai.setAnswers(answerSet);

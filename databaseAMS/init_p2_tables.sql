@@ -275,3 +275,5 @@ $graded_teacher_assignments$ language plpgsql;
 alter table ams.teacher add column session_token text;
 alter table ams.student add column session_token text;
 --alter table ams.assignment_instance alter column assignment_status type varchar;
+insert into ams.answers (answers_id, answers_questions_id, answers_student_id, answers_assignment_instance_id, answers_string, answers_points, answers_comments) values (1,1,123456789,1,'1776',0.0,null);
+insert into ams.answers (answers_id, answers_questions_id, answers_student_id, answers_assignment_instance_id, answers_string, answers_points, answers_comments) values (2,2,123456789,1,'A document that formally announced the independence of the 13 Colonies from the British Empire.',0.0,null);
