@@ -245,6 +245,8 @@ public class AssignmentInstanceServiceImpl implements AssignmentInstanceService{
 			}
 			
 			ai.setAnswers(answers);
+			ai.setAssignmentGradedDate(java.sql.Date.valueOf(java.time.LocalDate.now()));
+			ai.setAssignmentGradedTime(java.sql.Time.valueOf(java.time.LocalTime.now()));
 			ai.setAssignmentFinalGrade(finalGrade);
 			ai.setAssignmentStatus("GRADED");
 			assignmentInstanceDao.updateAssignmentInstance(ai);
@@ -277,7 +279,8 @@ public class AssignmentInstanceServiceImpl implements AssignmentInstanceService{
 			}
 			answerSet = convertListToSet(answerList);
 			ai.setAnswers(answerSet);
-			
+			ai.setAssignmentCompletionDate(java.sql.Date.valueOf(java.time.LocalDate.now()));
+			ai.setAssignmentCompletionTime(java.sql.Time.valueOf(java.time.LocalTime.now()));
 			ai.setAssignmentStatus("COMPLETED");
 			assignmentInstanceDao.updateAssignmentInstance(ai);
 			
