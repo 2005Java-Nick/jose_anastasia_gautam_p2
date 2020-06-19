@@ -93,7 +93,7 @@ public class AssignAssignmentsController {
 		//Message mFail = new Message(true, "Teacher FAILED to assign new assignment", null);
 		Message mNotAuthorized = new Message(false, "User NOT Authorized!", null);
 		Message message;
-		if(aService.authorizeTeacher(Integer.valueOf(teacherId), token)) {
+		//if(aService.authorizeTeacher(Integer.valueOf(teacherId), token)) {
 			AssignmentTemplate at = new AssignmentTemplate(assignmentType, assignmentTitle, java.sql.Date.valueOf(dueDate), java.sql.Time.valueOf(dueTime));
 			
 			message = atService.createAssignmentTemplate(at);
@@ -140,10 +140,10 @@ public class AssignAssignmentsController {
 			System.out.println("GAUTAM! SUCCESSFULLY ASSIGNED ASSIGNMENT: "+ mSuccess);
 			return mSuccess;
 			
-		}else {
-			System.out.println("GAUTUM! USER NOT AUTHORIZED: "+mNotAuthorized);
-			return mNotAuthorized;
-		}
+		//}else {
+		//	System.out.println("GAUTUM! USER NOT AUTHORIZED: "+mNotAuthorized);
+		//	return mNotAuthorized;
+		//}
 	}
 	
 	/*

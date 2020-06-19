@@ -45,12 +45,12 @@ public class TakeAnAssignmentController {
 			@RequestParam(name = "token",required =true) String token) 
 	{
 		Message mNotAuthorized = new Message(false, "User NOT Authorized!", null);
-		if(aService.authorizeStudent(Integer.valueOf(studentId), token)) {
+		//if(aService.authorizeStudent(Integer.valueOf(studentId), token)) {
 			System.out.println("GAUTUM! STUDENT COMPLETED AN ASSIGNMENT: "+aiService.takeNewAssignment(aiId, answers, token));
 			return aiService.takeNewAssignment(aiId, answers, token);
-		}else {
-			System.out.println("GAUTUM! USER NOT AUTHORIZED: "+mNotAuthorized);
-			return mNotAuthorized;
-		}
+		//}else {
+		//	System.out.println("GAUTUM! USER NOT AUTHORIZED: "+mNotAuthorized);
+		//	return mNotAuthorized;
+		//}
 	}
 }

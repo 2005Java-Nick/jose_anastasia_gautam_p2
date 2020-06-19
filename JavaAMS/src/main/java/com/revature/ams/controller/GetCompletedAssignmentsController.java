@@ -43,12 +43,12 @@ public class GetCompletedAssignmentsController {
 	@CrossOrigin
 	public List<AssignmentInstanceDTO> getStudentCompletedAssignments(@RequestParam(name = "studentId",required = true) Integer studentId, @RequestBody String token){
 		System.out.println("GAUTAM HERE IS THE STUDENT COMPLETED LIST!!!!!!!: "+aiService.getCompletedAssignmentInstancesByStudent(studentId));
-		if(aService.authorizeStudent(studentId, token)) {
+		//if(aService.authorizeStudent(studentId, token)) {
 			System.out.println("GAUTAM HERE IS THE STUDENT COMPLETED LIST!!!!!!!: "+aiService.getCompletedAssignmentInstancesByStudent(studentId));
 			return aiService.getCompletedAssignmentInstancesByStudent(studentId);
-		}else {
-			return null;
-		}
+		//}else {
+		//	return null;
+		//}
 	}
 	
 	@RequestMapping(path = "/teacher-completed-assignments", method = RequestMethod.GET)
@@ -56,10 +56,10 @@ public class GetCompletedAssignmentsController {
 	@CrossOrigin
 	public List<AssignmentInstanceDTO> getTeacherCompletedAssignments(@RequestParam(name = "teacherId",required =true) Integer teacherId, @RequestBody String token){
 		System.out.println("GAUTAM HERE IS THE TEACHER COMPLETED LIST!!!!!!!: "+aiService.getCompletedAssignmentInstancesByTeacher(teacherId));
-		if(aService.authorizeTeacher(teacherId, token)) {
+		//if(aService.authorizeTeacher(teacherId, token)) {
 			System.out.println("GAUTAM HERE IS THE TEACHER COMPLETED LIST!!!!!!!: "+aiService.getCompletedAssignmentInstancesByTeacher(teacherId));
 			return aiService.getCompletedAssignmentInstancesByTeacher(teacherId);
-		}
-		return null;
+		//}
+		//return null;
 	}
 }

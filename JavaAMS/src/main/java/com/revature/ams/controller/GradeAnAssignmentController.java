@@ -49,13 +49,13 @@ public class GradeAnAssignmentController {
 	{
 		Message mNotAuthorized = new Message(false, "User NOT Authorized!", null);
 		
-		if(aService.authorizeTeacher(Integer.valueOf(teacherId), token)) {
+		//if(aService.authorizeTeacher(Integer.valueOf(teacherId), token)) {
 			System.out.println("GAUTUM! STUDENT COMPLETED AN ASSIGNMENT: "+aiService.gradingCompletedAssignment(aiId, comments, maxpoints));
 			return aiService.gradingCompletedAssignment(aiId, comments, maxpoints);
-		}else {
-			System.out.println("GAUTUM! USER NOT AUTHORIZED: "+mNotAuthorized);
-			return mNotAuthorized;
-		}
+		//}else {
+		//	System.out.println("GAUTUM! USER NOT AUTHORIZED: "+mNotAuthorized);
+		//	return mNotAuthorized;
+		//}
 	}
 	
 
