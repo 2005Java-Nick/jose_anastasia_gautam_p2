@@ -277,6 +277,7 @@ public class AssignmentInstanceServiceImpl implements AssignmentInstanceService{
 				Answers ans = new Answers();
 				ans.setAnswersString(aList.get(i));
 				ans.setAssignmentInstance(ai);
+				ans.setStudent(ai.getStudent());
 				for(Question q: ai.getAssignmentTemplate().getQuestions()) {
 					if(q.getQuestion_number() == i+1) {
 						ans.setQuestion(q);
