@@ -1,7 +1,7 @@
 <div id="content">        
-  <div id="content-greeting">
-    <p>Hello, {{name}}!</p>
-  </div>
+  <!-- <div id="content-greeting">
+    <p>Hello, {{listOfAssignments[0].studentName}}!</p>
+  </div> -->
   <ul id="list">
     <li *ngFor="let assignment of listOfAssignments">
 
@@ -13,15 +13,15 @@
         <p class="name">{{assignment.course}} {{assignment.assignmentType}}</p>
         <p class="detail"> {{assignment.assignmentName}} ● {{assignment.studentName}}</p>
       </div>
-      <div class="right-info" *ngIf="assignment.assignmentStatus === 'New'">
+      <div class="right-info" *ngIf="assignment.assignmentStatus === 'NEW'">
           <p class="label">Due Date</p>
-          <p class="value">{{assignment.dueDate.date}} {{assignment.dueDate.time}}</p>
+          <p class="value">{{assignment.dueDate}} {{assignment.dueTime}}</p>
       </div>
-      <div class="right-info" *ngIf="assignment.assignmentStatus === 'Completed'">
+      <div class="right-info" *ngIf="assignment.assignmentStatus === 'COMPLETED'">
           <p class="label">Completion Date</p>
-          <p class="value">{{assignment.completionDate.date}} {{assignment.completionDate.time}}</p>
+          <p class="value">{{assignment.completionDate}} {{assignment.completionTime}}</p>
       </div>
-      <div class="right-info" *ngIf="assignment.assignmentStatus === 'Graded'">
+      <div class="right-info" *ngIf="assignment.assignmentStatus === 'GRADED'">
           <p class="label">Grade</p>
           <p class="value">{{assignment.grade}}</p>
       </div>

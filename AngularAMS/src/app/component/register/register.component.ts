@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl } from "@angular/forms";
 import { SidebarOptionsService } from '../../service/sidebar-options.service';
+import { RegisterService } from '../../service/register.service';
 
 @Component({
   selector: 'app-register',
@@ -36,21 +37,30 @@ sidebarOptions;
 
 headerTitle: string = "Welcome";
 
-constructor(private sidebarOptionsService : SidebarOptionsService, private fb: FormBuilder) {
+constructor(private sidebarOptionsService : SidebarOptionsService, private fb: FormBuilder, private registerService: RegisterService) {
   this.sidebarOptions = sidebarOptionsService.loginRegisterSideOptions('/register');
 }
 
 submit() {
   if (this.isStudent) {
     console.log(this.registerStudentForm.value);
+    this.registerService.registerStudent(this.registerStudentForm.value);
   } else {
     console.log(this.registerTeacherForm.value);
+    this.registerService.registerTeacher(this.registerTeacherForm.value);
   }
 }
 
-setUser(userType : boolean) {
+// submit() {
+//   console.log(this.loginForm.value);
+//   this.loginService.login(this.loginForm.value);
+// }
+
+setUser(userType: boolean) {
   this.isStudent = userType;
 }
+
+
 
   ngOnInit(): void {
   }

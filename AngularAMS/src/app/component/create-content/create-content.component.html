@@ -22,25 +22,27 @@
         <label>Assign To Class</label>
       </div>
       <div class="form-element"> 
-        <select class="select" formControlName="assignToClass">
+        <!-- <select class="select" formControlName="assignToClass">
           <option [ngValue]="null" disabled>Choose Class</option>
-          <!-- <option value="" disabled selected>Choose Class</option> -->
           <option [ngValue]="'1-201'">1-201</option>
           <option [ngValue]="'2-201'">2-201</option>
           <option [ngValue]="'4-201'">4-201</option>
-        </select>
+        </select> -->
+        <input type="text" placeholder="Enter Class" class="text-input" formControlName="assignToClass">
       </div>
       <div class="form-element">
       <label  for="dueDate">Due Date:</label>
     </div>
     <div class="form-element">
-      <input type="date" formControlName="dueDate" name="dueDate">
+      <!-- <input type="date" formControlName="dueDate" name="dueDate"> -->
+      <input type="text" placeholder="Enter Date" class="text-input" formControlName="dueDate">
     </div>
     <div class="form-element">
     <label for="time" id="time">Select a time:</label>
     </div>
     <div class="form-element">
-  <input type="time" formControlName="dueDate" name="time">
+  <!-- <input type="time" formControlName="dueDate" name="time"> -->
+  <input type="text" placeholder="Enter Time" class="text-input" formControlName="dueTime">
   </div>
 
       <div class="form-element">

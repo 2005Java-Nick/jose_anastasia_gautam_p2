@@ -1,13 +1,13 @@
 #header {
   display: flex;
   justify-content: space-between;
-  /* background-image: url("https://i.ya-webdesign.com/images/pink-transparent-png-6.png"); */
+  background-image: url("https://vegasfamilyevents.com/wp-content/themes/lifestyle/images/header-purple.png");
   background-color: #BAABD4;
   background-repeat: no-repeat;
   background-size: 100% 100%;
-  border-bottom-style: solid;
+  /* border-bottom-style: solid;
   border-bottom-width: 2px;
-  border-bottom-color: rgb(115, 30, 141); 
+  border-bottom-color: rgb(115, 30, 141);  */
 }
 
   

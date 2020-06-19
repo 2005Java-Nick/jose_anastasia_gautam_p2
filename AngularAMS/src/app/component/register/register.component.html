@@ -9,6 +9,7 @@
     <div id="content-div">
       <div id="register">
       <!-- TOGGLE -->
+      <div id="toggle">
         <div class="onoffswitch">
           <input type="checkbox" [(ngModel)]="isStudent" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" tabindex="0" checked>
           <label class="onoffswitch-label" for="myonoffswitch">
@@ -16,6 +17,7 @@
               <span class="onoffswitch-switch" (ngValue)="false" ></span>
           </label>
       </div>
+    </div>
       <!-- TOGGLE -->
         <form [formGroup]="registerStudentForm" *ngIf="isStudent">
           <div id="input-items">
@@ -30,7 +32,7 @@
               <input type="text" placeholder="Enter School" formControlName="studentSchool" required><br>
 
               <label for="studentClass"><b>Class</b></label><br>
-              <input type="text" placeholder="Enter Class" formControlName="studentEmail" required><br>
+              <input type="text" placeholder="Enter Class" formControlName="studentClass" required><br>
 
             </div>
             <div id="right-items">

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl } from "@angular/forms";
+import { CreateATService } from "../../service/create-at.service";
 
 @Component({
   selector: 'app-create-content',
@@ -21,7 +22,7 @@ export class CreateContentComponent implements OnInit {
     point0: ['']
   });
 
-  constructor(private fb : FormBuilder) { }
+  constructor(private fb : FormBuilder, private createAT : CreateATService) { }
 
   ngOnInit(): void {
   }
@@ -55,6 +56,7 @@ export class CreateContentComponent implements OnInit {
       form: this.createAssignmentForm.value
     }
     console.log(submitObject);
+    this.createAT.createAndAssign(submitObject);
   }
 
 }

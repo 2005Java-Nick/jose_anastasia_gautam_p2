@@ -6,6 +6,18 @@ export const environment = {
   production: false,
   hostName: 'http://ec2-3-15-213-173.us-east-2.compute.amazonaws.com:8080/JavaAMS-0.0.1-SNAPSHOT',
   login: '/login',
+  registerStudent: '/register-student',
+  registerTeacher: '/register-teacher',
+  getNewAssignments: '/student-new-assignments',
+  getCompletedAssignments: '/student-completed-assignments',
+  getGradedAssignments: '/student-graded-assignments',
+  getAllCompletedAssignments:'/teacher-completed-assignments',
+  getAllGradedAssignments: '/teacher-graded-assignments',
+  create: '/teacher-create-assignment',
+  // teacherViewCompleted: 'teacher-vie',
+  // teacherViewGraded: '',
+  teacherGradeAssignment: '/teacher-grade-assignment',
+  // takeNewAssignment: '',
   
 };
 
