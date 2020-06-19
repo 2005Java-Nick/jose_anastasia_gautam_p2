@@ -10,6 +10,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.revature.ams.dao.AnswersDAOHibernate;
 import com.revature.ams.dao.AssignmentInstanceDAOHibernate;
 import com.revature.ams.dao.StudentDAOHibernate;
 import com.revature.ams.domain.*;
@@ -22,6 +23,7 @@ public class AssignmentInstanceServiceImpl implements AssignmentInstanceService{
 	
 	private AssignmentInstanceDAOHibernate assignmentInstanceDao;
 	private StudentDAOHibernate studentDao;
+	private AnswersDAOHibernate answersDao;
 
 	public AssignmentInstanceDAOHibernate getAssignmentInstanceDao() {
 		return assignmentInstanceDao;
@@ -39,6 +41,14 @@ public class AssignmentInstanceServiceImpl implements AssignmentInstanceService{
 	@Autowired
 	public void setStudentDao(StudentDAOHibernate studentDao) {
 		this.studentDao = studentDao;
+	}
+
+	public AnswersDAOHibernate getAnswersDao() {
+		return answersDao;
+	}
+	@Autowired
+	public void setAnswersDao(AnswersDAOHibernate answersDao) {
+		this.answersDao = answersDao;
 	}
 
 	@Override
@@ -66,10 +76,16 @@ public class AssignmentInstanceServiceImpl implements AssignmentInstanceService{
 		for(Question q: ai.getAssignmentTemplate().getQuestions()) {
 			QuestionContent qc = new QuestionContent();
 			Answers a = getAnswer(q,ai.getAnswers());
-			qc.setAnswer(a.getAnswersString());
-			qc.setComment(a.getAnswersComments());
+			if(a==null) {
+				qc.setAnswer(null);
+				qc.setComment(null);
+				qc.setQuestionPoints(0.0);
+			}else {
+				qc.setAnswer(a.getAnswersString());
+				qc.setComment(a.getAnswersComments());
+				qc.setQuestionPoints(a.getAnswersPoints());
+			}
 			qc.setMaxPoints(q.getQuestionMaxpoints());
-			qc.setQuestionPoints(a.getAnswersPoints());
 			qc.setQuestionString(q.getQuestionString());
 			qcList.add(qc);
 		}
@@ -82,13 +98,50 @@ public class AssignmentInstanceServiceImpl implements AssignmentInstanceService{
 		aiDTO.setAssignmentName(ai.getAssignmentTemplate().getAssignmentTitle());
 		aiDTO.setAssignmentStatus(ai.getAssignmentStatus());
 		aiDTO.setAssignmentType(ai.getAssignmentTemplate().getAssignmentType());
-		aiDTO.setCompletionDate(ai.getAssignmentCompletionDate().toString());
-		aiDTO.setCompletionTime(ai.getAssignmentCompletionTime().toString());
-		aiDTO.setDueDate(ai.getAssignmentTemplate().getAssignmentDueDate().toString());
-		aiDTO.setDueTime(ai.getAssignmentTemplate().getAssignmentDueTime().toString());
+		
+		if(ai.getAssignmentCompletionDate() == null) {
+			aiDTO.setCompletionDate(null);
+		}else {
+			aiDTO.setCompletionDate(ai.getAssignmentCompletionDate().toString());
+		}
+		
+		if(ai.getAssignmentCompletionTime() == null) {
+			aiDTO.setCompletionTime(null);
+		}else {
+			aiDTO.setCompletionTime(ai.getAssignmentCompletionTime().toString());
+		}
+		
+		if(ai.getAssignmentTemplate().getAssignmentDueDate() == null) {
+			aiDTO.setDueDate(null);
+		}else {
+			aiDTO.setDueDate(ai.getAssignmentTemplate().getAssignmentDueDate().toString());
+		}
+		
+		if(ai.getAssignmentTemplate().getAssignmentDueDate() == null) {
+			aiDTO.setDueDate(null);
+		}else {
+			aiDTO.setDueDate(ai.getAssignmentTemplate().getAssignmentDueDate().toString());
+		}
+		
+		if(ai.getAssignmentTemplate().getAssignmentDueTime() == null) {
+			aiDTO.setDueTime(null);
+		}else {
+			aiDTO.setDueTime(ai.getAssignmentTemplate().getAssignmentDueTime().toString());
+		}
+		
+		if(ai.getAssignmentGradedDate() == null) {
+			aiDTO.setGradedDate(null);
+		}else {
+			aiDTO.setGradedDate(ai.getAssignmentGradedDate().toString());
+		}
+		
+		if(ai.getAssignmentGradedTime() == null) {
+			aiDTO.setGradedTime(null);
+		}else {
+			aiDTO.setGradedTime(ai.getAssignmentGradedTime().toString());
+		}
+		
 		aiDTO.setGrade(ai.getAssignmentFinalGrade());
-		aiDTO.setGradedDate(ai.getAssignmentGradedDate().toString());
-		aiDTO.setGradedTime(ai.getAssignmentGradedTime().toString());
 		aiDTO.setInstanceId(ai.getAssignmentInstanceId());
 		aiDTO.setStudentName(ai.getStudent().getStudentFirstname() +" "+ ai.getStudent().getStudentLastname());
 		aiDTO.setTeacherName(ai.getTeacher().getTeacherFirstname() +" "+ ai.getTeacher().getTeacherLastname());
@@ -182,6 +235,7 @@ public class AssignmentInstanceServiceImpl implements AssignmentInstanceService{
 				aList.get(i).setAnswersPoints(maxPointsList.get(i));
 				aList.get(i).setAnswersComments(cList.get(i));
 				aList.get(i).setAnswersPoints(maxPointsList.get(i));
+				answersDao.updateAnswer(aList.get(i));
 			}
 			answers = convertListToSet(aList);
 			
@@ -191,6 +245,8 @@ public class AssignmentInstanceServiceImpl implements AssignmentInstanceService{
 			}
 			
 			ai.setAnswers(answers);
+			ai.setAssignmentGradedDate(java.sql.Date.valueOf(java.time.LocalDate.now()));
+			ai.setAssignmentGradedTime(java.sql.Time.valueOf(java.time.LocalTime.now()));
 			ai.setAssignmentFinalGrade(finalGrade);
 			ai.setAssignmentStatus("GRADED");
 			assignmentInstanceDao.updateAssignmentInstance(ai);
@@ -203,9 +259,9 @@ public class AssignmentInstanceServiceImpl implements AssignmentInstanceService{
 	}
 
 	@Override
-	public Message takeNewAssignment(String aiId, String answers, String token) {
+	public Message takeNewAssignment(String aiId, String answers) {
 		AssignmentInstance ai = assignmentInstanceDao.getAssignmentInstance(Integer.valueOf(aiId));
-		token = ai.getStudent().getToken();
+		String token = ai.getStudent().getToken();
 		
 		Message mSuccess = new Message(true, "Student ("+ai.getStudent().getStudentId()+")" + "completed a new assignment: " +ai.toString()+".",token);
 		Message mFail = new Message(false, "Student ("+ai.getStudent().getStudentId()+")" + "FAILED to complete a new assignment: " +ai.toString()+".",null);
@@ -214,15 +270,26 @@ public class AssignmentInstanceServiceImpl implements AssignmentInstanceService{
 			answers = answers.replaceAll("^\\[|]$","");
 			List<String> aList = new ArrayList<String>(Arrays.asList(answers.split(",")));
 			
-			Set<Answers> answerSet = ai.getAnswers();
-			List<Answers> answerList = new ArrayList<Answers>(answerSet.stream().collect(Collectors.toList()));
+			//Set<Answers> answerSet = ai.getAnswers();
+			//List<Answers> answerList = new ArrayList<Answers>(answerSet.stream().collect(Collectors.toList()));
 			
-			for(int i =0; i<answerSet.size();i++) {
-				answerList.get(i).setAnswersString(aList.get(i));
+			for(int i=0; i<aList.size();i++) {
+				Answers ans = new Answers();
+				ans.setAnswersString(aList.get(i));
+				ans.setAssignmentInstance(ai);
+				ans.setStudent(ai.getStudent());
+				for(Question q: ai.getAssignmentTemplate().getQuestions()) {
+					if(q.getQuestion_number() == i+1) {
+						ans.setQuestion(q);
+					}
+				}
+				//answerList.get(i).setAnswersString(aList.get(i));
+				answersDao.createAnswer(ans);
 			}
-			answerSet = convertListToSet(answerList);
-			ai.setAnswers(answerSet);
-			
+			//answerSet = convertListToSet(answerList);
+			//ai.setAnswers(answerSet);
+			ai.setAssignmentCompletionDate(java.sql.Date.valueOf(java.time.LocalDate.now()));
+			ai.setAssignmentCompletionTime(java.sql.Time.valueOf(java.time.LocalTime.now()));
 			ai.setAssignmentStatus("COMPLETED");
 			assignmentInstanceDao.updateAssignmentInstance(ai);
 			
@@ -232,14 +299,5 @@ public class AssignmentInstanceServiceImpl implements AssignmentInstanceService{
 		}
 	
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
 
 }

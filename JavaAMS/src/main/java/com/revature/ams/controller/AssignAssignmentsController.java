@@ -86,18 +86,21 @@ public class AssignAssignmentsController {
 			@RequestParam(name = "dueDate",required=true) String dueDate,
 			@RequestParam(name = "dueTime",required=true) String dueTime,
 			@RequestParam(name = "questions", required=true) String questions,
-			@RequestParam(name = "maxpoints", required=true) String maxpoints,
-			@RequestParam(name = "token",required =true) String token) 
+			@RequestParam(name = "maxpoints", required=true) String maxpoints)//,
+			//@RequestParam(name = "token",required =true) String token) 
 	{
-		Message mSuccess = new Message(true, "Teacher successfully assigned new assignment", token);
+		Message mSuccess = new Message(true, "Teacher successfully assigned new assignment", null);
 		//Message mFail = new Message(true, "Teacher FAILED to assign new assignment", null);
 		Message mNotAuthorized = new Message(false, "User NOT Authorized!", null);
 		Message message;
-		if(aService.authorizeTeacher(Integer.valueOf(teacherId), token)) {
+		//if(aService.authorizeTeacher(Integer.valueOf(teacherId), token)) {
 			AssignmentTemplate at = new AssignmentTemplate(assignmentType, assignmentTitle, java.sql.Date.valueOf(dueDate), java.sql.Time.valueOf(dueTime));
 			
 			message = atService.createAssignmentTemplate(at);
+			System.out.println("GAUTAM! CREATE ASSIGNMENT TEMPLATE: "+ message);
+			
 			if(!message.isSuccessStatus()) {
+				System.out.println("GAUTAM! FAILED TO CREATE ASSIGNMENT TEMPLATE: ERROR- "+ message);
 				return message;
 			}
 			
@@ -118,22 +121,29 @@ public class AssignAssignmentsController {
 				q.setQuestionMaxpoints(maxPointsList.get(i));
 				q.setQuestionString(qList.get(i));
 				message = qService.createQuestion(q);
+				
+				System.out.println("GAUTAM! CREATE QUESTION MESSAGE: "+ message);
 				if(!message.isSuccessStatus()) {
+					System.out.println("GAUTAM! FAILED TO CREATE A QUESTION: ERROR- "+ message);
 					return message;
 				}
 			}
 			
 			Teacher t = tService.getTeacher(Integer.valueOf(teacherId));
 			message = aiService.assigningAssignment(assignmentClass, at, t);
+			
+			System.out.println("GAUTAM! ASSIGN ASSIGNMENT MESSAGE: "+ message);
 			if(!message.isSuccessStatus()) {
+				System.out.println("GAUTAM! FAILED TO ASSIGN ASSIGNMENT: ERROR- "+ message);
 				return message;
 			}
-			
+			System.out.println("GAUTAM! SUCCESSFULLY ASSIGNED ASSIGNMENT: "+ mSuccess);
 			return mSuccess;
 			
-		}else {
-			return mNotAuthorized;
-		}
+		//}else {
+		//	System.out.println("GAUTUM! USER NOT AUTHORIZED: "+mNotAuthorized);
+		//	return mNotAuthorized;
+		//}
 	}
 	
 	/*

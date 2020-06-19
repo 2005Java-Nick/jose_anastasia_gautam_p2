@@ -44,16 +44,18 @@ public class GradeAnAssignmentController {
 			@RequestParam(name = "teacherId",required =true) String teacherId,
 			@RequestParam(name = "assignmentInstanceId",required =true) String aiId,
 			@RequestParam(name = "comments",required=true) String comments,
-			@RequestParam(name = "maxpoints", required=true) String maxpoints,
-			@RequestParam(name = "token",required =true) String token) 
+			@RequestParam(name = "maxpoints", required=true) String maxpoints)//,
+			//@RequestParam(name = "token",required =true) String token) 
 	{
 		Message mNotAuthorized = new Message(false, "User NOT Authorized!", null);
 		
-		if(aService.authorizeTeacher(Integer.valueOf(teacherId), token)) {
+		//if(aService.authorizeTeacher(Integer.valueOf(teacherId), token)) {
+			System.out.println("GAUTUM! STUDENT COMPLETED AN ASSIGNMENT: "+aiService.gradingCompletedAssignment(aiId, comments, maxpoints));
 			return aiService.gradingCompletedAssignment(aiId, comments, maxpoints);
-		}else {
-			return mNotAuthorized;
-		}
+		//}else {
+		//	System.out.println("GAUTUM! USER NOT AUTHORIZED: "+mNotAuthorized);
+		//	return mNotAuthorized;
+		//}
 	}
 	
 

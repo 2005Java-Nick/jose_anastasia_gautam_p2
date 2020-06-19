@@ -19,5 +19,5 @@ public interface AssignmentInstanceService {
 	
 	public Message assigningAssignment(String studentClass,AssignmentTemplate at,Teacher t);
 	public Message gradingCompletedAssignment(String aiId,String comments,String maxpoints);
-	public Message takeNewAssignment(String aiId,String answers, String token);
+	public Message takeNewAssignment(String aiId,String answers);//, String token);
 }

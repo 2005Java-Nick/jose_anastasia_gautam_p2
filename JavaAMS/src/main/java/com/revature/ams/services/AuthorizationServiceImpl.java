@@ -33,6 +33,8 @@ public class AuthorizationServiceImpl implements AuthorizationService {
 	@Override
 	public boolean authorizeStudent(int studentId, String token) {
 		Student s = studentDao.getStudent(studentId);
+		System.out.println("GAUTAM HERE IS THE inputToken: "+token);
+		System.out.println("GAUTAM HERE IS THE STUDENT'S ACTUAL TOKEN: "+s.getToken());
 		return s.getToken().equals(token);
 	}
 

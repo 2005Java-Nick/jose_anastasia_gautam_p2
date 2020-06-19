@@ -225,7 +225,7 @@ begin
 	return query (select * from ams.assignment_instance ai where ai.assignment_status = 'COMPLETED' and ai.assignment_student_id = student_id);
 end;
 $completed_student_assignments$ language plpgsql;
--- select * from all_completed_assignments_student(student_id);
+-- select * from all_completed_assignments_student(::student_id);
 
 ------------------------------------------------------------------------------------------------------------
 -- Retrieve all graded assignments for a particular student (by id)
@@ -240,7 +240,7 @@ begin
 	return query (select * from ams.assignment_instance ai where ai.assignment_status = 'GRADED' and ai.assignment_student_id = student_id);
 end;
 $graded_student_assignments$ language plpgsql;
---select * from all_graded_assignments_student(student_id);
+--select * from all_graded_assignments_student(::student_id);
 
 ------------------------------------------------------------------------------------------------------------
 -- Retrieve all completed assignments that were assigned by a particular teacher (by id) 

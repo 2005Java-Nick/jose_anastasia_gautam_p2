@@ -41,14 +41,16 @@ public class TakeAnAssignmentController {
 	public Message takeAssignment(
 			@RequestParam(name = "studentId",required =true) String studentId,
 			@RequestParam(name = "assignmentInstanceId",required=true) String aiId,
-			@RequestParam(name = "answers",required=true) String answers,
-			@RequestParam(name = "token",required =true) String token) 
+			@RequestParam(name = "answers",required=true) String answers)//,
+			//@RequestParam(name = "token",required =true) String token) 
 	{
 		Message mNotAuthorized = new Message(false, "User NOT Authorized!", null);
-		if(aService.authorizeStudent(Integer.valueOf(studentId), token)) {
-			return aiService.takeNewAssignment(aiId, answers, token);
-		}else {
-			return mNotAuthorized;
-		}
+		//if(aService.authorizeStudent(Integer.valueOf(studentId), token)) {
+			System.out.println("GAUTUM! STUDENT COMPLETED AN ASSIGNMENT: "+aiService.takeNewAssignment(aiId, answers));//, token));
+			return aiService.takeNewAssignment(aiId, answers);//, token);
+		//}else {
+		//	System.out.println("GAUTUM! USER NOT AUTHORIZED: "+mNotAuthorized);
+		//	return mNotAuthorized;
+		//}
 	}
 }
