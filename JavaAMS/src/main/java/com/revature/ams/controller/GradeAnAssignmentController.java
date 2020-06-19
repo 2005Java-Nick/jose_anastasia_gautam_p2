@@ -44,8 +44,8 @@ public class GradeAnAssignmentController {
 			@RequestParam(name = "teacherId",required =true) String teacherId,
 			@RequestParam(name = "assignmentInstanceId",required =true) String aiId,
 			@RequestParam(name = "comments",required=true) String comments,
-			@RequestParam(name = "maxpoints", required=true) String maxpoints,
-			@RequestParam(name = "token",required =true) String token) 
+			@RequestParam(name = "maxpoints", required=true) String maxpoints)//,
+			//@RequestParam(name = "token",required =true) String token) 
 	{
 		Message mNotAuthorized = new Message(false, "User NOT Authorized!", null);
 		

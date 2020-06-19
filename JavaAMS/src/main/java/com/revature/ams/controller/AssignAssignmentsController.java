@@ -86,10 +86,10 @@ public class AssignAssignmentsController {
 			@RequestParam(name = "dueDate",required=true) String dueDate,
 			@RequestParam(name = "dueTime",required=true) String dueTime,
 			@RequestParam(name = "questions", required=true) String questions,
-			@RequestParam(name = "maxpoints", required=true) String maxpoints,
-			@RequestParam(name = "token",required =true) String token) 
+			@RequestParam(name = "maxpoints", required=true) String maxpoints)//,
+			//@RequestParam(name = "token",required =true) String token) 
 	{
-		Message mSuccess = new Message(true, "Teacher successfully assigned new assignment", token);
+		Message mSuccess = new Message(true, "Teacher successfully assigned new assignment", null);
 		//Message mFail = new Message(true, "Teacher FAILED to assign new assignment", null);
 		Message mNotAuthorized = new Message(false, "User NOT Authorized!", null);
 		Message message;

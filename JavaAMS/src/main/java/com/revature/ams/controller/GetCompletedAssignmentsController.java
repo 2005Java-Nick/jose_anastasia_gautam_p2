@@ -41,7 +41,7 @@ public class GetCompletedAssignmentsController {
 	@RequestMapping(path = "/student-completed-assignments", method = RequestMethod.GET)
 	@ResponseBody
 	@CrossOrigin
-	public List<AssignmentInstanceDTO> getStudentCompletedAssignments(@RequestParam(name = "studentId",required = true) Integer studentId, @RequestBody String token){
+	public List<AssignmentInstanceDTO> getStudentCompletedAssignments(@RequestParam(name = "studentId",required = true) Integer studentId){//, @RequestBody String token){
 		System.out.println("GAUTAM HERE IS THE STUDENT COMPLETED LIST!!!!!!!: "+aiService.getCompletedAssignmentInstancesByStudent(studentId));
 		//if(aService.authorizeStudent(studentId, token)) {
 			System.out.println("GAUTAM HERE IS THE STUDENT COMPLETED LIST!!!!!!!: "+aiService.getCompletedAssignmentInstancesByStudent(studentId));
@@ -54,7 +54,7 @@ public class GetCompletedAssignmentsController {
 	@RequestMapping(path = "/teacher-completed-assignments", method = RequestMethod.GET)
 	@ResponseBody
 	@CrossOrigin
-	public List<AssignmentInstanceDTO> getTeacherCompletedAssignments(@RequestParam(name = "teacherId",required =true) Integer teacherId, @RequestBody String token){
+	public List<AssignmentInstanceDTO> getTeacherCompletedAssignments(@RequestParam(name = "teacherId",required =true) Integer teacherId){//, @RequestBody String token){
 		System.out.println("GAUTAM HERE IS THE TEACHER COMPLETED LIST!!!!!!!: "+aiService.getCompletedAssignmentInstancesByTeacher(teacherId));
 		//if(aService.authorizeTeacher(teacherId, token)) {
 			System.out.println("GAUTAM HERE IS THE TEACHER COMPLETED LIST!!!!!!!: "+aiService.getCompletedAssignmentInstancesByTeacher(teacherId));

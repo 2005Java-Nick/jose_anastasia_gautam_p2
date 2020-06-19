@@ -246,9 +246,9 @@ public class AssignmentInstanceServiceImpl implements AssignmentInstanceService{
 	}
 
 	@Override
-	public Message takeNewAssignment(String aiId, String answers, String token) {
+	public Message takeNewAssignment(String aiId, String answers) {
 		AssignmentInstance ai = assignmentInstanceDao.getAssignmentInstance(Integer.valueOf(aiId));
-		token = ai.getStudent().getToken();
+		String token = ai.getStudent().getToken();
 		
 		Message mSuccess = new Message(true, "Student ("+ai.getStudent().getStudentId()+")" + "completed a new assignment: " +ai.toString()+".",token);
 		Message mFail = new Message(false, "Student ("+ai.getStudent().getStudentId()+")" + "FAILED to complete a new assignment: " +ai.toString()+".",null);

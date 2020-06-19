@@ -41,7 +41,7 @@ public class GetGradedAssignmentsController {
 	@RequestMapping(path = "/student-graded-assignments", method = RequestMethod.GET)
 	@ResponseBody
 	@CrossOrigin
-	public List<AssignmentInstanceDTO> getStudentGradedAssignments(@RequestParam(name = "studentId",required =true) Integer studentId,@RequestBody String token){
+	public List<AssignmentInstanceDTO> getStudentGradedAssignments(@RequestParam(name = "studentId",required =true) Integer studentId){//,@RequestBody String token){
 		System.out.println("GAUTAM HERE IS THE STUDENT GRADED LIST!!!!!!!: "+aiService.getGradedAssignmentInstancesByStudent(studentId));
 		//if(aService.authorizeStudent(studentId, token)){
 			System.out.println("GAUTAM HERE IS THE STUDENT GRADED LIST!!!!!!!: "+aiService.getGradedAssignmentInstancesByStudent(studentId));
@@ -54,7 +54,7 @@ public class GetGradedAssignmentsController {
 	@RequestMapping(path = "/teacher-graded-assignments", method = RequestMethod.GET)
 	@ResponseBody
 	@CrossOrigin
-	public List<AssignmentInstanceDTO> getTeacherGradedAssignments(@RequestParam(name = "teacherId",required =true) Integer teacherId,@RequestBody String token){
+	public List<AssignmentInstanceDTO> getTeacherGradedAssignments(@RequestParam(name = "teacherId",required =true) Integer teacherId){//,@RequestBody String token){
 		System.out.println("GAUTAM HERE IS THE TEACHER GRADED LIST!!!!!!!: "+aiService.getGradedAssignmentInstancesByTeacher(teacherId));
 		//if(aService.authorizeTeacher(teacherId, token)) {
 			System.out.println("GAUTAM HERE IS THE TEACHER GRADED LIST!!!!!!!: "+aiService.getGradedAssignmentInstancesByTeacher(teacherId));
