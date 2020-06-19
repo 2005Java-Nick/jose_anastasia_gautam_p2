@@ -270,15 +270,23 @@ public class AssignmentInstanceServiceImpl implements AssignmentInstanceService{
 			answers = answers.replaceAll("^\\[|]$","");
 			List<String> aList = new ArrayList<String>(Arrays.asList(answers.split(",")));
 			
-			Set<Answers> answerSet = ai.getAnswers();
-			List<Answers> answerList = new ArrayList<Answers>(answerSet.stream().collect(Collectors.toList()));
+			//Set<Answers> answerSet = ai.getAnswers();
+			//List<Answers> answerList = new ArrayList<Answers>(answerSet.stream().collect(Collectors.toList()));
 			
-			for(int i =0; i<answerSet.size();i++) {
-				answerList.get(i).setAnswersString(aList.get(i));
-				answersDao.createAnswer(answerList.get(i));
+			for(int i=0; i<aList.size();i++) {
+				Answers ans = new Answers();
+				ans.setAnswersString(aList.get(i));
+				ans.setAssignmentInstance(ai);
+				for(Question q: ai.getAssignmentTemplate().getQuestions()) {
+					if(q.getQuestion_number() == i+1) {
+						ans.setQuestion(q);
+					}
+				}
+				//answerList.get(i).setAnswersString(aList.get(i));
+				answersDao.createAnswer(ans);
 			}
-			answerSet = convertListToSet(answerList);
-			ai.setAnswers(answerSet);
+			//answerSet = convertListToSet(answerList);
+			//ai.setAnswers(answerSet);
 			ai.setAssignmentCompletionDate(java.sql.Date.valueOf(java.time.LocalDate.now()));
 			ai.setAssignmentCompletionTime(java.sql.Time.valueOf(java.time.LocalTime.now()));
 			ai.setAssignmentStatus("COMPLETED");
