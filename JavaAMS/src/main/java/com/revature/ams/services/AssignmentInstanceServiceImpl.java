@@ -235,7 +235,7 @@ public class AssignmentInstanceServiceImpl implements AssignmentInstanceService{
 				aList.get(i).setAnswersPoints(maxPointsList.get(i));
 				aList.get(i).setAnswersComments(cList.get(i));
 				aList.get(i).setAnswersPoints(maxPointsList.get(i));
-				answersDao.createAnswer(aList.get(i));
+				answersDao.updateAnswer(aList.get(i));
 			}
 			answers = convertListToSet(aList);
 			
