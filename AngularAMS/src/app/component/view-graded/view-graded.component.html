@@ -11,32 +11,33 @@
 <div id="content-container">
     <div id="take-form">
       <div class="header-item">
-        <p class="heading">Object-Oriented Programming</p>
+        <p class="heading">{{selectedDTO.assignmentName}}</p>
       </div>
       <div class="header-item">
-        <p class="subheading">Java {{ assignment.assignmentType }} by Annabeth Chase</p>
+        <p class="subheading">{{selectedDTO.course}} {{ selectedDTO.assignmentType }} by {{selectedDTO.teacherName}}</p>
       </div>
       <div class="header-item">
-        <p class="subheading">Student: Percy Jackson</p>
+        <p class="subheading">Student: {{selectedDTO.studentName}}</p>
       </div>
       <div class="header-item">
-        <p class="subheading">Graded on {{ assignment.gradedDate.date }} {{ assignment.gradedDate.time }}</p>
+        <p class="subheading">Graded on {{ selectedDTO.gradedDate }} {{ selectedDTO.gradedTime }}</p>
       </div>
-      <div>
+      <div *ngFor="let question of selectedDTO.questionContent">
           <div class="form-item questions-div">
             <div class="question"> 
-              <p>List and explain the four pillars of Object Oriented Programming.</p>
+              <p>{{question.questionString}}</p>
             </div>
             <div>
 
-              <p><span id="grade">15</span> / 40 points</p>
+              <p><span id="grade">{{question.questionPoints}}</span> / {{question.maxPoints}} points</p>
             </div>
           </div>
           <div class="form-item">
-            <textarea readonly rows="5" columns="100" placeholder="Interface, Polymorphism, Abstraction and Encapsulation" ></textarea>
-            <textarea readonly rows="5" columns="100" placeholder="Interface? Nooo! Inheritance!" id="comment"></textarea>
+            <textarea readonly rows="5" columns="100" placeholder="{{question.answer}}" ></textarea>
+            <textarea readonly rows="5" columns="100" placeholder="{{question.comment}}" id="comment"></textarea>
           </div>
       </div>
+      <!--
       <div>
           <div class="form-item questions-div">
             <div class="question"> 
@@ -64,12 +65,13 @@
             <textarea readonly rows="5" columns="100" placeholder="Group of constans"></textarea>
             <textarea readonly rows="5" columns="100" placeholder="Good!" id="comment"></textarea>
           </div>
+        -->
+
+      <div class="header-item">
+        <p class="subheading">Grade is {{selectedDTO.grade}}</p>
       </div>
       <div class="header-item">
-        <p class="subheading">Grade is 65</p>
-      </div>
-      <div class="header-item">
-        <button>Go back</button>
+        <button routerLink = "/teacher-graded-dashboard">Go back</button>
       </div>
     </div>
   </div>

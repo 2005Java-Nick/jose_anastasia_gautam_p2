@@ -13,6 +13,7 @@ import { RegisterComponent } from './component/register/register.component';
 import {StudentViewCompletedComponent} from './component/student-view-completed/student-view-completed.component';
 import {ViewGradedComponent } from './component/view-graded/view-graded.component';
 import {TeacherGradeCompletedComponent} from './component/teacher-grade-completed/teacher-grade-completed.component';
+import { StudentViewGradedComponent } from './component/student-view-graded/student-view-graded.component';
 
 const routes: Routes = [
   { path: "teacher-dashboard", component: TeacherDashboardComponent },
@@ -28,6 +29,7 @@ const routes: Routes = [
   { path: "view-graded", component: ViewGradedComponent },
   { path: "login", component: LoginComponent },
   { path: "register", component: RegisterComponent },
+  { path: "student-view-graded", component: StudentViewGradedComponent },
   { path: "", redirectTo: "/login", pathMatch: "full" }
   // { path: "", redirectTo: "/teacher-dashboard", pathMatch: "full" }
 ];

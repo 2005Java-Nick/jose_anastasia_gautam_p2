@@ -34,15 +34,15 @@
       <label  for="dueDate">Due Date:</label>
     </div>
     <div class="form-element">
-      <!-- <input type="date" formControlName="dueDate" name="dueDate"> -->
-      <input type="text" placeholder="Enter Date" class="text-input" formControlName="dueDate">
+      <input type="date" formControlName="dueDate" name="dueDate">
+      <!-- <input type="text" placeholder="Enter Date" class="text-input" formControlName="dueDate"> -->
     </div>
     <div class="form-element">
     <label for="time" id="time">Select a time:</label>
     </div>
     <div class="form-element">
-  <!-- <input type="time" formControlName="dueDate" name="time"> -->
-  <input type="text" placeholder="Enter Time" class="text-input" formControlName="dueTime">
+  <input type="time" formControlName="dueTime" name="time"> 
+  <!-- <input type="text" placeholder="Enter Time" class="text-input" formControlName="dueTime"> -->
   </div>
 
       <div class="form-element">
@@ -57,7 +57,7 @@
         <button (click)="addQuestion()">Add Question</button>
       </div>
       <div class="form-element">     
-        <button (click)="onSubmit()">Create Assignment</button>
+        <button (click)="onSubmit()" routerLink = "/teacher-dashboard">Create Assignment</button>
       </div>
     </form>
     

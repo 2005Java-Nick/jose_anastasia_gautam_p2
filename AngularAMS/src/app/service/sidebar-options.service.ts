@@ -47,7 +47,6 @@ export class SidebarOptionsService {
         link: "/teacher-create-dashboard",
         selected: selectedLink === "/teacher-create-dashboard"
       }
-      // ADD CREATE AN ASSIGNMENT!!!!!!!!!!!!
     ];
 
     return sidebarOptions;
@@ -64,8 +63,7 @@ export class SidebarOptionsService {
         name: "Register",
         link: "/register",
         selected: selectedLink === "/register"
-      },
-      // ADD CREATE AN ASSIGNMENT!!!!!!!!!!!!
+      }
     ];
 
     return sidebarOptions;

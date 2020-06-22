@@ -1,9 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output } from '@angular/core';
 import { AssignmentInstanceDisplay } from '../../interface/assignmentinstancedisplay.interface';
 import {SidebarOptionsService} from '../../service/sidebar-options.service';
 import {AssignmentdtoService } from '../../service/assignmentdto.service';
 import {Router} from '@angular/router';
-
+import { AssignmentDTO } from 'src/app/interface/assignmentdto.interface';
+import { EventEmitter } from 'protractor';
+import {ViewDTOService} from '../../service/view-dto.service';
 
 
 
@@ -13,13 +15,19 @@ import {Router} from '@angular/router';
   styleUrls: ['./teacher-graded-dashboard.component.css']
 })
 export class TeacherGradedDashboardComponent implements OnInit {
-
-  name = 'Mrs. Jane Doe';
+  dtoList = [];
+  selectedDTO: AssignmentDTO;
+  name = this.dtoList[5];
+  //name = 'Mrs. Jane Doe';
   viewer = 'Teacher';
-
+  chosen = false;
   sidebarOptions;
-
-  listOfAssignments =[]
+  
+  onSelect(chosenDTO: AssignmentDTO): void {
+    //this.selectedDTO = this.viewGradedService.getDTO(chosenDTO.instanceId);
+    this.chosen = true;
+    this.router.navigate(['/view-graded']);
+  }
   //     course: "History",
   //     assignmentType: "Exam",
   //     assignmentStatus: "Graded",
@@ -43,7 +51,7 @@ export class TeacherGradedDashboardComponent implements OnInit {
   // ];
 
 
-  constructor(private sidebarOptionsService:SidebarOptionsService, private adtoService: AssignmentdtoService, private router: Router) { 
+  constructor(private sidebarOptionsService:SidebarOptionsService, private adtoService: AssignmentdtoService, private router: Router, private viewDTOService: ViewDTOService) { 
     this.sidebarOptions = sidebarOptionsService.teacherSideOptions("/teacher-graded-dashboard");
   }
 
@@ -54,7 +62,7 @@ export class TeacherGradedDashboardComponent implements OnInit {
         this.router.navigate(['/login']);
       }
       else{
-        this.listOfAssignments = dto;
+        this.dtoList = dto;
       }
 
     })

@@ -266,6 +266,7 @@ public class AssignmentInstanceServiceImpl implements AssignmentInstanceService{
 		Message mSuccess = new Message(true, "Student ("+ai.getStudent().getStudentId()+")" + "completed a new assignment: " +ai.toString()+".",token);
 		Message mFail = new Message(false, "Student ("+ai.getStudent().getStudentId()+")" + "FAILED to complete a new assignment: " +ai.toString()+".",null);
 		
+		System.out.println("STATUS OF ASSIGNMENT BEING TAKEN: "+ai.getAssignmentStatus());
 		if(ai.getAssignmentStatus().equals("NEW")) {
 			answers = answers.replaceAll("^\\[|]$","");
 			List<String> aList = new ArrayList<String>(Arrays.asList(answers.split(",")));

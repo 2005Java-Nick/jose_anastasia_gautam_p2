@@ -3,7 +3,7 @@ import { AssignmentInstanceDisplay } from '../../interface/assignmentinstancedis
 import { SidebarOptionsService} from '../../service/sidebar-options.service';
 import {AssignmentdtoService } from '../../service/assignmentdto.service';
 import {Router} from '@angular/router';
-
+import {AssignmentDTO} from '../../interface/assignmentdto.interface'
 
 @Component({
   selector: 'app-student-dashboard',
@@ -16,7 +16,7 @@ export class StudentDashboardComponent implements OnInit {
   viewer = 'Student';
 
   sidebarOptions;
-
+  dtoList = [];
   listOfAssignments = [
     // {
     //   course: "History",
@@ -52,7 +52,7 @@ export class StudentDashboardComponent implements OnInit {
         this.router.navigate(['/login']);
       }
       else{
-        this.listOfAssignments = dto;
+        this.dtoList = dto;
       }
 
     })

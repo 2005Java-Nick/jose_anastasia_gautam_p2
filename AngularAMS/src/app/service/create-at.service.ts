@@ -33,13 +33,13 @@ export class CreateATService {
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
       }
-    })
+    });
 
     obMes.subscribe((message) => {
       if (message.successStatus) {
         this.router.navigate(['/teacher-dashboard']);
       }
-    })
+    });
 
 
   }

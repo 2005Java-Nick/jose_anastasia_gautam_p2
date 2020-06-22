@@ -22,6 +22,10 @@ export class CreateContentComponent implements OnInit {
     point0: ['']
   });
 
+  get diagnostic() { 
+    return JSON.stringify(this.createAssignmentForm.value);
+    };
+
   constructor(private fb : FormBuilder, private createAT : CreateATService) { }
 
   ngOnInit(): void {

@@ -275,3 +275,5 @@ $graded_teacher_assignments$ language plpgsql;
 alter table ams.teacher add column session_token text;
 alter table ams.student add column session_token text;
 --alter table ams.assignment_instance alter column assignment_status type varchar;
+select student_class from student s2 where student_school = (select distinct teacher_school from teacher t where t.teacher_school = 'Goode High School'); 
+--select distinct teacher_school from teacher t where t.teacher_school = 'Goode High School'

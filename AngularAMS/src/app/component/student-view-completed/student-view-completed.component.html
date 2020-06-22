@@ -10,30 +10,31 @@
 <div id="content-container">
     <div id="take-form">
       <div class="form-item">
-        <p class="heading">Object-Oriented Programming</p>
+        <p class="heading">{{selectedDTO.assignmentName}}</p>
       </div>
       <div class="form-item">
-        <p class="subheading">Java {{ assignment.assignmentType }} by Annabeth Chase</p>
+        <p class="subheading">{{selectedDTO.course}} {{ selectedDTO.assignmentType }} by {{selectedDTO.teacherName}}</p>
       </div>
       <div class="form-item">
-        <p class="subheading">Student: Percy Jackson</p>
+        <p class="subheading">Student: {{selectedDTO.studentName}}</p>
       </div>
       <div class="form-item">
-        <p class="subheading">Completed by {{ assignment.dueDate.date }} {{ assignment.dueDate.time }}</p>
+        <p class="subheading">Completed by {{ selectedDTO.dueDate }} {{ selectedDTO.dueTime }}</p>
       </div>
-      <div>
+      <div *ngFor="let question of selectedDTO.questionContent">
           <div class="form-item questions-div">
             <div class="question"> 
-              <p>List and explain the four pillars of Object Oriented Programming.</p>
+              <p>{{question.questionString}}</p>
             </div>
             <div>
-              <p>40 points</p>
+              <p>{{question.maxPoints}} points</p>
             </div>
           </div>
           <div class="form-item">
-            <textarea readonly rows="5" columns="100" placeholder="Interface, Polymorphism, Abstraction and Encapsulation" ></textarea>
+            <textarea readonly rows="5" columns="100" placeholder="{{question.answer}}" ></textarea>
           </div>
       </div>
+      <!--
       <div>
           <div class="form-item questions-div">
             <div class="question"> 
@@ -60,8 +61,9 @@
             <textarea readonly rows="5" columns="100" placeholder="Group of constans"></textarea>
           </div>
       </div>
+    -->
       <div class="form-item">
-        <button>Go back</button>
+        <button routerLink = "/student-completed-dashboard">Go back</button>
       </div>
     </div>
   </div>

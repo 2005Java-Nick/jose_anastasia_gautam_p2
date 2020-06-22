@@ -5,6 +5,7 @@ export interface Teacher{
     email: string;
     password: string;
     subject: string;
+    teacherSchool: string;
     token: string;
 
 }

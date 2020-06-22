@@ -4,7 +4,9 @@ export interface Student{
     lastName: string;
     email: string;
     password: string;
-    gradeLevel: string;
+    studentClass: string;
+    studentSchool: string;
     token: string;
+
 
 }

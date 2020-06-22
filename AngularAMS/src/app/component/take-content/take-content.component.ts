@@ -1,5 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { AssignmentInstanceDisplay } from '../../interface/assignmentinstancedisplay.interface';
+import { AssignmentDTO } from 'src/app/interface/assignmentdto.interface';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ViewDTOService } from 'src/app/service/view-dto.service';
+import { AssignmentdtoService } from 'src/app/service/assignmentdto.service';
+import { SidebarOptionsService } from 'src/app/service/sidebar-options.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-take-content',
@@ -7,32 +13,20 @@ import { AssignmentInstanceDisplay } from '../../interface/assignmentinstancedis
   styleUrls: ['./take-content.component.css']
 })
 export class TakeContentComponent implements OnInit {
-
-  assignment : AssignmentInstanceDisplay = {
-     course: "History",
-     assignmentType: "Exam",
-     assignmentStatus: "NEW",
-     assignmentName: "US History (1600s-1776)",
-     teacherName: "Mrs. Jane Doe",
-     studentName: "John Doe",
-     dueDate: {
-       date: "06-10-2020",
-       time: "5:00 PM"
-     },
-     completionDate: {
-       date: "06-10-2020",
-       time: "4:45 PM"
-     },
-     gradedDate: {
-      date: "06-11-2020",
-      time: "7:45 PM"
-    },
-     grade: 80
-  };
+  selectedDTO: AssignmentDTO;
+  sidebarOptions;
   
-  constructor() { }
-
+  constructor(private sidebarOptionsService:SidebarOptionsService, 
+    private router : Router, 
+    private viewDTOService: ViewDTOService, 
+    private adtoService: AssignmentdtoService,
+    private route: ActivatedRoute,
+      private location: Location) { 
+        
+    this.sidebarOptions = sidebarOptionsService.studentSideOptions("");
+  }
   ngOnInit(): void {
+    this.selectedDTO = this.viewDTOService.getDTO();
   }
 
 }

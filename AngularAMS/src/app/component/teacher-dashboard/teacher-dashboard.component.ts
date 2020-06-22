@@ -3,6 +3,7 @@ import { AssignmentInstanceDisplay } from '../../interface/assignmentinstancedis
 import {SidebarOptionsService} from '../../service/sidebar-options.service';
 import {AssignmentdtoService } from '../../service/assignmentdto.service';
 import {Router} from '@angular/router';
+import { AssignmentDTO } from 'src/app/interface/assignmentdto.interface';
 
 
 @Component({
@@ -17,7 +18,7 @@ export class TeacherDashboardComponent implements OnInit {
 
   sidebarOptions;
 
-  listOfAssignments =[];
+  dtoList = [];
   //   {
   //     course: "History",
   //     assignmentType: "Exam",
@@ -52,7 +53,7 @@ export class TeacherDashboardComponent implements OnInit {
         this.router.navigate(['/login']);
       }
       else{
-        this.listOfAssignments = dto;
+        this.dtoList = dto;
       }
 
     })

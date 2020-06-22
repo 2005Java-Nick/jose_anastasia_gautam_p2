@@ -3,7 +3,7 @@
     <p>Hello, {{listOfAssignments[0].studentName}}!</p>
   </div> -->
   <ul id="list">
-    <li *ngFor="let assignment of listOfAssignments">
+    <li *ngFor="let assignment of dtoList" (click)="onClick(assignment)" routerLink ="{{route(assignment)}}">
 
       <div class="left-info" *ngIf="viewer === 'Student'">
         <p class="name">{{assignment.course}} {{assignment.assignmentType}}</p>

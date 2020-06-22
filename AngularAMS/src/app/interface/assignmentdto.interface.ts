@@ -2,19 +2,19 @@ import { QuestionContent } from './questioncontent.interface';
 
 export interface AssignmentDTO {
     instanceId: number;
-    course : string;
+    course: string;
     assignmentType: string;
     assignmentStatus: string;
     assignmentName: string;
     teacherName: string;
     studentName: string;
     dueDate: string;
-    dueTime: string 
+    dueTime: string; 
     completionDate: string;
     completionTime: string;
     gradedDate: string;
     gradedTime: string;
     grade: number;
-    questions: QuestionContent[];
+    questionContent: QuestionContent[];
   }
   

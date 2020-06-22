@@ -24,6 +24,7 @@ import { TakeContentComponent } from './component/take-content/take-content.comp
 import { StudentViewCompletedComponent } from './component/student-view-completed/student-view-completed.component';
 import { ViewGradedComponent } from './component/view-graded/view-graded.component';
 import { TeacherGradeCompletedComponent } from './component/teacher-grade-completed/teacher-grade-completed.component';
+import { StudentViewGradedComponent } from './component/student-view-graded/student-view-graded.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +47,7 @@ import { TeacherGradeCompletedComponent } from './component/teacher-grade-comple
     StudentViewCompletedComponent,
     ViewGradedComponent,
     TeacherGradeCompletedComponent,
+    StudentViewGradedComponent,
   ],
   imports: [
     BrowserModule,
