@@ -210,7 +210,8 @@ begin
 	return query (select * from ams.assignment_instance ai where ai.assignment_status = 'NEW' and ai.assignment_student_id = student_id);
 end;
 $new_student_assignments$ language plpgsql;
---select * all_new_assignments_student(123456789::bigint);
+
+--select * from all_new_assignments_student(123456789);
 
 ------------------------------------------------------------------------------------------------------------
 -- Retrieve all completed assignments for a particular student (by id)
@@ -225,7 +226,7 @@ begin
 	return query (select * from ams.assignment_instance ai where ai.assignment_status = 'COMPLETED' and ai.assignment_student_id = student_id);
 end;
 $completed_student_assignments$ language plpgsql;
--- select * from all_completed_assignments_student(::student_id);
+-- select * from all_completed_assignments_student(student_id);
 
 ------------------------------------------------------------------------------------------------------------
 -- Retrieve all graded assignments for a particular student (by id)
@@ -240,7 +241,7 @@ begin
 	return query (select * from ams.assignment_instance ai where ai.assignment_status = 'GRADED' and ai.assignment_student_id = student_id);
 end;
 $graded_student_assignments$ language plpgsql;
---select * from all_graded_assignments_student(::student_id);
+--select * from all_graded_assignments_student(student_id);
 
 ------------------------------------------------------------------------------------------------------------
 -- Retrieve all completed assignments that were assigned by a particular teacher (by id) 
@@ -255,7 +256,7 @@ begin
 	return query (select * from ams.assignment_instance ai where ai.assignment_status = 'COMPLETED' and ai.assignment_teacher_id = teacher_id);
 end;
 $completed_teacher_assignments$ language plpgsql;
--- select * from all_completed_assignments_teacher(teacher_id);
+-- select * from all_completed_assignments_teacher(987654321);
 
 ------------------------------------------------------------------------------------------------------------
 -- Retrieve all graded assignments that were assigned by a particular teacher (by id) 
@@ -270,7 +271,8 @@ begin
 	return query (select * from ams.assignment_instance ai where ai.assignment_status = 'GRADED' and ai.assignment_teacher_id = teacher_id);
 end;
 $graded_teacher_assignments$ language plpgsql;
--- select * from all_graded_assignments_teacher(teacher_id);
+
+--select * from all_graded_assignments_teacher(teacher_id);
 
 alter table ams.teacher add column session_token text;
 alter table ams.student add column session_token text;
